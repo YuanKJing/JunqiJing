@@ -122,31 +122,81 @@ languages:
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
 awards:
-  - title: Neural Networks and Deep Learning
-    url: https://www.coursera.org/learn/neural-networks-deep-learning
-    date: '2023-11-25'
-    awarder: Coursera
-    icon: coursera
-    summary: |
-      I studied the foundational concept of neural networks and deep learning. By the end, I was familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.
-  - title: Blockchain Fundamentals
-    url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-    date: '2023-07-01'
-    awarder: edX
-    icon: edx
-    summary: |
-      Learned:
-      - Synthesize your own blockchain solutions
-      - Gain an in-depth understanding of the specific mechanics of Bitcoin
-      - Understand Bitcoin’s real-life applications and learn how to attack and destroy Bitcoin, Ethereum, smart contracts and Dapps, and alternatives to Bitcoin’s Proof-of-Work consensus algorithm
-  - title: 'Object-Oriented Programming in R'
-    url: https://www.datacamp.com/courses/object-oriented-programming-with-s3-and-r6-in-r
-    certificate_url: https://www.datacamp.com
-    date: '2023-01-21'
-    awarder: datacamp
-    icon: datacamp
-    summary: |
-      Object-oriented programming (OOP) lets you specify relationships between functions and the objects that they can act on, helping you manage complexity in your code. This is an intermediate level course, providing an introduction to OOP, using the S3 and R6 systems. S3 is a great day-to-day R programming tool that simplifies some of the functions that you write. R6 is especially useful for industry-specific analyses, working with web APIs, and building GUIs.
+  - title: "**High School Awards**"
+    awarder: ""
+    date: ""
+    
+  - title: Second Prize, National Olympiad in Mathematics
+    awarder: High School
+    date: "Before 2023"
+
+  - title: "**University Awards**"
+    awarder: ""
+    date: ""
+
+  - title: 26 Honors & Awards in total(2023 – Present)
+    awarder: University
+    date: "2023 – Present"
+
+  - title: Bronze Medal, ACM Freshman Programming Contest
+    awarder: University
+    date: "2023"
+
+  - title: Second Prize, National College Student Mathematical Modeling Contest
+    awarder: National-Level
+    date: "2023"
+
+  - title: Certified Large Model Application Developer
+    awarder: China Software Industry Association (CSTP)
+    date: "2024"
+
+  - title: Third Prize, Ali AI University Visiting – Large Model Tech & Trends
+    awarder: Baidu Qwen, Top-6 Team
+    date: "2024"
+
+  - title: Star of Computing – Outstanding Student Leader
+    awarder: University
+    date: "2024"
+
+  - title: Star of Computing – Individual All-Round Excellence Award
+    awarder: University
+    date: "2024"
+
+  - title: Outstanding Student Leader
+    awarder: University
+    date: "2023 – 2024"
+
+  - title: All-Round Excellence Award
+    awarder: University
+    date: "2023 – 2024"
+
+  - title: Student Work Excellence Scholarship ×4
+    awarder: University
+    date: "2023 – 2024"
+
+  - title: Second-Class Scholarship
+    awarder: University
+    date: "2023 – 2024"
+
+  - title: Third-Class Scholarship
+    awarder: University
+    date: "2023 – 2024"
+
+  - title: Second Prize, Summer Practical Training
+    awarder: University Level
+    date: "2024"
+
+  - title: Excellent Individual, Practical Training (Summer & Winter)
+    awarder: University
+    date: "2024"
+
+  - title: Outstanding League Member
+    awarder: University Youth League
+    date: "2024"
+
+  - title: Best-Officer, Project Management Department
+    awarder: Sci-Tech Innovation Center, School of CS
+    date: "2024"
 ---
 
 ## About Me
