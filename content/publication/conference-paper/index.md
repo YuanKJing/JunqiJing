@@ -2,19 +2,18 @@
 title: "Masked Temporal Interpolation Diffusion for Procedure Planning in Instructional Videos"
 
 authors:
-  - admin
   - Yufan Zhou
   - Lingshuai Lin
-  - Junqi Jing
+  - admin
   - et al.
 
-date: 2024-03-25
+date: 2025
 doi: ""
-publishDate: 2024-03-25
+publishDate: 2025
 
 publication_types: ['paper-conference']
-publication: In *International Conference on Learning Representations (ICLR) 2024*
-publication_short: In *ICLR 2024*
+publication: In *International Conference on Learning Representations (ICLR) 2025*
+publication_short: In *ICLR 2025*
 
 abstract: |
   We propose MTID, a novel diffusion-based model for procedure planning in instructional videos—predicting coherent action sequences given the start and end observations. Unlike previous works that rely heavily on text-level supervision, MTID introduces a latent space temporal interpolation module to synthesize richer mid-state visual features, improving temporal reasoning. We further design an action-aware mask projection and a task-adaptive masked proximity loss, enabling the model to focus on task-relevant, temporally coherent actions. Our method achieves state-of-the-art performance on multiple benchmarks.
