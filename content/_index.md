@@ -14,7 +14,7 @@ sections:
       text: |
         I’m Junqi Jing (荆浚淇), a junior undergraduate in Software Engineering at Harbin Institute of Technology. My research lies at the intersection of Embodied AI, Physical Simulation, and Multimodal Diffusion Models. 
 
-        I have worked at Westlake University (MiLab), and will be an incoming exchange student at POSTECH under Prof. Kwang In Kim. I am a co-author of a paper accepted to ICLR 2024 (MTID) and involved in multiple ongoing projects related to physics-grounded LLMs and robotic learning from videos.
+        I have worked at Westlake University (MiLab), and will be an incoming exchange student at POSTECH under Prof. Kwang In Kim. I am a co-author of a paper accepted to ICLR 2025 (MTID) and involved in multiple ongoing projects related to physics-grounded LLMs and robotic learning from videos.
 
         Feel free to contact or collaborate!
       button:
