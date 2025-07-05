@@ -1,5 +1,5 @@
 ---
-title: "An example journal article"
+title: "Not yet"
 authors:
 - admin
 - Robert Ford

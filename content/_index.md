@@ -1,7 +1,7 @@
 ---
 # Leave the homepage title empty to use the site title
 title: ""
-date: 2022-10-24
+date: 2025-4-26
 type: landing
 
 design:
@@ -19,7 +19,7 @@ sections:
         Feel free to contact or collaborate!
       button:
         text: Download CV
-        url: uploads/resume.pdf
+        url: uploads/CV-HIT-junqijing.pdf
     design:
       css_class: dark
       background:
