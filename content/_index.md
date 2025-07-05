@@ -19,7 +19,7 @@ sections:
         Feel free to contact or collaborate!
       button:
         text: Download CV
-        url: uploads/CV-HIT-junqijing.pdf
+        url: uploads/resume.pdf
     design:
       css_class: dark
       background:
