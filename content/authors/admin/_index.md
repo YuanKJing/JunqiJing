@@ -20,7 +20,7 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Chief Scientist
+role: Student
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
@@ -47,7 +47,7 @@ interests:
 education:
   - area: BE in Software Engineering
     institution: Harbin Institute of Technology
-    date_start: 2023-08-01
+    date_start: 2023-08-25
     date_end: 2027-06-30
     summary: |
       GPA: 84/100
@@ -66,7 +66,6 @@ work:
     summary: |
       - Reproduced Mujoco-based policy learning environments
       - Replaced reward function using CLIP similarity
-      - Conducted experiments for ICLR 2024 paper
 
   - position: Exchange Student Researcher (Upcoming)
     company_name: POSTECH (MLVLab)
