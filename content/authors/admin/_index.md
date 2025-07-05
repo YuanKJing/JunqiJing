@@ -124,71 +124,71 @@ languages:
 awards:
   - title: Second Prize, National Olympiad in Mathematics
     awarder: High School
-    date: "2022"
+    date: "2022-01-01"
 
   - title: Bronze Medal, ACM Freshman Programming Contest
     awarder: University
-    date: "2023"
+    date: "2023-01-01"
 
   - title: Second Prize, National College Student Mathematical Modeling Contest
     awarder: National Level
-    date: "2023"
+    date: "2023-01-01"
 
   - title: Certified Large Model Application Developer
     awarder: China Software Industry Association (CSTP)
-    date: "2024"
+    date: "2024-01-01"
 
   - title: Third Prize, Ali AI University Visiting – Large Model Tech & Trends
     awarder: Baidu Qwen, Top-6 Team
-    date: "2024"
+    date: "2024-01-01"
 
   - title: Star of Computing – Outstanding Student Leader
     awarder: University
-    date: "2024"
+    date: "2024-01-01"
 
   - title: Star of Computing – All-Round Excellence Award
     awarder: University
-    date: "2024"
+    date: "2024-01-01"
 
   - title: Outstanding Student Leader
     awarder: University
-    date: "2023"
+    date: "2023-01-01"
 
   - title: All-Round Excellence Award
     awarder: University
-    date: "2023"
+    date: "2023-01-01"
 
   - title: Student Work Excellence Scholarship (4×)
     awarder: University
-    date: "2023"
+    date: "2023-01-01"
 
   - title: Second-Class Scholarship
     awarder: University
-    date: "2023"
+    date: "2023-01-01"
 
   - title: Third-Class Scholarship
     awarder: University
-    date: "2023"
+    date: "2023-01-01"
 
   - title: Second Prize, Summer Practical Training
     awarder: University Level
-    date: "2024"
+    date: "2024-01-01"
 
   - title: Excellent Individual, Practical Training (Summer & Winter)
     awarder: University
-    date: "2024"
+    date: "2024-01-01"
 
   - title: Outstanding League Member
     awarder: University Youth League
-    date: "2024"
+    date: "2024-01-01"
 
   - title: Best Officer, Project Management Dept.
     awarder: Sci-Tech Innovation Center, School of CS
-    date: "2024"
+    date: "2024-01-01"
 
-  - title: A total of 26 Honors & Awards Since 2023
+  - title: 26 Honors & Awards Since 2023
     awarder: University
-    date: "2025"
+    date: "2024-01-01"
 ---
 
 ## About Me
