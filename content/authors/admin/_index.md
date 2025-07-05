@@ -122,28 +122,16 @@ languages:
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
 awards:
-  - title: "**High School Awards**"
-    awarder: ""
-    date: ""
-    
   - title: Second Prize, National Olympiad in Mathematics
     awarder: High School
-    date: "Before 2023"
-
-  - title: "**University Awards**"
-    awarder: ""
-    date: ""
-
-  - title: 26 Honors & Awards in total(2023 – Present)
-    awarder: University
-    date: "2023 – Present"
+    date: "2022"
 
   - title: Bronze Medal, ACM Freshman Programming Contest
     awarder: University
     date: "2023"
 
   - title: Second Prize, National College Student Mathematical Modeling Contest
-    awarder: National-Level
+    awarder: National Level
     date: "2023"
 
   - title: Certified Large Model Application Developer
@@ -158,29 +146,29 @@ awards:
     awarder: University
     date: "2024"
 
-  - title: Star of Computing – Individual All-Round Excellence Award
+  - title: Star of Computing – All-Round Excellence Award
     awarder: University
     date: "2024"
 
   - title: Outstanding Student Leader
     awarder: University
-    date: "2023 – 2024"
+    date: "2023"
 
   - title: All-Round Excellence Award
     awarder: University
-    date: "2023 – 2024"
+    date: "2023"
 
-  - title: Student Work Excellence Scholarship ×4
+  - title: Student Work Excellence Scholarship (4×)
     awarder: University
-    date: "2023 – 2024"
+    date: "2023"
 
   - title: Second-Class Scholarship
     awarder: University
-    date: "2023 – 2024"
+    date: "2023"
 
   - title: Third-Class Scholarship
     awarder: University
-    date: "2023 – 2024"
+    date: "2023"
 
   - title: Second Prize, Summer Practical Training
     awarder: University Level
@@ -194,9 +182,13 @@ awards:
     awarder: University Youth League
     date: "2024"
 
-  - title: Best-Officer, Project Management Department
+  - title: Best Officer, Project Management Dept.
     awarder: Sci-Tech Innovation Center, School of CS
     date: "2024"
+
+  - title: A total of 26 Honors & Awards Since 2023
+    awarder: University
+    date: "2025"
 ---
 
 ## About Me
