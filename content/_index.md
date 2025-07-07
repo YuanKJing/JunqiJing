@@ -25,7 +25,7 @@ sections:
       background:
         color: black
         image:
-          filename: stacked-peaks.svg
+          filename: back.jpg
           filters:
             brightness: 1.0
           size: cover
