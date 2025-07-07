@@ -25,10 +25,10 @@ Thank you for believing in me and guiding me through this journey!
 
 ### 🥇 First Prize - Shandong Provincial High School Mathematics Competition (2021)
 
-![Shandong Province First Prize - 2021](content/post/Olympiad in Mathematics/shandong_first_prize_2021.jpg)
+![Shandong Prize](shandong_first_prize_2021.jpg)
 
 ---
 
 ### 🥈 Second Prize - China National Olympiad in Mathematics (2022)
 
-![National Olympiad Second Prize - 2022](content/post/Olympiad in Mathematics/national_second_prize_2022.jpg)
+![National Prize](national_second_prize_2022.jpg)
