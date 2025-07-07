@@ -186,7 +186,7 @@ awards:
     awarder: Sci-Tech Innovation Center, School of CS
     date: "2024-01-01"
 
-  - title: 26 Honors & Awards Since 2023
+  - title: A total of 26 Honors & Awards Since 2023
     awarder: University
     date: "2024-01-01"
 ---
