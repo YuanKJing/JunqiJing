@@ -1,7 +1,7 @@
 ---
 title: 🌏 I am glad to join POSTECH as an Exchange Student and continue my current research in MLVlab!
 summary: I will begin a semester-long exchange at POSTECH in South Korea. During the exchange, I’m excited to join MLVlab and collaborate with Professor Kwang In Kim on research in Embodied AI and generative AI.
-date: 2025-09-01
+date: 2025-07-07
 
 authors:
   - admin
