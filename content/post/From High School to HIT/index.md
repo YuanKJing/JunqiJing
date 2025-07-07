@@ -23,11 +23,11 @@ In particular, I am especially grateful to my head teacher, **Yi Wang**, whose g
 
 ---
 
-## 🏫 School Logos
+## 🏫 School
 
 ### 🎓 Harbin Institute of Technology
 
-![HIT](hit.png)
+![HIT](OIP(1).jpg)
 
 ---
 
