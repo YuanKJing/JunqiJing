@@ -27,10 +27,10 @@ In particular, I am especially grateful to my head teacher, **Yi Wang**, whose g
 
 ### 🎓 Harbin Institute of Technology
 
-<img src="content/post/From High School to HIT/hit.png" alt="Harbin Institute of Technology Logo" width="200"/>
+![HIT](hit.png)
 
 ---
 
 ### 🏫 My High School Alma Mater
 
-<img src="content/post/From High School to HIT/ht1z.jpg" alt="High School Logo" width="200"/>
+![HTFS](ht1z.jpg)
