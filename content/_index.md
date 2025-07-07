@@ -25,7 +25,7 @@ sections:
       background:
         color: black
         image:
-          filename: back.jpg
+          filename: 12.jpg
           filters:
             brightness: 1.0
           size: cover
