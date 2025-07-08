@@ -16,7 +16,7 @@ Inspired by the classic airplane battle genre, FleetEncounter introduces new gam
 Built with Unity, FleetEncounter integrates high-quality textures and dynamic effects to create an immersive and responsive experience for players.
 
 <video width="100%" controls>
-  <source src="/uploads/yanshi.mp4" type="video/mp4">
+  <source src="/yanshi.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
