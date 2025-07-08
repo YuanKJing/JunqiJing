@@ -31,12 +31,13 @@ organizations:
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: at-symbol
-    url: 'jqjing@stu.hit.edu.cn'
+    url: 'mailto:jqjing@stu.hit.edu.cn'
     label: E-mail Me
   - icon: brands/github
     url: https://github.com/YuanKJing
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en
+
 
 
 interests:
@@ -193,4 +194,6 @@ awards:
 
 ## About Me
 
-My name is Junqi Jing (Chinese: 荆浚淇), and I am currently an undergraduate student at Harbin Institute of Technology. I have previously visited the MiLab at Westlake University, where I had the opportunity to learn from Professor Donglin Wang. In July 2025, I will visit Professor Kai Zhang’s lab at Nanjing University. In the upcoming fall semester, I will join POSTECH (Pohang University of Science and Technology), South Korea, as an exchange student and conduct research in the lab of Professor Kwang In Kim. 
+My name is Junqi Jing (Chinese: 荆浚淇), and I am currently an undergraduate student at Harbin Institute of Technology. I have previously visited the MiLab at Westlake University, where I had the opportunity to learn from Professor Donglin Wang. In July 2025, I will visit Professor Kai Zhang’s lab at Nanjing University. In the upcoming fall semester, I will join POSTECH (Pohang University of Science and Technology), South Korea, as an exchange student and conduct research in the lab of Professor Kwang In Kim.
+
+I am currently seeking a 2025 winter internship. If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
