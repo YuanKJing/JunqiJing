@@ -1,7 +1,8 @@
 ---
 title: TPA_Travel_planning_assistant
 date: 2024-04-15
-external_link: https://www.modelscope.cn/studios/JunqiJing/TPA_Travelplanningassistant
+url: /project/Travel_plan_agent/
+#external_link: https://www.modelscope.cn/studios/JunqiJing/TPA_Travelplanningassistant
 tags:
   - Travel Planning
   - AI
