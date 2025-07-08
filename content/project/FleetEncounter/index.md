@@ -24,6 +24,18 @@ Inspired by the classic airplane battle genre, FleetEncounter introduces new gam
 - High-fidelity textures and visual polish  
 - Developed independently with full-stack game logic
 
+**Acknowledgements**  
+FleetEncounter is the result of the combined efforts and dedication of the entire team. Every member played a crucial role in bringing this project to fruition.  
+We would like to extend our deepest gratitude to all team members for their hard work and collaboration.  
+
+A special thanks goes to **Wang Liqin** for outstanding contributions and leadership throughout the project.  
+
+Thanks also to the following team members for their invaluable support:  
+- **Wang Yuzhuo**  
+- **Yang Zhaoping**  
+- **Zheng Quanyong**  
+- **Wang Yunhan**  
+
 **Try It Out**  
 🎮 [Download all the project via Google Drive](https://drive.google.com/file/d/1loINHJuFTxrg2ML9QUhqfNrw638cuPAu/view?usp=sharing)  
 💻 [View on GitHub](https://github.com/YuanKJing/FleetEncounter)
