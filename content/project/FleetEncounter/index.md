@@ -1,13 +1,13 @@
 ---
 title: FleetEncounter
 date: 2024-11-26
-#external_link: https://github.com/YuanKJing/FleetEncounter
+url: /project/FleetEncounter/    # 强制使用本地页面，不再跳 GitHub
+# external_link: https://github.com/YuanKJing/FleetEncounter
 tags:
   - Game Development
   - Unity
   - Multiplayer
 ---
-
 **FleetEncounter**  
 FleetEncounter was awarded the Best Project of the Year at Harbin Institute of Technology (Top 1% among all student projects), and was the only game development project among all recipients of the Excellence Award.
 
@@ -16,7 +16,7 @@ Inspired by the classic airplane battle genre, FleetEncounter introduces new gam
 Built with Unity, FleetEncounter integrates high-quality textures and dynamic effects to create an immersive and responsive experience for players.
 
 <video width="100%" controls>
-  <source src="/workspaces/JunqiJing/static/uploads/yanshi.mp4" type="video/mp4">
+  <source src="/uploads/yanshi.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
