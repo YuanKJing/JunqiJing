@@ -13,10 +13,8 @@ FleetEncounter was awarded the Best Project of the Year at Harbin Institute of T
 
 Inspired by the classic airplane battle genre, FleetEncounter introduces new gameplay modes such as local two-player combat and online multiplayer. The game supports cross-platform play on both PC and mobile devices.
 
-Built with Unity, FleetEncounter integrates high-quality textures and dynamic effects to create an immersive and responsive experience for players.
-
 <video width="100%" controls>
-  <source src="/yanshi.mp4" type="video/mp4">
+  <source src="/workspaces/JunqiJing/static/yanshi.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
