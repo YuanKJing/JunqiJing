@@ -13,10 +13,10 @@ FleetEncounter was awarded the Best Project of the Year at Harbin Institute of T
 
 Inspired by the classic airplane battle genre, FleetEncounter introduces new gameplay modes such as local two-player combat and online multiplayer. The game supports cross-platform play on both PC and mobile devices.
 
-<video width="100%" controls>
-  <source src="/workspaces/JunqiJing/static/yanshi.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+**🎥 Demo Video**  
+[![Watch the video](https://img.youtube.com/vi/QEBKcMXNZrI/0.jpg)](https://youtu.be/QEBKcMXNZrI)
+
+> 📺 Click the image to watch the gameplay demo on YouTube.
 
 **Project Highlights**  
 - Local and online multiplayer battle modes  
