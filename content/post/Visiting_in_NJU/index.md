@@ -19,8 +19,16 @@ tags:
 During this period, I’ll be working in the lab of [**Professor Kai Zhang**](https://cszn.github.io/), whose work in generative modeling and computer vision has long inspired me. My focus during this visiting will be on deepening my understanding of the **application of generative AI and diffusion policy** in the context of **embodied intelligence**.
 
 🏙️ Suzhou is a beautiful and vibrant city, and I’m truly looking forward to both the academic exchange and the cultural experience this visit brings.
-![NJU](NJU.jpg)
-![The Gate of the Orient](GATE.jpg)
+<figure>
+  <img src="NJU.jpg" alt="NJU" width="100%">
+  <figcaption><b>Figure 1:</b> Nanjing University (NJU)</figcaption>
+</figure>
+
+<figure>
+  <img src="GATE.jpg" alt="The Gate of the Orient" width="100%">
+  <figcaption><b>Figure 2:</b> The Gate of the Orient in Suzhou</figcaption>
+</figure>
+
 
 ---
 
