@@ -37,6 +37,11 @@ profiles:
     url: https://github.com/YuanKJing
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en
+  - icon: academicons/researchgate
+    url: https://www.researchgate.net/profile/Jing-Junqi?ev=hdr_xprf
+  - icon: academicons/dblp
+    url: https://dblp.org/pid/410/3976.html
+
 
 
 
@@ -51,7 +56,6 @@ education:
     date_start: 2023-08-25
     date_end: 2027-06-30
     summary: |
-      GPA: 84/100
 
       Courses and Experiences:
       - Participated in research at Westlake University (MiLab)

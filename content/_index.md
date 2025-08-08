@@ -18,9 +18,9 @@ sections:
 
         I am currently seeking a 2025 winter internship. If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
 
-      button:
-        text: Download CV
-        url: uploads/resume.pdf
+      #button:
+        #text: Download CV
+        #url: uploads/resume.pdf
     design:
       css_class: dark
       background:
