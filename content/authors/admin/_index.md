@@ -48,7 +48,7 @@ profiles:
 interests:
   - Embodied AI
   - Generative AI
-  - Physical based-AI
+  - Physical AI
 
 education:
   - area: BE in Software Engineering
@@ -58,8 +58,8 @@ education:
     summary: |
 
       Courses and Experiences:
-      - Participated in research at Westlake University (MiLab)
-      - Will join POSTECH as an exchange student under Prof. Kwang In Kim
+      - During my time at university, I received over 30 awards and honors, including various scholarships, personal distinctions, and university-, provincial-, and national-level awards.
+      - In addition, I have extensive research experience. Since 2023, I have been conducting research at the Cross-Media Intelligence Lab at my home university. I also worked as a visiting student at the MiLab of Westlake University and in Professor Kai Zhang’s group at Nanjing University (Suzhou campus). Currently, I am participating in a one-semester exchange program at POSTECH, collaborating with Professor Kwang In Kim’s group in the MLV Lab.
 
 work:
   - position: Visiting Student
@@ -72,7 +72,16 @@ work:
       - Reproduced Mujoco-based policy learning environments
       - Replaced reward function using CLIP similarity
 
-  - position: Exchange Student Researcher (Upcoming)
+- position: Visiting Student
+    company_name: Nanjing University
+    company_url: 'https://cszn.github.io/'
+    company_logo: ''
+    date_start: 2025-07-25
+    date_end: 2024-08-25
+    summary: |
+      - I have been exploring the integration of embodied intelligence and generative AI, and I have proposed an interesting idea that is currently in preparation for further development.
+
+  - position: Exchange Student Researcher
     company_name: POSTECH (MLVLab)
     company_url: 'https://sites.google.com/view/mlvlab/home'
     company_logo: ''
@@ -198,6 +207,10 @@ awards:
 
 ## About Me
 
-My name is Junqi Jing (Chinese: 荆浚淇), and I am currently an undergraduate student at Harbin Institute of Technology. I have previously visited the MiLab at Westlake University, where I had the opportunity to learn from Professor Donglin Wang. In July 2025, I will visit Professor Kai Zhang’s lab at Nanjing University. In the upcoming fall semester, I will join POSTECH (Pohang University of Science and Technology), South Korea, as an exchange student and conduct research in the lab of Professor Kwang In Kim.
+My primary research areas are **Embodied AI** and **diffusion models**. I am dedicated to exploring the integration of generative AI and embodied intelligence, particularly focusing on **diffusion policies** and **using generative approaches to address data scarcity**. Recently, I have been deeply interested in **learning from large-scale human video data**. If you have any ideas or insights related to this topic, feel free to reach out to me via email.
 
-I am currently seeking a 2025 winter internship. If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
+I have previously conducted research visits at **MiLab, Westlake University**, and **Nanjing University (Suzhou)**, where I had the great honor of collaborating with [Prof. Donglin Wang](https://milab.westlake.edu.cn/) and [Prof. Kai Zhang](https://cszn.github.io/).  
+Currently, I am spending one semester at **POSTECH MLV Lab**, working in collaboration with [Prof. Kwang In Kim](https://sites.google.com/view/kimki).
+
+I am currently seeking a **2025 winter internship**.  
+If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
