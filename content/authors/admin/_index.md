@@ -72,11 +72,11 @@ work:
       - Reproduced Mujoco-based policy learning environments
       - Replaced reward function using CLIP similarity
 
-- position: Visiting Student
+  - position: Visiting Student
     company_name: Nanjing University
     company_url: 'https://cszn.github.io/'
     company_logo: ''
-    date_start: 2025-07-25
+    date_start: 2024-07-25
     date_end: 2024-08-25
     summary: |
       - I have been exploring the integration of embodied intelligence and generative AI, and I have proposed an interesting idea that is currently in preparation for further development.
@@ -90,6 +90,7 @@ work:
     summary: |
       - Will conduct embodied AI research in the “C+R” exchange program
       - Working under supervision of Prof. Kwang In Kim
+
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
