@@ -12,11 +12,13 @@ sections:
     content:
       username: admin
       text: |
-        I’m Junqi Jing (荆浚淇), a junior undergraduate in Software Engineering at Harbin Institute of Technology. My research lies at the intersection of Embodied AI, Physical Simulation, and Multimodal Diffusion Models. 
+        I’m Junqi Jing (荆浚淇), a junior undergraduate in Software Engineering at Harbin Institute of Technology. My primary research areas are **Embodied AI** and **diffusion models**. I am dedicated to exploring the integration of generative AI and embodied intelligence, particularly focusing on **diffusion policies** and **using generative approaches to address data scarcity**. Recently, I have been deeply interested in **learning from large-scale human video data**. If you have any ideas or insights related to this topic, feel free to reach out to me via email.
 
-        I have worked at Westlake University (MiLab), and will be an incoming exchange student at POSTECH under Prof. Kwang In Kim. I am a co-author of a paper accepted to ICLR 2025 (MTID) and involved in multiple ongoing projects related to physics-grounded LLMs and robotic learning from videos.
+        I have previously conducted research visits at **MiLab, Westlake University**, and **Nanjing University (Suzhou)**, where I had the great honor of collaborating with [Prof. Donglin Wang](https://milab.westlake.edu.cn/) and [Prof. Kai Zhang](https://cszn.github.io/).  
+        Currently, I am spending one semester at **POSTECH MLV Lab**, working in collaboration with [Prof. Kwang In Kim](https://sites.google.com/view/kimki).
 
-        I am currently seeking a 2025 winter internship. If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
+        I am currently seeking a **2025 winter internship**.  
+        If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
 
       #button:
         #text: Download CV
@@ -38,10 +40,7 @@ sections:
       title: '📚 My Research'
       subtitle: ''
       text: |-
-        I'm interested in embodied intelligence, physics-informed AI, and generative modeling. I build systems that enable robots and agents to learn and reason in complex environments.
-
-        My work spans from visual-language-based policy learning to dynamic 3D scene understanding using GNNs. Currently, I’m exploring how we can combine large language models, physical simulations, and diffusion policies to achieve generalizable decision-making.
-
+        My primary research areas are **Embodied AI** and **diffusion models**. I am dedicated to exploring the integration of generative AI and embodied intelligence, particularly focusing on **diffusion policies** and **using generative approaches to address data scarcity**. Recently, I have been deeply interested in **learning from large-scale human video data**. If you have any ideas or insights related to this topic, feel free to reach out to me via email.
         Always happy to collaborate or discuss ideas!
     design:
       columns: '1'
