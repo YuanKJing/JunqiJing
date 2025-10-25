@@ -12,7 +12,7 @@ sections:
     content:
       username: admin
       text: |
-        I’m Junqi Jing (荆浚淇), a junior undergraduate in Software Engineering at Harbin Institute of Technology. My primary research areas are **Embodied AI** and **diffusion models**. I am dedicated to exploring the integration of generative AI and embodied intelligence, particularly focusing on **diffusion policies** and **using generative approaches to address data scarcity**. Recently, I have been deeply interested in **learning from large-scale human video data**. If you have any ideas or insights related to this topic, feel free to reach out to me via email.
+        I’m Junqi Jing (荆浚淇), a 3rd/4 undergraduate in Software Engineering at Harbin Institute of Technology. My primary research areas are **Embodied AI** and **diffusion models**. I am dedicated to exploring the integration of generative AI and embodied intelligence, particularly focusing on **diffusion policies** and **using generative approaches to address data scarcity**. Recently, I have been deeply interested in **learning from large-scale human video data**. If you have any ideas or insights related to this topic, feel free to reach out to me via email.
 
         I have previously conducted research visits at **MiLab, Westlake University**, and **Nanjing University (Suzhou)**, where I had the great honor of collaborating with [Prof. Donglin Wang](https://milab.westlake.edu.cn/) and [Prof. Kai Zhang](https://cszn.github.io/).  
         Currently, I am spending one semester at **POSTECH MLV Lab**, working in collaboration with [Prof. Kwang In Kim](https://sites.google.com/view/kimki).
