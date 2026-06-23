@@ -208,10 +208,15 @@ awards:
 
 ## About Me
 
-My primary research areas are **Embodied AI** and **diffusion models**. I am dedicated to exploring the integration of generative AI and embodied intelligence, particularly focusing on **diffusion policies** and **using generative approaches to address data scarcity**. Recently, I have been deeply interested in **learning from large-scale human video data**. If you have any ideas or insights related to this topic, feel free to reach out to me via email.
+I’m Junqi Jing (荆浚淇), a 3rd/4th-year undergraduate in Software Engineering at Harbin Institute of Technology. My primary research areas are **Embodied AI** and **World Models**. I am dedicated to exploring the integration of generative AI and embodied intelligence. Recently, I have been deeply interested in **World Action Models (WAMs)**. If you have any ideas or insights related to this topic, feel free to reach out via email.
 
-I have previously conducted research visits at **MiLab, Westlake University**, and **Nanjing University (Suzhou)**, where I had the great honor of collaborating with [Prof. Donglin Wang](https://milab.westlake.edu.cn/) and [Prof. Kai Zhang](https://cszn.github.io/).  
-Currently, I am spending one semester at **POSTECH MLV Lab**, working in collaboration with [Prof. Kwang In Kim](https://sites.google.com/view/kimki).
+          I am currently an AI Research Intern at [KNOWIN AI](https://www.knowinai.com/), where I work on dexterous hand manipulation based on Vision-Language-Action (VLA) models and conduct exploratory research on **World Action Models (WAMs)**.
 
-I am currently seeking a **2025 winter internship**.  
-If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
+          Previously, I spent one semester as an exchange student at **POSTECH**, conducting research in the [MLV Lab](https://sites.google.com/view/mlvlab/home?authuser=0) under the supervision of [Prof. Kwang In Kim](https://sites.google.com/view/kimki). It was an unforgettable and highly inspiring research experience.
+
+          After returning to China, I joined **Tsinghua University** as a visiting student for three months in the [LEAP Lab](https://www.leaplab.ai/), where I was fortunate to work under the guidance of [Prof. Gao Huang](https://gaohuang-net.github.io/).
+
+          I am currently seeking a **Fall 2027 PhD position**.
+
+          If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
+
