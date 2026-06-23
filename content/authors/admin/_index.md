@@ -62,17 +62,8 @@ education:
       - In addition, I have extensive research experience. Since 2023, I have been conducting research at the Cross-Media Intelligence Lab at my home university. I also worked as a visiting student at the MiLab of Westlake University and in Professor Kai Zhang’s group at Nanjing University (Suzhou campus). Currently, I am participating in a one-semester exchange program at POSTECH, collaborating with Professor Kwang In Kim’s group in the MLV Lab.
 
 work:
-  - position: Visiting Student
-    company_name: Westlake University (MiLab)
-    company_url: 'https://milab.westlake.edu.cn/'
-    company_logo: ''
-    date_start: 2024-07-01
-    date_end: 2024-09-30
-    summary: |
-      - Reproduced Mujoco-based policy learning environments
-      - Replaced reward function using CLIP similarity
-
-  - position: Visiting Student
+  
+  - position: Research Assistant
     company_name: Nanjing University
     company_url: 'https://cszn.github.io/'
     company_logo: ''
@@ -80,7 +71,6 @@ work:
     date_end: 2024-08-25
     summary: |
       - I have been exploring the integration of embodied intelligence and generative AI, and I have proposed an interesting idea that is currently in preparation for further development.
-
   - position: Exchange Student Researcher
     company_name: POSTECH (MLVLab)
     company_url: 'https://sites.google.com/view/mlvlab/home'
@@ -90,6 +80,24 @@ work:
     summary: |
       - Will conduct embodied AI research in the “C+R” exchange program
       - Working under supervision of Prof. Kwang In Kim
+  - position: Research Assistant
+    company_name: Tsinghua University
+    company_url: 'https://www.tsinghua.edu.cn/'
+    company_logo: ''
+    date_start: 2025-12-28
+    date_end: 2026-03-15
+    summary: |
+      - Carried out practical work on the actual equipment, including remote operation
+      - Exploring the world action model
+  - position: Algorithm Intern
+    company_name: KNOWIN AI
+    company_url: 'https://www.knowinai.com/'
+    company_logo: ''
+    date_start: 2026-04-15
+    date_end: 2026-10-30
+    summary: |
+      - Develop a demo project for dexterous hands
+      - Conduct preliminary research into the world action model
 
 
 # Skills
