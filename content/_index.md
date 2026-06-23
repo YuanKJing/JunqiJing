@@ -44,7 +44,7 @@ sections:
       title: '📚 My Research'
       subtitle: ''
       text: |-
-        My primary research areas are **Embodied AI** and **diffusion models**. I am dedicated to exploring the integration of generative AI and embodied intelligence, particularly focusing on **diffusion policies** and **using generative approaches to address data scarcity**. Recently, I have been deeply interested in **learning from large-scale human video data**. If you have any ideas or insights related to this topic, feel free to reach out to me via email.
+        My primary research areas are **Embodied AI** and **World Model**. I am dedicated to exploring the integration of generative AI and embodied intelligence, particularly focusing on **using generative approaches to address Physical intelligence**. Recently, I have been deeply interested in **World Action Model and Intermediate representation**. If you have any ideas or insights related to this topic, feel free to reach out to me via email.
         Always happy to collaborate or discuss ideas!
     design:
       columns: '1'
