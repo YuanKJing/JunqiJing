@@ -30,14 +30,54 @@
           <span aria-hidden="true"></span>
         </div>
         <div class="academic-profile-links">
-          <a href="mailto:jqjing@stu.hit.edu.cn">Email</a>
-          <a href="https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en" target="_blank" rel="noopener">Scholar ↗</a>
-          <a href="https://github.com/YuanKJing" target="_blank" rel="noopener">GitHub ↗</a>
+          <a
+            class="profile-email"
+            href="mailto:{{ $data.contact.email }}"
+            aria-label="Email {{ $data.contact.email }}">
+            <span class="profile-link-icon" aria-hidden="true">
+              {{ partial "functions/get_icon" (dict "name" "at-symbol" "attributes" `style="height: 1.05rem; width: 1.05rem;"`) }}
+            </span>
+            <span>{{ $data.contact.email }}</span>
+          </a>
+          <div class="profile-icon-row" aria-label="Academic and social profiles">
+            <a
+              href="https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en"
+              target="_blank"
+              rel="noopener"
+              aria-label="Google Scholar"
+              title="Google Scholar">
+              {{ partial "functions/get_icon" (dict "name" "academicons/google-scholar" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
+            </a>
+            <a
+              href="https://github.com/YuanKJing"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+              title="GitHub">
+              {{ partial "functions/get_icon" (dict "name" "brands/github" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
+            </a>
+            <a
+              href="https://www.researchgate.net/profile/Jing-Junqi?ev=hdr_xprf"
+              target="_blank"
+              rel="noopener"
+              aria-label="ResearchGate"
+              title="ResearchGate">
+              {{ partial "functions/get_icon" (dict "name" "academicons/researchgate" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
+            </a>
+            <a
+              href="https://dblp.org/pid/410/3976.html"
+              target="_blank"
+              rel="noopener"
+              aria-label="DBLP"
+              title="DBLP">
+              {{ partial "functions/get_icon" (dict "name" "academicons/dblp" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
+            </a>
+          </div>
         </div>
       </aside>
 
       <div class="academic-intro">
-        <p class="portfolio-kicker" data-reveal>Academic profile</p>
+        <p class="portfolio-kicker" data-reveal>About me</p>
         <h1 data-reveal>
           {{ $data.hero.name }}
           <span>{{ $data.hero.chinese_name }}</span>
@@ -48,7 +88,11 @@
           <span>{{ $data.hero.current }}</span>
         </div>
         <h2 data-reveal>{{ $data.hero.headline }}</h2>
-        <p class="hero-summary" data-reveal>{{ $data.hero.summary }}</p>
+        <div class="hero-biography" data-reveal>
+          {{ range $data.hero.bio }}
+            <p>{{ . | markdownify }}</p>
+          {{ end }}
+        </div>
 
         <div class="hero-interests" aria-label="Research interests" data-reveal>
           {{ range $data.hero.interests }}<span>{{ . }}</span>{{ end }}
@@ -66,14 +110,6 @@
       </div>
     </div>
 
-    <div class="signal-strip" aria-label="Research highlights" data-reveal>
-      {{ range $data.signals }}
-        <div class="signal-item">
-          <span>{{ .label }}</span>
-          <strong>{{ .value }}</strong>
-        </div>
-      {{ end }}
-    </div>
   </div>
 
   <section id="research" class="portfolio-section portfolio-section--research">
@@ -215,7 +251,8 @@
           <p class="paper-contribution">{{ $data.publication.contribution }}</p>
           <div class="paper-actions">
             <a href="{{ $data.publication.paper_url }}" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
-            <a href="{{ $data.publication.project_url }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>
+            <a href="{{ $data.publication.project_url }}" target="_blank" rel="noopener">Project Page <span aria-hidden="true">↗</span></a>
+            <a href="{{ $data.publication.openreview_url }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>
             <a href="{{ $data.publication.code_url }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>
           </div>
         </div>

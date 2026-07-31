@@ -31,8 +31,8 @@ organizations:
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: at-symbol
-    url: 'mailto:jqjing@stu.hit.edu.cn'
-    label: E-mail Me
+    url: 'mailto:xingkong8527@gmail.com'
+    label: xingkong8527@gmail.com
   - icon: brands/github
     url: https://github.com/YuanKJing
   - icon: academicons/google-scholar
@@ -80,16 +80,16 @@ work:
     summary: |
       - Will conduct embodied AI research in the “C+R” exchange program
       - Working under supervision of Prof. Kwang In Kim
-  - position: Research Assistant
-    company_name: Tsinghua University
-    company_url: 'https://www.tsinghua.edu.cn/'
+  - position: Visiting Student
+    company_name: Tsinghua University (LEAP Lab)
+    company_url: 'https://www.leaplab.ai/'
     company_logo: ''
     date_start: 2025-12-28
     date_end: 2026-03-15
     summary: |
       - Carried out practical work on the actual equipment, including remote operation
       - Exploring the world action model
-  - position: Algorithm Intern
+  - position: AI Research Intern
     company_name: KNOWIN AI
     company_url: 'https://www.knowinai.com/'
     company_logo: ''
@@ -224,6 +224,6 @@ I’m Junqi Jing (荆浚淇), a 3rd/4th-year undergraduate in Software Engineeri
 
           After returning to China, I joined **Tsinghua University** as a visiting student for three months in the [LEAP Lab](https://www.leaplab.ai/), where I was fortunate to work under the guidance of [Prof. Gao Huang](https://gaohuang-net.github.io/).
 
-          I am currently seeking a **Fall 2027 PhD position**.
+          I am currently seeking a **research-oriented internship** and look forward to connecting with research teams at leading technology companies working on embodied intelligence and robotics.
 
-          If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
+          If you have any ideas or potential collaborations, feel free to contact me at [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).

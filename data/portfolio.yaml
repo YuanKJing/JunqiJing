@@ -5,11 +5,26 @@ hero:
   affiliation: Harbin Institute of Technology
   current: AI Research Intern at KNOWIN AI
   headline: World Action Models, VLA systems, and real-world robot learning.
-  summary: >-
-    I study how generative models become physical intelligence, with a focus on
-    temporal reasoning, action-conditioned prediction, and dexterous
-    manipulation on real robots.
-  status: Open to Fall 2027 PhD opportunities
+  bio:
+    - >-
+      I’m **Junqi Jing (荆浚淇)**, a B.E. candidate in Software Engineering at
+      Harbin Institute of Technology, expected to graduate in 2027. My research
+      interests center on Embodied AI and world models, with a particular
+      interest in generative approaches to learning and planning for physical
+      interaction.
+    - >-
+      I am currently an **AI Research Intern at KNOWIN AI**, where I work on
+      VLA-based dexterous-hand manipulation and exploratory research on world
+      action models. Previously, I spent a semester as an exchange student at
+      **POSTECH**, conducting research in the MLV Lab with Prof. Kwang In Kim,
+      and later visited **Tsinghua University’s LEAP Lab** under the guidance of
+      Prof. Gao Huang.
+    - >-
+      I am currently seeking **research-oriented internship opportunities** and
+      look forward to connecting with research teams across industry,
+      especially at leading technology companies working on embodied
+      intelligence and robotics.
+  status: Open to research internship opportunities
   primary_cta:
     text: Watch robot demos
     url: "#robot-demos"
@@ -21,16 +36,6 @@ hero:
     - World Action Models
     - Vision-Language-Action
     - Dexterous Manipulation
-
-signals:
-  - label: Current
-    value: KNOWIN AI
-  - label: Publication
-    value: ICLR 2025
-  - label: Focus
-    value: Physical AI
-  - label: Education
-    value: HIT · B.E. 2027
 
 research:
   eyebrow: Research agenda
@@ -118,7 +123,8 @@ publication:
     encouraging temporally coherent plans without relying only on text-level
     supervision.
   paper_url: https://openreview.net/pdf?id=HnpDHiItd2
-  project_url: https://openreview.net/forum?id=HnpDHiItd2
+  project_url: https://yuankjing.github.io/MTID-Project-Page/
+  openreview_url: https://openreview.net/forum?id=HnpDHiItd2
   code_url: https://github.com/WiserZhou/MTID
 
 journey:
@@ -173,6 +179,7 @@ contact:
   eyebrow: Collaboration
   title: Let’s build systems that can understand—and change—the physical world.
   text: >-
-    I am open to research conversations, collaborations, and Fall 2027 PhD
-    opportunities in Embodied AI, World Models, and robot learning.
-  email: jqjing@stu.hit.edu.cn
+    I am open to research internships, technical conversations, and
+    collaborations with industry research teams working on Embodied AI, World
+    Models, and robot learning.
+  email: xingkong8527@gmail.com

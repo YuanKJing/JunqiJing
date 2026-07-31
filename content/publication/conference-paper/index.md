@@ -31,7 +31,7 @@ featured: true
 
 url_pdf: "https://openreview.net/pdf?id=HnpDHiItd2"
 url_code: "https://github.com/WiserZhou/MTID"
-url_project: ""
+url_project: "https://yuankjing.github.io/MTID-Project-Page/"
 url_dataset: ""
 url_slides: ""
 url_video: ""
