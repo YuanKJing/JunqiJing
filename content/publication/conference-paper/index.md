@@ -7,9 +7,9 @@ authors:
   - admin
   - et al.
 
-date: 2025
+date: "2025-01-23"
 doi: ""
-publishDate: 2025
+publishDate: "2025-01-23"
 
 publication_types: ['paper-conference']
 publication: In *International Conference on Learning Representations (ICLR) 2025*
@@ -30,7 +30,7 @@ tags:
 featured: true
 
 url_pdf: "https://openreview.net/pdf?id=HnpDHiItd2"
-url_code: "https://github.com/YuanKJing/_MTID_"
+url_code: "https://github.com/WiserZhou/MTID"
 url_project: ""
 url_dataset: ""
 url_slides: ""

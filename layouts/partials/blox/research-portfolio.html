@@ -1,0 +1,319 @@
+{{/* Custom portfolio landing page for Junqi Jing. */}}
+{{ $data := site.Data.portfolio }}
+{{ $authorPage := site.GetPage "/authors/admin" }}
+{{ $avatar := ($authorPage.Resources.ByType "image").GetMatch "avatar.jpg" }}
+{{ $portrait := "" }}
+{{ with $avatar }}
+  {{ $portrait = .Fill "420x420 Center webp q88" }}
+{{ end }}
+{{ $paperPage := site.GetPage "/publication/conference-paper" }}
+{{ $paperImage := ($paperPage.Resources.ByType "image").GetMatch "*featured*" }}
+{{ $paperVisual := "" }}
+{{ with $paperImage }}
+  {{ $paperVisual = .Fit "1600x900 webp q88" }}
+{{ end }}
+
+<div class="portfolio-home">
+  <div class="portfolio-container">
+    <div class="portfolio-hero">
+      <aside class="academic-profile" data-reveal>
+        <div class="academic-avatar">
+          {{ with $portrait }}
+            <img
+              src="{{ .RelPermalink }}"
+              width="{{ .Width }}"
+              height="{{ .Height }}"
+              alt="Formal portrait of Junqi Jing"
+              fetchpriority="high"
+              decoding="async">
+          {{ end }}
+          <span aria-hidden="true"></span>
+        </div>
+        <div class="academic-profile-links">
+          <a href="mailto:jqjing@stu.hit.edu.cn">Email</a>
+          <a href="https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en" target="_blank" rel="noopener">Scholar ↗</a>
+          <a href="https://github.com/YuanKJing" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </aside>
+
+      <div class="academic-intro">
+        <p class="portfolio-kicker" data-reveal>Academic profile</p>
+        <h1 data-reveal>
+          {{ $data.hero.name }}
+          <span>{{ $data.hero.chinese_name }}</span>
+        </h1>
+        <p class="academic-role" data-reveal>{{ $data.hero.role }}</p>
+        <div class="academic-affiliations" data-reveal>
+          <span>{{ $data.hero.affiliation }}</span>
+          <span>{{ $data.hero.current }}</span>
+        </div>
+        <h2 data-reveal>{{ $data.hero.headline }}</h2>
+        <p class="hero-summary" data-reveal>{{ $data.hero.summary }}</p>
+
+        <div class="hero-interests" aria-label="Research interests" data-reveal>
+          {{ range $data.hero.interests }}<span>{{ . }}</span>{{ end }}
+        </div>
+
+        <div class="hero-actions" data-reveal>
+          <a class="portfolio-button portfolio-button--primary" href="{{ $data.hero.primary_cta.url }}">
+            {{ $data.hero.primary_cta.text }}
+          </a>
+          <a class="portfolio-button portfolio-button--ghost" href="{{ $data.hero.secondary_cta.url }}">
+            {{ $data.hero.secondary_cta.text }}
+          </a>
+          <span class="hero-status"><span aria-hidden="true"></span>{{ $data.hero.status }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="signal-strip" aria-label="Research highlights" data-reveal>
+      {{ range $data.signals }}
+        <div class="signal-item">
+          <span>{{ .label }}</span>
+          <strong>{{ .value }}</strong>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+
+  <section id="research" class="portfolio-section portfolio-section--research">
+    <div class="portfolio-container">
+      <div class="section-heading" data-reveal>
+        <div>
+          <p class="section-eyebrow">{{ $data.research.eyebrow }}</p>
+          <h2>{{ $data.research.title }}</h2>
+        </div>
+        <p>{{ $data.research.intro }}</p>
+      </div>
+
+      <div class="research-grid">
+        {{ range $data.research.areas }}
+          <article class="research-card" data-reveal>
+            <span class="card-number">{{ .number }}</span>
+            <h3>{{ .title }}</h3>
+            <p>{{ .text }}</p>
+            <div class="tag-row">
+              {{ range .tags }}<span>{{ . }}</span>{{ end }}
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section id="robot-demos" class="portfolio-section portfolio-section--demos">
+    <div class="portfolio-container">
+      <div class="section-heading section-heading--light" data-reveal>
+        <div>
+          <p class="section-eyebrow">{{ $data.robot_demos.eyebrow }}</p>
+          <h2>{{ $data.robot_demos.title }}</h2>
+        </div>
+        <p>{{ $data.robot_demos.intro }}</p>
+      </div>
+
+      <div class="demo-grid">
+        {{ range $index, $demo := $data.robot_demos.items }}
+          {{ $video := $demo.video | default "" }}
+          {{ $poster := $demo.poster | default "" }}
+          {{ $isRemoteVideo := or (hasPrefix $video "https://") (hasPrefix $video "http://") }}
+          {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
+          {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
+          {{ $hasPoster := and $poster (fileExists (path.Join "static" $poster)) }}
+          <article class="demo-card{{ if eq $index 0 }} demo-card--featured{{ end }}" data-reveal>
+            <div class="demo-media">
+              {{ if $hasVideo }}
+                <video
+                  class="robot-video"
+                  muted
+                  loop
+                  playsinline
+                  controls
+                  preload="metadata"
+                  data-robot-video
+                  aria-label="{{ $demo.title }} demonstration video"
+                  {{ with $poster }}poster="{{ . | relURL }}"{{ end }}>
+                  <source src="{{ $video | relURL }}" type="video/mp4">
+                  Your browser does not support embedded video.
+                </video>
+              {{ else if $hasPoster }}
+                <img
+                  class="demo-poster"
+                  src="{{ $poster | relURL }}"
+                  alt="Real dual-arm robot teleoperation setup"
+                  loading="lazy"
+                  decoding="async">
+                <div class="poster-film" aria-hidden="true"></div>
+              {{ else }}
+                <div class="demo-placeholder" aria-label="Robot demonstration slot awaiting footage">
+                  <div class="demo-placeholder-grid" aria-hidden="true"></div>
+                  <div class="demo-radar" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div class="demo-scan" aria-hidden="true"></div>
+                  <p>PLAYBACK<br>READY</p>
+                </div>
+              {{ end }}
+
+              <div class="demo-media-topline">
+                <span>DEMO {{ $demo.number }}</span>
+                <span class="demo-state{{ if $hasVideo }} demo-state--online{{ end }}">
+                  <i aria-hidden="true"></i>
+                  {{ if $hasVideo }}Playing on view{{ else }}{{ $demo.status }}{{ end }}
+                </span>
+              </div>
+              {{ if and (not $hasVideo) $hasPoster }}
+                <div class="poster-notice">
+                  <span aria-hidden="true">▶</span>
+                  <span>Poster ready · MP4 pending</span>
+                </div>
+              {{ end }}
+            </div>
+
+            <div class="demo-info">
+              <div>
+                <span class="card-number">{{ $demo.number }}</span>
+                <h3>{{ $demo.title }}</h3>
+              </div>
+              <p>{{ $demo.description }}</p>
+              <div class="tag-row tag-row--dark">
+                {{ range $demo.tags }}<span>{{ . }}</span>{{ end }}
+              </div>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+
+      <p class="demo-footnote" data-reveal>
+        <span aria-hidden="true">●</span>
+        MP4, WebM, or direct video URLs can be added without changing this layout.
+      </p>
+    </div>
+  </section>
+
+  <section id="publication" class="portfolio-section portfolio-section--paper">
+    <div class="portfolio-container">
+      <div class="paper-card" data-reveal>
+        <div class="paper-visual">
+          {{ with $paperVisual }}
+            <img
+              src="{{ .RelPermalink }}"
+              width="{{ .Width }}"
+              height="{{ .Height }}"
+              alt="MTID procedure planning method overview"
+              loading="lazy"
+              decoding="async">
+          {{ end }}
+          <div class="paper-venue">{{ $data.publication.venue }}</div>
+          <div class="paper-grid-mark" aria-hidden="true"></div>
+        </div>
+        <div class="paper-copy">
+          <p class="section-eyebrow">{{ $data.publication.eyebrow }}</p>
+          <h2>{{ $data.publication.title }}</h2>
+          <p class="paper-summary">{{ $data.publication.summary }}</p>
+          <p class="paper-contribution">{{ $data.publication.contribution }}</p>
+          <div class="paper-actions">
+            <a href="{{ $data.publication.paper_url }}" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+            <a href="{{ $data.publication.project_url }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>
+            <a href="{{ $data.publication.code_url }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey" class="portfolio-section portfolio-section--journey">
+    <div class="portfolio-container">
+      <div class="section-heading" data-reveal>
+        <div>
+          <p class="section-eyebrow">{{ $data.journey.eyebrow }}</p>
+          <h2>{{ $data.journey.title }}</h2>
+        </div>
+        <a class="section-link" href="{{ "experience/" | relURL }}">Full experience <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="journey-list">
+        {{ range $data.journey.items }}
+          <article class="journey-item" data-reveal>
+            <div class="journey-date">
+              {{ if .current }}<span class="current-pulse" aria-hidden="true"></span>{{ end }}
+              {{ .date }}
+            </div>
+            <div>
+              <h3>{{ .role }}</h3>
+              <p class="journey-place">{{ .place }}</p>
+            </div>
+            <p class="journey-description">{{ .text }}</p>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="portfolio-section portfolio-section--projects">
+    <div class="portfolio-container">
+      <div class="section-heading" data-reveal>
+        <div>
+          <p class="section-eyebrow">{{ $data.projects.eyebrow }}</p>
+          <h2>{{ $data.projects.title }}</h2>
+        </div>
+        <a class="section-link" href="{{ "projects/" | relURL }}">All projects <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="project-grid">
+        {{ range $data.projects.items }}
+          <a class="project-card" href="{{ .url | relURL }}" data-reveal>
+            <span class="project-metric">{{ .metric }}</span>
+            <h3>{{ .title }}</h3>
+            <p>{{ .text }}</p>
+            <div class="tag-row">
+              {{ range .tags }}<span>{{ . }}</span>{{ end }}
+            </div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section id="news" class="portfolio-section portfolio-section--news">
+    <div class="portfolio-container">
+      <div class="section-heading" data-reveal>
+        <div>
+          <p class="section-eyebrow">Field notes</p>
+          <h2>Recent milestones.</h2>
+        </div>
+        <a class="section-link" href="{{ "post/" | relURL }}">All news <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="news-list">
+        {{ range first 4 (where site.RegularPages.ByDate.Reverse "Type" "post") }}
+          <a class="news-item" href="{{ .RelPermalink }}" data-reveal>
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+            <h3>{{ .Title }}</h3>
+            <span aria-hidden="true">↗</span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="portfolio-section portfolio-section--contact">
+    <div class="portfolio-container">
+      <div class="contact-card" data-reveal>
+        <p class="section-eyebrow">{{ $data.contact.eyebrow }}</p>
+        <h2>{{ $data.contact.title }}</h2>
+        <p>{{ $data.contact.text }}</p>
+        <div class="contact-actions">
+          <a class="portfolio-button portfolio-button--light" href="mailto:{{ $data.contact.email }}">
+            Start a conversation <span aria-hidden="true">↗</span>
+          </a>
+          <span>{{ $data.contact.email }}</span>
+        </div>
+        <div class="contact-orbit contact-orbit--one" aria-hidden="true"></div>
+        <div class="contact-orbit contact-orbit--two" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+</div>

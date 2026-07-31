@@ -1,51 +1,80 @@
-# [Hugo Academic CV Theme](https://github.com/HugoBlox/theme-academic-cv)
+# Junqi Jing — Personal Research Website
 
-[![Screenshot](.github/preview.webp)](https://hugoblox.com/templates/)
+Personal academic portfolio focused on Embodied AI, World Action Models, VLA
+systems, and real-world robot learning.
 
-The Hugo **Academic CV Template** empowers you to easily create your job-winning online resumé, showcase your academic publications, and create online courses or knowledge bases to grow your audience.
+The site is built with Hugo Blox and deployed to GitHub Pages.
 
-[![Get Started](https://img.shields.io/badge/-Get%20started-ff4655?style=for-the-badge)](https://hugoblox.com/templates/)
-[![Discord](https://img.shields.io/discord/722225264733716590?style=for-the-badge)](https://discord.com/channels/722225264733716590/742892432458252370/742895548159492138)  
-[![Twitter Follow](https://img.shields.io/twitter/follow/GetResearchDev?label=Follow%20on%20Twitter)](https://twitter.com/GetResearchDev)
+## Main content
 
-️**Trusted by 250,000+ researchers, educators, and students.** Highly customizable via the integrated **no-code, Hugo Blox Builder**, making every site truly personalized ⭐⭐⭐⭐⭐
+- Homepage content and ordering: `data/portfolio.yaml`
+- Homepage layout: `layouts/partials/blox/research-portfolio.html`
+- Visual system and responsive behavior: `assets/css/custom.css`
+- Scroll reveals, navigation state, and viewport video playback:
+  `assets/js/portfolio.js`
+- Profile photo and author information: `content/authors/admin/`
+- Robot demo media: `static/videos/`
 
-Easily write technical content with plain text Markdown, LaTeX math, diagrams, RMarkdown, or Jupyter, and import publications from BibTeX.
+## Add another robot demo
 
-[Check out the latest demo](https://academic-demo.netlify.app/) of what you'll get in less than 10 minutes, or [get inspired by our academics and research groups](https://hugoblox.com/creators/).
+1. Put a web-ready MP4 in `static/videos/`, for example:
+   `static/videos/grasping-demo.mp4`.
+2. Open `data/portfolio.yaml`.
+3. In `robot_demos.items`, update a reserved slot:
 
-The integrated [**Hugo Blox Builder**](https://hugoblox.com) and CMS makes it easy to create a beautiful website for free. Edit your site in the CMS (or your favorite editor), generate it with [Hugo](https://github.com/gohugoio/hugo), and deploy with GitHub or Netlify. Customize anything on your site with widgets, light/dark themes, and language packs.
+```yaml
+- number: "02"
+  title: Object grasping
+  description: A concise description of the task, method, and your role.
+  poster: ""
+  video: videos/grasping-demo.mp4
+  status: Real robot video
+  tags:
+    - Real robot
+    - Dexterous manipulation
+```
 
-- 👉 [**Get Started**](https://hugoblox.com/templates/)
-- 📚 [View the **documentation**](https://docs.hugoblox.com/)
-- 💬 [Chat with the **Hugo Blox Builder community**](https://discord.gg/z8wNYzb) or [**Hugo community**](https://discourse.gohugo.io)
-- 🐦 Twitter: [@GetResearchDev](https://twitter.com/GetResearchDev) [@GeorgeCushen](https://twitter.com/GeorgeCushen) [#MadeWithHugoBlox](https://twitter.com/search?q=%23MadeWithHugoBlox&src=typed_query)
-- ⬇️ **Automatically import your publications from BibTeX** with the [Hugo Academic CLI](https://github.com/GetRD/academic-file-converter)
-- 💡 [Suggest an improvement](https://github.com/HugoBlox/hugo-blox-builder/issues)
-- ⬆️ **Updating?** View the [Update Guide](https://docs.hugoblox.com/reference/update/) and [Release Notes](https://github.com/HugoBlox/hugo-blox-builder/releases)
+The page automatically switches the slot from its placeholder to the real
+player. Videos play muted when sufficiently visible, pause off-screen, and keep
+native controls for sound and full-screen viewing. Reduced-motion and data-saver
+preferences disable automatic playback.
 
-## We ask you, humbly, to support this open source movement
+Direct HTTPS MP4 URLs are also supported in the `video` field. Keep homepage
+videos short and compressed; use external object storage or a CDN for large
+files.
 
-Today we ask you to defend the open source independence of the Hugo Blox Builder and themes 🐧
+## Prepare phone or MOV footage
 
-We're an open source movement that depends on your support to stay online and thriving, but 99.9% of our creators don't give; they simply look the other way.
+This command bakes orientation into the pixels, removes rotation metadata,
+creates a broadly compatible H.264/AAC file, and moves MP4 metadata to the front
+for faster playback:
 
-### [❤️ Click here to become a Sponsor, unlocking awesome perks such as _exclusive academic templates and blocks_](https://hugoblox.com/sponsor/)
+```bash
+ffmpeg -i input.mov \
+  -map_metadata -1 \
+  -vf "format=yuv420p" \
+  -c:v libx264 -preset slow -crf 22 \
+  -c:a aac -b:a 128k \
+  -movflags +faststart \
+  -metadata:s:v:0 rotate=0 \
+  output.mp4
+```
 
-<!--
-<p align="center"><a href="https://hugoblox.com/templates/" target="_blank" rel="noopener"><img src="https://hugoblox.com/uploads/readmes/academic_logo_200px.png" alt="Hugo Academic Theme for Hugo Blox Builder"></a></p>
--->
+Always check the resulting orientation before publishing.
 
-## Demo image credits
+## Local preview
 
-- [Unsplash](https://unsplash.com)
+Use Hugo Extended `0.136.5`:
 
-## Latest news
+```bash
+hugo server
+```
 
-<!--START_SECTION:news-->
-* [6 Compelling Reasons I Switched from WordPress to Hugo](https:&#x2F;&#x2F;hugoblox.com&#x2F;vs&#x2F;wordpress&#x2F;)
-* [The 7 best landing page builders in 2024](https:&#x2F;&#x2F;hugoblox.com&#x2F;blog&#x2F;7-best-landing-page-builders&#x2F;)
-* [Start a Blog and Make Money in 2024: Here&#39;s What You Need to Know](https:&#x2F;&#x2F;hugoblox.com&#x2F;blog&#x2F;start-a-blog-and-make-money&#x2F;)
-* [Hugo vs Quarto: Which One is Better for 2024?](https:&#x2F;&#x2F;hugoblox.com&#x2F;vs&#x2F;quarto&#x2F;)
-* [Easily make an academic CV website to get more cites and grow your audience 🚀](https:&#x2F;&#x2F;hugoblox.com&#x2F;blog&#x2F;easily-make-academic-website&#x2F;)
-<!--END_SECTION:news-->
+Create a production build:
+
+```bash
+hugo --gc --minify
+```
+
+Pushing to `main` runs the GitHub Pages workflow in
+`.github/workflows/publish.yaml`.

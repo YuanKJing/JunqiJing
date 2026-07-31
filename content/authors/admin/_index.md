@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Junqi Jing(荆浚淇)
+title: Junqi Jing (荆浚淇)
 
 # Name pronunciation (optional)
 name_pronunciation: 
@@ -20,11 +20,11 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Student
+role: Embodied AI Researcher · B.E. Candidate
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: Harbin institute of technology
+  - name: Harbin Institute of Technology
     url: https://www.hitwh.edu.cn/
 
 # Social network links
@@ -227,4 +227,3 @@ I’m Junqi Jing (荆浚淇), a 3rd/4th-year undergraduate in Software Engineeri
           I am currently seeking a **Fall 2027 PhD position**.
 
           If you have any ideas or potential collaborations, feel free to contact me at [jqjing@stu.hit.edu.cn](mailto:jqjing@stu.hit.edu.cn) or [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
-

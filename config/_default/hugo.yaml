@@ -4,9 +4,9 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 # Website name
-title: Junqi Jing's homepage
+title: Junqi Jing · Embodied AI
 # Website URL
-baseURL: 'https://example.com/'
+baseURL: 'https://yuankjing.github.io/JunqiJing/'
 
 ############################
 ## LANGUAGE

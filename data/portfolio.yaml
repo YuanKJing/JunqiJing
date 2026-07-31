@@ -1,0 +1,178 @@
+hero:
+  name: Junqi Jing
+  chinese_name: 荆浚淇
+  role: Embodied AI Researcher · B.E. Candidate
+  affiliation: Harbin Institute of Technology
+  current: AI Research Intern at KNOWIN AI
+  headline: World Action Models, VLA systems, and real-world robot learning.
+  summary: >-
+    I study how generative models become physical intelligence, with a focus on
+    temporal reasoning, action-conditioned prediction, and dexterous
+    manipulation on real robots.
+  status: Open to Fall 2027 PhD opportunities
+  primary_cta:
+    text: Watch robot demos
+    url: "#robot-demos"
+  secondary_cta:
+    text: ICLR 2025 paper
+    url: "#publication"
+  interests:
+    - Embodied AI
+    - World Action Models
+    - Vision-Language-Action
+    - Dexterous Manipulation
+
+signals:
+  - label: Current
+    value: KNOWIN AI
+  - label: Publication
+    value: ICLR 2025
+  - label: Focus
+    value: Physical AI
+  - label: Education
+    value: HIT · B.E. 2027
+
+research:
+  eyebrow: Research agenda
+  title: From prediction to physical action.
+  intro: >-
+    My work connects visual generation, temporal reasoning, and robot control.
+    I am especially interested in representations that help an embodied agent
+    anticipate what comes next—and choose what to do.
+  areas:
+    - number: "01"
+      title: World Action Models
+      text: >-
+        Learning predictive models that connect observations, actions, and
+        future physical states for planning and decision making.
+      tags:
+        - World models
+        - Action-conditioned prediction
+    - number: "02"
+      title: VLA & Dexterous Manipulation
+      text: >-
+        Building vision-language-action systems that translate high-level
+        intent into reliable behavior on real dexterous hands.
+      tags:
+        - VLA
+        - Real-world robotics
+    - number: "03"
+      title: Generative Physical Intelligence
+      text: >-
+        Exploring intermediate representations and generative objectives that
+        make physical reasoning more structured, transferable, and useful.
+      tags:
+        - Generative AI
+        - Intermediate representations
+
+robot_demos:
+  eyebrow: Real-robot work
+  title: Robots, not just benchmarks.
+  intro: >-
+    This reel is built for real hardware footage. Videos play muted when they
+    enter the viewport, pause off-screen, and retain native controls for sound
+    and full-screen viewing.
+  items:
+    - number: "01"
+      title: Dual-arm teleoperation
+      description: >-
+        A real-robot workspace for studying coordinated manipulation,
+        demonstration collection, and human-in-the-loop control.
+      poster: ""
+      video: videos/teleoperation.mp4
+      status: Real robot video
+      tags:
+        - Real robot
+        - Teleoperation
+    - number: "02"
+      title: Dexterous manipulation
+      description: >-
+        Reserved for the next real-hardware behavior and its task, method, and
+        experimental context.
+      poster: ""
+      video: videos/dexterous-manipulation.mp4
+      status: Ready for footage
+      tags:
+        - VLA
+        - Dexterous hands
+    - number: "03"
+      title: Next robot demo
+      description: >-
+        A flexible slot for future experiments—add an MP4 and optional poster
+        without changing the page layout.
+      poster: ""
+      video: videos/robot-demo-03.mp4
+      status: Ready for footage
+      tags:
+        - Real-world evaluation
+
+publication:
+  eyebrow: Selected publication
+  venue: ICLR 2025
+  title: Masked Temporal Interpolation Diffusion for Procedure Planning in Instructional Videos
+  summary: >-
+    MTID introduces latent-space temporal interpolation and task-aware masking
+    to improve action-sequence planning between observed start and goal states.
+  contribution: >-
+    The method supplies visual mid-state supervision directly in latent space,
+    encouraging temporally coherent plans without relying only on text-level
+    supervision.
+  paper_url: https://openreview.net/pdf?id=HnpDHiItd2
+  project_url: https://openreview.net/forum?id=HnpDHiItd2
+  code_url: https://github.com/WiserZhou/MTID
+
+journey:
+  eyebrow: Research journey
+  title: Learning across models, labs, and machines.
+  items:
+    - date: Apr 2026 — Present
+      role: AI Research Intern
+      place: KNOWIN AI
+      text: Dexterous-hand manipulation with VLA models and exploratory work on World Action Models.
+      current: true
+    - date: Dec 2025 — Mar 2026
+      role: Visiting Student
+      place: Tsinghua University · LEAP Lab
+      text: Real-hardware practice, teleoperation, and exploration of world-action modeling.
+    - date: Sep 2025 — Dec 2025
+      role: Exchange Student Researcher
+      place: POSTECH · MLV Lab
+      text: Embodied AI and generative-model research with Prof. Kwang In Kim.
+    - date: 2023 — 2027
+      role: B.E. in Software Engineering
+      place: Harbin Institute of Technology
+      text: Research foundations in embodied intelligence, generative AI, and temporal reasoning.
+
+projects:
+  eyebrow: Beyond the lab
+  title: Selected projects with measurable impact.
+  items:
+    - metric: Top 1%
+      title: FleetEncounter
+      text: Award-winning cross-platform multiplayer game and HIT Best Project of the Year.
+      url: project/FleetEncounter/
+      tags:
+        - Unity
+        - Multiplayer
+    - metric: 10,000+
+      title: HITCS Study Guide
+      text: Open, collaborative computer-science course materials used by thousands of students.
+      url: project/HITCS/
+      tags:
+        - Open education
+        - Community
+    - metric: Top 6
+      title: Travel Planning Assistant
+      text: Qwen-based travel agent recognized at the Alibaba Large Model University Tour.
+      url: project/Travel_plan_agent/
+      tags:
+        - Agent
+        - Qwen 2.5
+
+contact:
+  eyebrow: Collaboration
+  title: Let’s build systems that can understand—and change—the physical world.
+  text: >-
+    I am open to research conversations, collaborations, and Fall 2027 PhD
+    opportunities in Embodied AI, World Models, and robot learning.
+  email: jqjing@stu.hit.edu.cn
