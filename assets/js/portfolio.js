@@ -3,8 +3,37 @@
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const saveData = Boolean(navigator.connection && navigator.connection.saveData);
 
-    const revealItems = document.querySelectorAll("[data-reveal]");
+    const progressBar = document.querySelector(".portfolio-progress span");
+    let progressFrame = null;
+
+    const updateProgress = () => {
+      progressFrame = null;
+      if (!progressBar) return;
+      const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollRange > 0 ? window.scrollY / scrollRange : 0;
+      progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+    };
+
+    const requestProgressUpdate = () => {
+      if (progressFrame !== null) return;
+      progressFrame = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", requestProgressUpdate, { passive: true });
+    window.addEventListener("resize", requestProgressUpdate);
+
+    const allRevealItems = [...document.querySelectorAll("[data-reveal]")];
+    const heroRevealItems = allRevealItems.filter((item) => item.closest(".portfolio-hero"));
+    const revealItems = allRevealItems.filter((item) => !item.closest(".portfolio-hero"));
     if (document.documentElement.classList.contains("portfolio-motion") && !reduceMotion) {
+      window.requestAnimationFrame(() => {
+        heroRevealItems.forEach((item, index) => {
+          item.style.transitionDelay = `${Math.min(index, 6) * 45}ms`;
+          item.classList.add("is-visible");
+        });
+      });
+
       const revealObserver = new IntersectionObserver(
         (entries, observer) => {
           entries.forEach((entry) => {
@@ -21,7 +50,7 @@
 
       revealItems.forEach((item) => revealObserver.observe(item));
     } else {
-      revealItems.forEach((item) => item.classList.add("is-visible"));
+      allRevealItems.forEach((item) => item.classList.add("is-visible"));
     }
 
     const videos = [...document.querySelectorAll("[data-robot-video]")];

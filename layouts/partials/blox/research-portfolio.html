@@ -14,9 +14,10 @@
 {{ end }}
 
 <div class="portfolio-home">
+  <div class="portfolio-progress" aria-hidden="true"><span></span></div>
   <div class="portfolio-container">
     <div class="portfolio-hero">
-      <aside class="academic-profile" data-reveal>
+      <aside class="academic-profile" data-reveal="profile">
         <div class="academic-avatar">
           {{ with $portrait }}
             <img
@@ -79,8 +80,8 @@
       <div class="academic-intro">
         <p class="portfolio-kicker" data-reveal>About me</p>
         <h1 data-reveal>
-          {{ $data.hero.name }}
-          <span>{{ $data.hero.chinese_name }}</span>
+          <span class="hero-name">{{ $data.hero.name }}</span>
+          <span class="hero-name-cn">{{ $data.hero.chinese_name }}</span>
         </h1>
         <p class="academic-role" data-reveal>{{ $data.hero.role }}</p>
         <div class="academic-affiliations" data-reveal>
@@ -108,11 +109,13 @@
           <span class="hero-status"><span aria-hidden="true"></span>{{ $data.hero.status }}</span>
         </div>
       </div>
+
     </div>
 
   </div>
 
   <section id="research" class="portfolio-section portfolio-section--research">
+    <span class="section-index" aria-hidden="true">01</span>
     <div class="portfolio-container">
       <div class="section-heading" data-reveal>
         <div>
@@ -123,13 +126,14 @@
       </div>
 
       <div class="research-grid">
-        {{ range $data.research.areas }}
+        {{ range $index, $area := $data.research.areas }}
           <article class="research-card" data-reveal>
-            <span class="card-number">{{ .number }}</span>
-            <h3>{{ .title }}</h3>
-            <p>{{ .text }}</p>
+            <span class="card-number">{{ $area.number }}</span>
+            <span class="research-card-watermark" aria-hidden="true">{{ $area.number }}</span>
+            <h3>{{ $area.title }}</h3>
+            <p>{{ $area.text }}</p>
             <div class="tag-row">
-              {{ range .tags }}<span>{{ . }}</span>{{ end }}
+              {{ range $area.tags }}<span>{{ . }}</span>{{ end }}
             </div>
           </article>
         {{ end }}
@@ -138,6 +142,7 @@
   </section>
 
   <section id="robot-demos" class="portfolio-section portfolio-section--demos">
+    <span class="section-index" aria-hidden="true">02</span>
     <div class="portfolio-container">
       <div class="section-heading section-heading--light" data-reveal>
         <div>
@@ -155,7 +160,7 @@
           {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
           {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
           {{ $hasPoster := and $poster (fileExists (path.Join "static" $poster)) }}
-          <article class="demo-card{{ if eq $index 0 }} demo-card--featured{{ end }}" data-reveal>
+          <article class="demo-card{{ if eq $index 0 }} demo-card--featured{{ end }}" data-reveal="card">
             <div class="demo-media">
               {{ if $hasVideo }}
                 <video
@@ -229,8 +234,9 @@
   </section>
 
   <section id="publication" class="portfolio-section portfolio-section--paper">
+    <span class="section-index" aria-hidden="true">03</span>
     <div class="portfolio-container">
-      <div class="paper-card" data-reveal>
+      <div class="paper-card" data-reveal="panel">
         <div class="paper-visual">
           {{ with $paperVisual }}
             <img
@@ -261,6 +267,7 @@
   </section>
 
   <section id="journey" class="portfolio-section portfolio-section--journey">
+    <span class="section-index" aria-hidden="true">04</span>
     <div class="portfolio-container">
       <div class="section-heading" data-reveal>
         <div>
@@ -272,7 +279,7 @@
 
       <div class="journey-list">
         {{ range $data.journey.items }}
-          <article class="journey-item" data-reveal>
+          <article class="journey-item{{ if .current }} journey-item--current{{ end }}" data-reveal>
             <div class="journey-date">
               {{ if .current }}<span class="current-pulse" aria-hidden="true"></span>{{ end }}
               {{ .date }}
@@ -289,6 +296,7 @@
   </section>
 
   <section id="projects" class="portfolio-section portfolio-section--projects">
+    <span class="section-index" aria-hidden="true">05</span>
     <div class="portfolio-container">
       <div class="section-heading" data-reveal>
         <div>
@@ -315,6 +323,7 @@
   </section>
 
   <section id="news" class="portfolio-section portfolio-section--news">
+    <span class="section-index" aria-hidden="true">06</span>
     <div class="portfolio-container">
       <div class="section-heading" data-reveal>
         <div>
@@ -325,10 +334,11 @@
       </div>
 
       <div class="news-list">
-        {{ range first 4 (where site.RegularPages.ByDate.Reverse "Type" "post") }}
-          <a class="news-item" href="{{ .RelPermalink }}" data-reveal>
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
-            <h3>{{ .Title }}</h3>
+        {{ range $index, $post := first 4 (where site.RegularPages.ByDate.Reverse "Type" "post") }}
+          <a class="news-item" href="{{ $post.RelPermalink }}" data-reveal>
+            <span class="news-index" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>
+            <time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "02 Jan 2006" }}</time>
+            <h3>{{ $post.Title }}</h3>
             <span aria-hidden="true">↗</span>
           </a>
         {{ end }}
@@ -337,8 +347,9 @@
   </section>
 
   <section id="contact" class="portfolio-section portfolio-section--contact">
+    <span class="section-index" aria-hidden="true">07</span>
     <div class="portfolio-container">
-      <div class="contact-card" data-reveal>
+      <div class="contact-card" data-reveal="panel">
         <p class="section-eyebrow">{{ $data.contact.eyebrow }}</p>
         <h2>{{ $data.contact.title }}</h2>
         <p>{{ $data.contact.text }}</p>
