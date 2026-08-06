@@ -14,7 +14,6 @@
 {{ end }}
 
 <div class="portfolio-home">
-  <div class="portfolio-progress" aria-hidden="true"><span></span></div>
   <div class="portfolio-container">
     <div class="portfolio-hero">
       <aside class="academic-profile" data-reveal="profile">
@@ -28,7 +27,6 @@
               fetchpriority="high"
               decoding="async">
           {{ end }}
-          <span aria-hidden="true"></span>
         </div>
         <div class="academic-profile-links">
           <a
@@ -78,7 +76,6 @@
       </aside>
 
       <div class="academic-intro">
-        <p class="portfolio-kicker" data-reveal>About me</p>
         <h1 data-reveal>
           <span class="hero-name">{{ $data.hero.name }}</span>
           <span class="hero-name-cn">{{ $data.hero.chinese_name }}</span>
@@ -89,15 +86,6 @@
           <span>{{ $data.hero.current }}</span>
         </div>
         <h2 data-reveal>{{ $data.hero.headline }}</h2>
-        <div class="hero-biography" data-reveal>
-          {{ range $data.hero.bio }}
-            <p>{{ . | markdownify }}</p>
-          {{ end }}
-        </div>
-
-        <div class="hero-interests" aria-label="Research interests" data-reveal>
-          {{ range $data.hero.interests }}<span>{{ . }}</span>{{ end }}
-        </div>
 
         <div class="hero-actions" data-reveal>
           <a class="portfolio-button portfolio-button--primary" href="{{ $data.hero.primary_cta.url }}">
@@ -106,16 +94,26 @@
           <a class="portfolio-button portfolio-button--ghost" href="{{ $data.hero.secondary_cta.url }}">
             {{ $data.hero.secondary_cta.text }}
           </a>
-          <span class="hero-status"><span aria-hidden="true"></span>{{ $data.hero.status }}</span>
         </div>
       </div>
-
     </div>
 
+    <div class="about-continuation" data-reveal="panel">
+      <div class="hero-biography">
+        {{ range $data.hero.bio }}
+          <p>{{ . | markdownify }}</p>
+        {{ end }}
+      </div>
+      <aside class="about-continuation__meta" aria-label="Research profile summary">
+        <div class="hero-interests" aria-label="Research interests">
+          {{ range $data.hero.interests }}<span>{{ . }}</span>{{ end }}
+        </div>
+        <span class="hero-status"><span aria-hidden="true"></span>{{ $data.hero.status }}</span>
+      </aside>
+    </div>
   </div>
 
   <section id="research" class="portfolio-section portfolio-section--research">
-    <span class="section-index" aria-hidden="true">01</span>
     <div class="portfolio-container">
       <div class="section-heading" data-reveal>
         <div>
@@ -128,8 +126,6 @@
       <div class="research-grid">
         {{ range $index, $area := $data.research.areas }}
           <article class="research-card" data-reveal>
-            <span class="card-number">{{ $area.number }}</span>
-            <span class="research-card-watermark" aria-hidden="true">{{ $area.number }}</span>
             <h3>{{ $area.title }}</h3>
             <p>{{ $area.text }}</p>
             <div class="tag-row">
@@ -142,11 +138,9 @@
   </section>
 
   <section id="robot-demos" class="portfolio-section portfolio-section--demos">
-    <span class="section-index" aria-hidden="true">02</span>
     <div class="portfolio-container">
-      <div class="section-heading section-heading--light" data-reveal>
+      <div class="section-heading" data-reveal>
         <div>
-          <p class="section-eyebrow">{{ $data.robot_demos.eyebrow }}</p>
           <h2>{{ $data.robot_demos.title }}</h2>
         </div>
         <p>{{ $data.robot_demos.intro }}</p>
@@ -160,7 +154,7 @@
           {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
           {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
           {{ $hasPoster := and $poster (fileExists (path.Join "static" $poster)) }}
-          <article class="demo-card{{ if eq $index 0 }} demo-card--featured{{ end }}" data-reveal="card">
+          <article class="demo-card{{ if $demo.featured }} demo-card--featured{{ end }}{{ if not $hasVideo }} demo-card--placeholder{{ end }}" data-reveal="card">
             <div class="demo-media">
               {{ if $hasVideo }}
                 <video
@@ -186,35 +180,13 @@
                 <div class="poster-film" aria-hidden="true"></div>
               {{ else }}
                 <div class="demo-placeholder" aria-label="Robot demonstration slot awaiting footage">
-                  <div class="demo-placeholder-grid" aria-hidden="true"></div>
-                  <div class="demo-radar" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div class="demo-scan" aria-hidden="true"></div>
-                  <p>PLAYBACK<br>READY</p>
-                </div>
-              {{ end }}
-
-              <div class="demo-media-topline">
-                <span>DEMO {{ $demo.number }}</span>
-                <span class="demo-state{{ if $hasVideo }} demo-state--online{{ end }}">
-                  <i aria-hidden="true"></i>
-                  {{ if $hasVideo }}Playing on view{{ else }}{{ $demo.status }}{{ end }}
-                </span>
-              </div>
-              {{ if and (not $hasVideo) $hasPoster }}
-                <div class="poster-notice">
-                  <span aria-hidden="true">▶</span>
-                  <span>Poster ready · MP4 pending</span>
+                  <p>Additional real-robot footage coming soon.</p>
                 </div>
               {{ end }}
             </div>
 
             <div class="demo-info">
               <div>
-                <span class="card-number">{{ $demo.number }}</span>
                 <h3>{{ $demo.title }}</h3>
               </div>
               <p>{{ $demo.description }}</p>
@@ -225,16 +197,10 @@
           </article>
         {{ end }}
       </div>
-
-      <p class="demo-footnote" data-reveal>
-        <span aria-hidden="true">●</span>
-        MP4, WebM, or direct video URLs can be added without changing this layout.
-      </p>
     </div>
   </section>
 
   <section id="publication" class="portfolio-section portfolio-section--paper">
-    <span class="section-index" aria-hidden="true">03</span>
     <div class="portfolio-container">
       <div class="paper-card" data-reveal="panel">
         <div class="paper-visual">
@@ -247,12 +213,10 @@
               loading="lazy"
               decoding="async">
           {{ end }}
-          <div class="paper-venue">{{ $data.publication.venue }}</div>
-          <div class="paper-grid-mark" aria-hidden="true"></div>
         </div>
         <div class="paper-copy">
-          <p class="section-eyebrow">{{ $data.publication.eyebrow }}</p>
           <h2>{{ $data.publication.title }}</h2>
+          <p class="paper-venue">{{ $data.publication.venue }}</p>
           <p class="paper-summary">{{ $data.publication.summary }}</p>
           <p class="paper-contribution">{{ $data.publication.contribution }}</p>
           <div class="paper-actions">
@@ -267,9 +231,8 @@
   </section>
 
   <section id="journey" class="portfolio-section portfolio-section--journey">
-    <span class="section-index" aria-hidden="true">04</span>
     <div class="portfolio-container">
-      <div class="section-heading" data-reveal>
+      <div class="section-heading section-heading--action" data-reveal>
         <div>
           <p class="section-eyebrow">{{ $data.journey.eyebrow }}</p>
           <h2>{{ $data.journey.title }}</h2>
@@ -296,11 +259,9 @@
   </section>
 
   <section id="projects" class="portfolio-section portfolio-section--projects">
-    <span class="section-index" aria-hidden="true">05</span>
     <div class="portfolio-container">
-      <div class="section-heading" data-reveal>
+      <div class="section-heading section-heading--action" data-reveal>
         <div>
-          <p class="section-eyebrow">{{ $data.projects.eyebrow }}</p>
           <h2>{{ $data.projects.title }}</h2>
         </div>
         <a class="section-link" href="{{ "projects/" | relURL }}">All projects <span aria-hidden="true">↗</span></a>
@@ -323,11 +284,9 @@
   </section>
 
   <section id="news" class="portfolio-section portfolio-section--news">
-    <span class="section-index" aria-hidden="true">06</span>
     <div class="portfolio-container">
-      <div class="section-heading" data-reveal>
+      <div class="section-heading section-heading--action" data-reveal>
         <div>
-          <p class="section-eyebrow">Field notes</p>
           <h2>Recent milestones.</h2>
         </div>
         <a class="section-link" href="{{ "post/" | relURL }}">All news <span aria-hidden="true">↗</span></a>
@@ -336,7 +295,6 @@
       <div class="news-list">
         {{ range $index, $post := first 4 (where site.RegularPages.ByDate.Reverse "Type" "post") }}
           <a class="news-item" href="{{ $post.RelPermalink }}" data-reveal>
-            <span class="news-index" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>
             <time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "02 Jan 2006" }}</time>
             <h3>{{ $post.Title }}</h3>
             <span aria-hidden="true">↗</span>
@@ -347,7 +305,6 @@
   </section>
 
   <section id="contact" class="portfolio-section portfolio-section--contact">
-    <span class="section-index" aria-hidden="true">07</span>
     <div class="portfolio-container">
       <div class="contact-card" data-reveal="panel">
         <p class="section-eyebrow">{{ $data.contact.eyebrow }}</p>
@@ -355,12 +312,10 @@
         <p>{{ $data.contact.text }}</p>
         <div class="contact-actions">
           <a class="portfolio-button portfolio-button--light" href="mailto:{{ $data.contact.email }}">
-            Start a conversation <span aria-hidden="true">↗</span>
+            Let's talk <span aria-hidden="true">↗</span>
           </a>
           <span>{{ $data.contact.email }}</span>
         </div>
-        <div class="contact-orbit contact-orbit--one" aria-hidden="true"></div>
-        <div class="contact-orbit contact-orbit--two" aria-hidden="true"></div>
       </div>
     </div>
   </section>

@@ -43,7 +43,7 @@ research:
   intro: >-
     My work connects visual generation, temporal reasoning, and robot control.
     I am especially interested in representations that help an embodied agent
-    anticipate what comes next—and choose what to do.
+    anticipate what comes next and choose what to do.
   areas:
     - number: "01"
       title: World Action Models
@@ -90,20 +90,21 @@ robot_demos:
         - Real robot
         - Teleoperation
     - number: "02"
-      title: Dexterous manipulation
+      title: Dual-arm ball catching
       description: >-
-        Reserved for the next real-hardware behavior and its task, method, and
-        experimental context.
+        A real-robot demonstration of coordinated dual-arm interception and
+        catching of small objects in a tabletop workspace.
       poster: ""
-      video: videos/dexterous-manipulation.mp4
-      status: Ready for footage
+      video: videos/dual-arm-ball-catching.mp4
+      status: Real robot video
+      featured: true
       tags:
-        - VLA
-        - Dexterous hands
+        - Real robot
+        - Dual-arm coordination
     - number: "03"
       title: Next robot demo
       description: >-
-        A flexible slot for future experiments—add an MP4 and optional poster
+        A flexible slot for future experiments. Add an MP4 and optional poster
         without changing the page layout.
       poster: ""
       video: videos/robot-demo-03.mp4
@@ -131,20 +132,20 @@ journey:
   eyebrow: Research journey
   title: Learning across models, labs, and machines.
   items:
-    - date: Apr 2026 — Present
+    - date: Apr 2026 - Present
       role: AI Research Intern
       place: KNOWIN AI
       text: Dexterous-hand manipulation with VLA models and exploratory work on World Action Models.
       current: true
-    - date: Dec 2025 — Mar 2026
+    - date: Dec 2025 - Mar 2026
       role: Visiting Student
       place: Tsinghua University · LEAP Lab
       text: Real-hardware practice, teleoperation, and exploration of world-action modeling.
-    - date: Sep 2025 — Dec 2025
+    - date: Sep 2025 - Dec 2025
       role: Exchange Student Researcher
       place: POSTECH · MLV Lab
       text: Embodied AI and generative-model research with Prof. Kwang In Kim.
-    - date: 2023 — 2027
+    - date: 2023 - 2027
       role: B.E. in Software Engineering
       place: Harbin Institute of Technology
       text: Research foundations in embodied intelligence, generative AI, and temporal reasoning.
@@ -177,7 +178,7 @@ projects:
 
 contact:
   eyebrow: Collaboration
-  title: Let’s build systems that can understand—and change—the physical world.
+  title: Let’s build systems that can understand and change the physical world.
   text: >-
     I am open to research internships, technical conversations, and
     collaborations with industry research teams working on Embodied AI, World
