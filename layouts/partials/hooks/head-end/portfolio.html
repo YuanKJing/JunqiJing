@@ -1,25 +1,5 @@
 <meta name="theme-color" content="#f7f8f5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1512" media="(prefers-color-scheme: dark)">
-{{ $data := site.Data.portfolio }}
-{{ $sameAs := slice
-  "https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en"
-  "https://github.com/YuanKJing"
-  "https://www.researchgate.net/profile/Jing-Junqi?ev=hdr_xprf"
-  "https://dblp.org/pid/410/3976.html"
-}}
-{{ $person := dict
-  "@context" "https://schema.org"
-  "@type" "Person"
-  "name" $data.hero.name
-  "alternateName" $data.hero.chinese_name
-  "url" site.Home.Permalink
-  "email" (printf "mailto:%s" $data.contact.email)
-  "jobTitle" $data.hero.role
-  "affiliation" (dict "@type" "CollegeOrUniversity" "name" $data.hero.affiliation)
-  "sameAs" $sameAs
-  "knowsAbout" $data.hero.interests
-}}
-<script type="application/ld+json">{{ $person | jsonify | safeJS }}</script>
 <script>
   if (
     "IntersectionObserver" in window &&
