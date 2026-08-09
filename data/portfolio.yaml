@@ -1,9 +1,9 @@
 hero:
   name: Junqi Jing
-  chinese_name: 荆浚淇
   role: Embodied AI Researcher · B.E. Candidate
   affiliation: Harbin Institute of Technology
   current: AI Research Intern at KNOWIN AI
+  current_url: https://knowinai.com/
   headline: World Action Models, VLA systems, and real-world robot learning.
   bio:
     - >-
@@ -13,12 +13,15 @@ hero:
       interest in generative approaches to learning and planning for physical
       interaction.
     - >-
-      I am currently an **AI Research Intern at KNOWIN AI**, where I work on
-      VLA-based dexterous-hand manipulation and exploratory research on world
-      action models. Previously, I spent a semester as an exchange student at
-      **POSTECH**, conducting research in the MLV Lab with Prof. Kwang In Kim,
-      and later visited **Tsinghua University’s LEAP Lab** under the guidance of
-      Prof. Gao Huang.
+      I am currently an [**AI Research Intern at KNOWIN
+      AI**](https://knowinai.com/), where I work on VLA-based dexterous-hand
+      manipulation and exploratory research on world action models. Previously,
+      I spent a semester as an exchange student at **POSTECH**, conducting
+      research in the [MLV
+      Lab](https://sites.google.com/view/mlvlab/home?authuser=0) with Prof.
+      [Kwang In Kim](https://sites.google.com/view/kimki), and later visited
+      [**Tsinghua University’s LEAP Lab**](https://www.leaplab.ai/) under the
+      guidance of Prof. [Gao Huang](https://gaohuang-net.github.io/).
     - >-
       I am currently seeking **research-oriented internship opportunities** and
       look forward to connecting with research teams across industry,

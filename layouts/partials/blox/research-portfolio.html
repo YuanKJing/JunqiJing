@@ -82,12 +82,13 @@
         <p class="portfolio-kicker" data-reveal>About me</p>
         <h1 data-reveal>
           <span class="hero-name">{{ $data.hero.name }}</span>
-          <span class="hero-name-cn">{{ $data.hero.chinese_name }}</span>
         </h1>
         <p class="academic-role" data-reveal>{{ $data.hero.role }}</p>
         <div class="academic-affiliations" data-reveal>
           <span>{{ $data.hero.affiliation }}</span>
-          <span>{{ $data.hero.current }}</span>
+          <span>
+            <a href="{{ $data.hero.current_url }}">{{ $data.hero.current }}</a>
+          </span>
         </div>
         <h2 data-reveal>{{ $data.hero.headline }}</h2>
         <div class="hero-biography" data-reveal>

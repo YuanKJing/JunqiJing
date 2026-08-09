@@ -420,6 +420,26 @@ video:focus-visible {
   font-weight: 650;
 }
 
+.academic-affiliations a,
+.hero-biography a {
+  color: inherit;
+  font-weight: 650;
+  text-decoration-color: color-mix(in srgb, var(--accent) 58%, transparent);
+  text-decoration-line: underline;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.academic-affiliations a:hover,
+.hero-biography a:hover {
+  color: var(--text);
+  text-decoration-color: var(--accent);
+}
+
 .hero-interests {
   display: flex;
   flex-wrap: wrap;
@@ -1734,16 +1754,6 @@ body {
   letter-spacing: inherit;
 }
 
-.academic-intro h1 .hero-name-cn {
-  display: inline-block;
-  margin: 0;
-  color: var(--muted);
-  font-family: var(--font-body);
-  font-size: 0.26em;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
 .academic-role {
   margin-top: 1.35rem;
   font-size: 0.96rem;
@@ -2322,12 +2332,6 @@ body {
     display: block;
     font-size: clamp(3.7rem, 18vw, 4.7rem);
     line-height: 0.9;
-  }
-
-  .academic-intro h1 .hero-name-cn {
-    display: block;
-    margin-top: 0.85rem;
-    font-size: 0.24em;
   }
 
   .academic-intro h2 {
