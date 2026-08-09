@@ -28,9 +28,6 @@ hero:
   primary_cta:
     text: Watch robot demos
     url: "#robot-demos"
-  secondary_cta:
-    text: ICLR 2025 paper
-    url: "#publication"
   interests:
     - Embodied AI
     - World Action Models

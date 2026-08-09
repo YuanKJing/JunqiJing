@@ -479,17 +479,6 @@ video:focus-visible {
   color: var(--on-accent);
 }
 
-.portfolio-button--ghost {
-  border-color: var(--line);
-  background: var(--panel);
-  color: var(--text);
-}
-
-.portfolio-button--ghost:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 .hero-status {
   display: inline-flex;
   align-items: center;
@@ -1802,7 +1791,7 @@ body {
 }
 
 .hero-actions {
-  gap: 0.75rem;
+  gap: clamp(0.85rem, 1.5vw, 1.15rem);
   margin-top: 1.8rem;
 }
 
@@ -1811,6 +1800,15 @@ body {
   border-radius: 10px;
   padding-inline: 1.15rem;
   font-size: 0.74rem;
+}
+
+.hero-actions .portfolio-button--primary {
+  min-width: clamp(11rem, 15vw, 13rem);
+}
+
+.hero-actions .hero-status {
+  min-height: 2.85rem;
+  margin-left: 0;
 }
 
 .academic-profile {
@@ -2357,7 +2355,8 @@ body {
   }
 
   .hero-status {
-    padding-top: 0.35rem;
+    margin: 0;
+    padding-top: 0.2rem;
   }
 
   .portfolio-section {
