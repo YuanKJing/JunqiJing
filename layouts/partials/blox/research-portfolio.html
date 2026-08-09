@@ -261,6 +261,15 @@
             <a href="{{ $data.publication.openreview_url }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>
             <a href="{{ $data.publication.code_url }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>
           </div>
+          {{ with $data.publication.upcoming }}
+            <aside class="paper-upcoming" aria-labelledby="upcoming-publication-title">
+              <span class="paper-upcoming__status">{{ .status }}</span>
+              <div>
+                <h3 id="upcoming-publication-title">{{ .topic }}</h3>
+                <p>{{ .note }}</p>
+              </div>
+            </aside>
+          {{ end }}
         </div>
       </div>
     </div>

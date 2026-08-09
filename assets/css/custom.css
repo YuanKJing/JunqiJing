@@ -946,6 +946,48 @@ video:focus-visible {
   color: var(--accent);
 }
 
+.paper-upcoming {
+  display: grid;
+  align-items: start;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.paper-upcoming__status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--line));
+  border-radius: 999px;
+  background: var(--accent-soft);
+  padding: 0.28rem 0.58rem;
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.paper-upcoming h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 680;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+}
+
+.paper-upcoming p {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.6;
+}
+
 .journey-list,
 .news-list {
   border-top: 1px solid var(--line);
@@ -1450,6 +1492,15 @@ video:focus-visible {
 
   .paper-copy h2 {
     font-size: 1.8rem;
+  }
+
+  .paper-upcoming {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .paper-upcoming__status {
+    justify-self: start;
   }
 
   .journey-item {

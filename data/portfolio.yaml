@@ -126,6 +126,12 @@ publication:
   project_url: https://yuankjing.github.io/MTID-Project-Page/
   openreview_url: https://openreview.net/forum?id=HnpDHiItd2
   code_url: https://github.com/WiserZhou/MTID
+  upcoming:
+    status: Coming soon
+    topic: Egocentric Object Detection
+    note: >-
+      A new study on object detection from egocentric visual observations is
+      currently in preparation.
 
 journey:
   eyebrow: Research journey
