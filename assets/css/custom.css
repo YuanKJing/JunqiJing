@@ -949,8 +949,8 @@ video:focus-visible {
 .paper-upcoming {
   display: grid;
   align-items: start;
-  width: min(100%, 40rem);
-  margin: 1.25rem 0 0 auto;
+  width: 100%;
+  margin: 1.25rem 0 0;
   padding: 1.05rem 1.2rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
