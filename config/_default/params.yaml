@@ -5,7 +5,8 @@
 
 # Appearance
 appearance:
-  mode: system
+  # mode: system  # Re-enable together with the theme chooser when dark mode returns.
+  mode: light
   color: emerald
 
 # SEO
@@ -33,7 +34,8 @@ header:
     blox: "navbar"
     fixed_to_top: true
     show_search: false
-    show_theme_chooser: true
+    # show_theme_chooser: true  # Temporarily disabled; uncomment to restore.
+    show_theme_chooser: false
     align: center
     logo:
       text: "JUNQI JING"

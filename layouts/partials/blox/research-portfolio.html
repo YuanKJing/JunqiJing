@@ -12,6 +12,7 @@
 {{ with $paperImage }}
   {{ $paperVisual = .Fit "1600x900 webp q88" }}
 {{ end }}
+{{ $iclrLogo := resources.Get "media/iclr-logo.svg" }}
 
 <div class="portfolio-home">
   <div class="portfolio-progress" aria-hidden="true"><span></span></div>
@@ -240,6 +241,7 @@
         <div class="paper-visual">
           {{ with $paperVisual }}
             <img
+              class="paper-figure"
               src="{{ .RelPermalink }}"
               width="{{ .Width }}"
               height="{{ .Height }}"
@@ -247,7 +249,20 @@
               loading="lazy"
               decoding="async">
           {{ end }}
-          <div class="paper-venue">{{ $data.publication.venue }}</div>
+          {{ with $iclrLogo }}
+            <div class="paper-conference-mark" role="img" aria-label="{{ $data.publication.venue }} conference logo">
+              <img
+                src="{{ .RelPermalink }}"
+                width="282"
+                height="84"
+                alt=""
+                aria-hidden="true"
+                decoding="async">
+              <span class="paper-conference-mark__year" aria-hidden="true">{{ replace $data.publication.venue "ICLR " "" }}</span>
+            </div>
+          {{ else }}
+            <div class="paper-venue">{{ $data.publication.venue }}</div>
+          {{ end }}
           <div class="paper-grid-mark" aria-hidden="true"></div>
         </div>
         <div class="paper-copy">

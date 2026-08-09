@@ -1,0 +1,8 @@
+<script>
+  // Light mode is temporarily locked. Remove this hook when restoring the theme chooser.
+  try {
+    localStorage.removeItem("wc-color-theme");
+  } catch (error) {
+    // Storage can be unavailable in privacy-restricted browsing contexts.
+  }
+</script>

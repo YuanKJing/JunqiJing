@@ -858,7 +858,7 @@ video:focus-visible {
   background: var(--panel-soft);
 }
 
-.paper-visual img {
+.paper-figure {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -871,8 +871,42 @@ video:focus-visible {
   transition: transform 350ms var(--ease);
 }
 
-.paper-card:hover .paper-visual img {
+.paper-card:hover .paper-figure {
   transform: translate(-50%, -50%) scale(1.015);
+}
+
+.paper-conference-mark {
+  position: absolute;
+  z-index: 3;
+  top: 1.1rem;
+  left: 1.1rem;
+  display: flex;
+  width: clamp(12.5rem, 18vw, 14.75rem);
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgba(53, 65, 77, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 24px rgba(30, 45, 36, 0.1);
+  padding: 0.65rem 0.72rem;
+}
+
+.paper-conference-mark img {
+  display: block;
+  min-width: 0;
+  height: auto;
+  flex: 1;
+}
+
+.paper-conference-mark__year {
+  flex: none;
+  border-left: 1px solid rgba(53, 65, 77, 0.18);
+  padding-left: 0.58rem;
+  color: #35414d;
+  font-size: 0.58rem;
+  font-weight: 720;
+  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
 .paper-venue {
@@ -1294,9 +1328,25 @@ video:focus-visible {
   }
 
   .paper-visual {
-    min-height: min(55vw, 28rem);
+    display: flex;
+    min-height: 0;
+    align-items: flex-start;
+    justify-content: center;
     border-right: 0;
     border-bottom: 1px solid var(--line);
+    padding: 7rem clamp(1rem, 5vw, 3rem) 2.5rem;
+  }
+
+  .paper-figure {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    transform: none;
+  }
+
+  .paper-card:hover .paper-figure {
+    transform: scale(1.015);
   }
 
   .journey-item {
@@ -1487,7 +1537,8 @@ video:focus-visible {
   }
 
   .paper-visual {
-    min-height: 18rem;
+    min-height: 0;
+    padding: 6.25rem 1rem 1.5rem;
   }
 
   .paper-copy {
@@ -1657,6 +1708,7 @@ body {
 .portfolio-kicker,
 .section-eyebrow,
 .card-number,
+.paper-conference-mark__year,
 .paper-venue,
 .demo-media-topline,
 .news-index {
