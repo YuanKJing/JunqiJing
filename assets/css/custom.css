@@ -646,13 +646,14 @@ video:focus-visible,
 .about-copy {
   max-width: 50rem;
   color: var(--ink-soft);
+  font-family: "Times New Roman", Times, "Liberation Serif", Georgia, serif;
   font-size: clamp(1.02rem, 1.5vw, 1.16rem);
   line-height: 1.68;
 }
 
 .about-copy h2 {
   margin: -0.1rem 0 1.65rem;
-  font-family: "Atkinson Hyperlegible", Inter, sans-serif;
+  font-family: inherit;
   font-size: clamp(2rem, 3vw, 2.65rem);
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -752,6 +753,10 @@ video:focus-visible,
   font-size: 0.68rem;
   font-weight: 600;
   line-height: 1.3;
+}
+
+.about-copy .interest-list span {
+  font-family: inherit;
 }
 
 .availability-note {
