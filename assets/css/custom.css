@@ -541,12 +541,12 @@ video:focus-visible,
   transform: translateY(-2px);
 }
 
-/* Biography keeps the reference site's saturated blue as a focused color block. */
+/* Biography uses a soft sage field that connects the photography, black rail, and white content. */
 .about-chapter {
   padding-top: clamp(3.25rem, 6vw, 5.5rem);
   border-top: 0;
-  color: #ffffff;
-  background: #1f6d93;
+  color: #172019;
+  background: #f0f3ee;
 }
 
 .about-chapter .chapter-label,
@@ -555,42 +555,43 @@ video:focus-visible,
 .about-chapter .about-copy,
 .about-chapter .about-copy strong,
 .about-chapter .about-copy a {
-  color: #ffffff;
+  color: #172019;
 }
 
 .about-chapter .chapter-label {
-  color: #cee7f3;
+  color: #4b6e65;
 }
 
 .about-chapter .chapter-heading > p,
 .about-chapter .chapter-heading--compact > p,
 .about-chapter .about-copy {
-  color: #eaf5fa;
+  color: #4c5b52;
 }
 
 .about-chapter .about-layout {
-  border-color: rgba(255, 255, 255, 0.28);
+  border-color: #dce2dc;
 }
 
 .about-chapter .photo-frame {
-  border-color: rgba(255, 255, 255, 0.38);
-  background: #195f81;
+  border-color: #dce2dc;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(36, 55, 44, 0.1);
 }
 
 .about-chapter .interest-list span {
-  border-color: rgba(255, 255, 255, 0.48);
-  color: #ffffff;
+  border-color: #7a8a80;
+  color: #3c4d43;
 }
 
 .about-chapter .availability-note {
-  border-left-color: #c6e3ee;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 30px rgba(12, 43, 57, 0.12);
+  border-left-color: #2e7458;
+  color: #172019;
+  background: #e2ede5;
+  box-shadow: 0 12px 30px rgba(36, 55, 44, 0.08);
 }
 
 .about-chapter .availability-dot {
-  background: #c6e3ee;
+  background: #2e7458;
 }
 
 .about-layout {
@@ -669,17 +670,17 @@ video:focus-visible,
 }
 
 .about-chapter .about-copy a {
-  color: #ffffff;
+  color: #176b4c;
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.85);
+  text-decoration-color: rgba(23, 107, 76, 0.55);
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.17em;
 }
 
 .about-chapter .about-copy a:hover {
-  color: #ffffff;
-  text-decoration-color: #ffffff;
+  color: #134f3a;
+  text-decoration-color: currentColor;
 }
 
 .about-chapter .biography-socials {
@@ -1040,6 +1041,20 @@ video:focus-visible,
   margin-top: 0.3rem !important;
   color: var(--muted);
   font-size: 0.94rem;
+}
+
+.journey-place a {
+  color: var(--accent-deep);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(40, 95, 120, 0.42);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.journey-place a:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
 }
 
 .journey-description {

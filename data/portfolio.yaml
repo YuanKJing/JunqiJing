@@ -126,15 +126,18 @@ journey:
     - date: Apr 2026 — Present
       role: AI Research Intern
       place: KNOWIN AI
+      place_url: https://knowinai.com/
       text: Dexterous-hand manipulation with VLA models and exploratory work on World Action Models.
       current: true
     - date: Dec 2025 — Mar 2026
       role: Research Internship
       place: Tsinghua University · LEAP Lab
+      place_url: https://www.leaplab.ai/
       text: Research on real-hardware interaction, robot learning, and world modeling at LEAP Lab.
     - date: Sep 2025 — Dec 2025
       role: Exchange Student Researcher
       place: POSTECH · MLV Lab
+      place_url: https://sites.google.com/view/mlvlab/home?authuser=0
       text: Embodied AI and generative-model research with Prof. Kwang In Kim.
     - date: 2023 — 2027
       role: B.E. in Software Engineering
