@@ -688,25 +688,25 @@ video:focus-visible,
   gap: 0.35rem;
   width: 100%;
   margin: 0;
-  padding: 0.55rem 0.7rem;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 0.75rem;
-  background: #ffffff;
-  box-shadow: 0 12px 28px rgba(12, 43, 57, 0.14);
+  padding: 0.35rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .about-chapter .biography-socials a {
   width: 100%;
   height: 3rem;
   border: 0;
-  border-radius: 0.5rem;
+  border-radius: 0;
   color: inherit;
   background: transparent;
 }
 
 .about-chapter .biography-socials a:hover {
   color: inherit;
-  background: #eef6fa;
+  background: transparent;
   transform: translateY(-1px);
 }
 
