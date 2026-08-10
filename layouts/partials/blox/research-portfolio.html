@@ -37,7 +37,7 @@
   <div class="portfolio-about" data-nav-section="home">
     <div class="portfolio-container portfolio-container--hero">
       <div class="home-hero">
-        <figure class="home-hero__media" data-reveal="image">
+        <figure class="home-hero__media" data-reveal="image" data-scroll-parallax>
           <img
             src="{{ $heroLarge.RelPermalink }}"
             srcset="{{ $heroSmall.RelPermalink }} 720w, {{ $heroMedium.RelPermalink }} 1200w, {{ $heroLarge.RelPermalink }} 1920w"
@@ -158,7 +158,7 @@
   {{ if eq $view "research" }}
   <section id="research" class="portfolio-chapter research-chapter" aria-labelledby="research-heading">
     <div class="portfolio-container">
-      <figure class="chapter-visual" data-reveal="image">
+      <figure class="chapter-visual" data-reveal="image" data-scroll-parallax>
         <img
           src="{{ $researchPhoto.RelPermalink }}"
           width="{{ $researchPhoto.Width }}"
@@ -232,7 +232,7 @@
   {{ if eq $view "publication" }}
   <section id="publication" class="portfolio-chapter publication-chapter" aria-labelledby="publication-heading">
     <div class="portfolio-container">
-      <figure class="chapter-visual chapter-visual--publication" data-reveal="image">
+      <figure class="chapter-visual chapter-visual--publication" data-reveal="image" data-scroll-parallax>
         <img
           src="{{ $publicationPhoto.RelPermalink }}"
           width="{{ $publicationPhoto.Width }}"
@@ -307,7 +307,7 @@
   {{ if eq $view "demos" }}
   <section id="robot-demos" class="portfolio-chapter demos-chapter" aria-labelledby="demos-heading">
     <div class="portfolio-container">
-      <figure class="chapter-visual chapter-visual--demos" data-reveal="image">
+      <figure class="chapter-visual chapter-visual--demos" data-reveal="image" data-scroll-parallax>
         <img
           src="{{ $demosPhoto.RelPermalink }}"
           width="{{ $demosPhoto.Width }}"

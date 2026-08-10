@@ -431,6 +431,37 @@ video:focus-visible,
   line-height: 1;
 }
 
+/*
+ * The page photography leaves the viewport at half scroll speed. The frame
+ * still follows normal document flow, so the following content progressively
+ * crops the image instead of introducing scroll locking or layout shifts.
+ */
+@keyframes portfolio-image-parallax {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 50%, 0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    [data-scroll-parallax] {
+      view-timeline: --portfolio-image block;
+    }
+
+    [data-scroll-parallax] > img {
+      animation: portfolio-image-parallax linear both;
+      animation-timeline: --portfolio-image;
+      animation-range: exit 0% exit 100%;
+      backface-visibility: hidden;
+      will-change: transform;
+    }
+  }
+}
+
 .identity-strip {
   display: grid;
   grid-template-columns: minmax(18rem, 1.25fr) minmax(13rem, 0.8fr) minmax(15rem, 0.9fr);
@@ -2082,6 +2113,11 @@ video:focus-visible,
 }
 
 @media print {
+  [data-scroll-parallax] > img {
+    animation: none !important;
+    transform: none !important;
+  }
+
   .page-header,
   .skip-link,
   .demo-number {
