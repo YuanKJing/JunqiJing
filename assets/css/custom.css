@@ -837,13 +837,11 @@ video:focus-visible,
 }
 
 .news-entity {
-  padding: 0.04em 0.2em;
-  border-radius: 0.22em;
-  color: #2f2917;
-  background: #fff0ad;
+  padding: 0;
+  border-radius: 0;
+  color: #ff9db3;
+  background: transparent;
   font-weight: 800;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
 }
 
 /* Research chapter and its integrated journey. */
