@@ -1,12 +1,19 @@
 ---
-title: Publications
+title: Publication
+date: 2026-08-10
+type: landing
 cms_exclude: true
 
-# View.
-view: citation
+design:
+  spacing: "0rem"
 
-# Optional header image (relative to `static/media/` folder).
-banner:
-  caption: ''
-  image: ''
+sections:
+  - block: research-portfolio
+    id: publication-page
+    content:
+      view: publication
+    design:
+      css_class: portfolio-shell
+      spacing:
+        padding: [0, 0, 0, 0]
 ---

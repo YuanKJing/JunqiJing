@@ -31,7 +31,7 @@ hero:
   status: Open to research internship opportunities
   primary_cta:
     text: Watch robot demos
-    url: "#robot-demos"
+    url: /robot-demos/
   interests:
     - World Model
     - RSL
@@ -100,16 +100,6 @@ robot_demos:
       tags:
         - Real robot
         - Dual-arm coordination
-    - number: "03"
-      title: Next robot demo
-      description: >-
-        A flexible slot for future experiments—add an MP4 and optional poster
-        without changing the page layout.
-      poster: ""
-      video: videos/robot-demo-03.mp4
-      status: Ready for footage
-      tags:
-        - Real-world evaluation
 
 publication:
   eyebrow: Selected publication

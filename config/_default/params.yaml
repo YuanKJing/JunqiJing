@@ -41,8 +41,8 @@ header:
       text: "JUNQI JING"
     button:
       enable: true
-      text: "Let's talk"
-      url: "#contact"
+      text: "Email me"
+      url: "mailto:xingkong8527@gmail.com"
 
 # Site footer
 footer:

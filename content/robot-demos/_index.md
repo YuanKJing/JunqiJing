@@ -1,6 +1,6 @@
 ---
-title: Junqi Jing · Embodied AI Researcher
-date: 2026-07-31
+title: Robot Demos
+date: 2026-08-10
 type: landing
 
 design:
@@ -8,9 +8,9 @@ design:
 
 sections:
   - block: research-portfolio
-    id: home
+    id: robot-demos-page
     content:
-      view: about
+      view: demos
     design:
       css_class: portfolio-shell
       spacing:

@@ -1,241 +1,254 @@
-{{/* Custom portfolio landing page for Junqi Jing. */}}
+{{/* Editorial academic portfolio for Junqi Jing. */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $view := $block.content.view | default "about" }}
 {{ $data := site.Data.portfolio }}
 {{ $authorPage := site.GetPage "/authors/admin" }}
 {{ $avatar := ($authorPage.Resources.ByType "image").GetMatch "avatar.jpg" }}
 {{ $portrait := "" }}
 {{ with $avatar }}
-  {{ $portrait = .Fill "420x420 Center webp q88" }}
+  {{ $portrait = .Fill "360x360 Center webp q88" }}
 {{ end }}
+
 {{ $paperPage := site.GetPage "/publication/conference-paper" }}
 {{ $paperImage := ($paperPage.Resources.ByType "image").GetMatch "*featured*" }}
 {{ $paperVisual := "" }}
 {{ with $paperImage }}
-  {{ $paperVisual = .Fit "1600x900 webp q88" }}
+  {{ $paperVisual = .Fit "1500x900 webp q88" }}
 {{ end }}
 {{ $iclrLogo := resources.Get "media/iclr-logo.svg" }}
 
-<div class="portfolio-home">
-  <div class="portfolio-progress" aria-hidden="true"><span></span></div>
-  <div class="portfolio-container">
-    <div class="portfolio-hero">
-      <aside class="academic-profile" data-reveal="profile">
-        <div class="academic-avatar">
-          {{ with $portrait }}
-            <img
-              src="{{ .RelPermalink }}"
-              width="{{ .Width }}"
-              height="{{ .Height }}"
-              alt="Formal portrait of Junqi Jing"
-              fetchpriority="high"
-              decoding="async">
-          {{ end }}
-          <span aria-hidden="true"></span>
+{{ $heroSource := resources.Get "media/portfolio/home-motorcycle.jpg" }}
+{{ $heroSmall := $heroSource.Resize "720x webp q82" }}
+{{ $heroMedium := $heroSource.Resize "1200x webp q84" }}
+{{ $heroLarge := $heroSource.Resize "1920x webp q86" }}
+{{ $aboutShore := (resources.Get "media/portfolio/about-shore.jpg").Fill "960x720 Center webp q84" }}
+{{ $researchPhoto := (resources.Get "media/portfolio/research-harbor.jpg").Fill "1600x640 Center webp q84" }}
+{{ $publicationPhoto := (resources.Get "media/portfolio/publication-coast.jpg").Fill "1600x640 Center webp q84" }}
+{{ $demosPhoto := (resources.Get "media/portfolio/about-promenade.jpg").Fill "1600x640 Center webp q84" }}
+
+<a class="skip-link" href="#portfolio-main">Skip to content</a>
+
+<div class="portfolio-site" id="portfolio-main" tabindex="-1">
+  {{ if eq $view "about" }}
+  <div class="portfolio-about" data-nav-section="home">
+    <div class="portfolio-container portfolio-container--hero">
+      <div class="home-hero">
+        <figure class="home-hero__media" data-reveal="image">
+          <img
+            src="{{ $heroLarge.RelPermalink }}"
+            srcset="{{ $heroSmall.RelPermalink }} 720w, {{ $heroMedium.RelPermalink }} 1200w, {{ $heroLarge.RelPermalink }} 1920w"
+            sizes="(min-width: 1024px) calc(100vw - 232px), 100vw"
+            width="{{ $heroLarge.Width }}"
+            height="{{ $heroLarge.Height }}"
+            alt="A motorcycle beside the sea at sunset"
+            fetchpriority="high"
+            decoding="async">
+          <p class="home-banner-title">Junqi Jing’s Homepage</p>
+        </figure>
+      </div>
+
+      <header class="identity-strip" aria-labelledby="portfolio-title" data-reveal="panel">
+        <div class="identity-strip__person">
+          <div class="identity-avatar">
+            {{ with $portrait }}
+              <img
+                src="{{ .RelPermalink }}"
+                width="{{ .Width }}"
+                height="{{ .Height }}"
+                alt="Formal portrait of Junqi Jing"
+                decoding="async">
+            {{ end }}
+          </div>
+          <div>
+            <h1 id="portfolio-title">{{ $data.hero.name }}</h1>
+            <strong>{{ $data.hero.role }}</strong>
+            <p>{{ $data.hero.affiliation }}</p>
+          </div>
         </div>
-        <div class="academic-profile-links">
-          <a
-            class="profile-email"
-            href="mailto:{{ $data.contact.email }}"
-            aria-label="Email {{ $data.contact.email }}">
-            <span class="profile-link-icon" aria-hidden="true">
-              {{ partial "functions/get_icon" (dict "name" "at-symbol" "attributes" `style="height: 1.05rem; width: 1.05rem;"`) }}
-            </span>
-            <span>{{ $data.contact.email }}</span>
-          </a>
+        <div class="identity-strip__current">
+          <span>Currently</span>
+          <a href="{{ $data.hero.current_url }}" target="_blank" rel="noopener">{{ $data.hero.current }}</a>
+        </div>
+        <div class="identity-strip__links">
+          <a class="identity-email" href="mailto:{{ $data.contact.email }}">{{ $data.contact.email }}</a>
           <div class="profile-icon-row" aria-label="Academic and social profiles">
-            <a
-              href="https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en"
-              target="_blank"
-              rel="noopener"
-              aria-label="Google Scholar"
-              title="Google Scholar">
+            <a href="https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
               {{ partial "functions/get_icon" (dict "name" "academicons/google-scholar" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
             </a>
-            <a
-              href="https://github.com/YuanKJing"
-              target="_blank"
-              rel="noopener"
-              aria-label="GitHub"
-              title="GitHub">
+            <a href="https://github.com/YuanKJing" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
               {{ partial "functions/get_icon" (dict "name" "brands/github" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
             </a>
-            <a
-              href="https://www.researchgate.net/profile/Jing-Junqi?ev=hdr_xprf"
-              target="_blank"
-              rel="noopener"
-              aria-label="ResearchGate"
-              title="ResearchGate">
+            <a href="https://www.researchgate.net/profile/Jing-Junqi?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
               {{ partial "functions/get_icon" (dict "name" "academicons/researchgate" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
             </a>
-            <a
-              href="https://dblp.org/pid/410/3976.html"
-              target="_blank"
-              rel="noopener"
-              aria-label="DBLP"
-              title="DBLP">
+            <a href="https://dblp.org/pid/410/3976.html" target="_blank" rel="noopener" aria-label="DBLP" title="DBLP">
               {{ partial "functions/get_icon" (dict "name" "academicons/dblp" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
             </a>
           </div>
         </div>
-      </aside>
-
-      <div class="academic-intro">
-        <p class="portfolio-kicker" data-reveal>About me</p>
-        <h1 data-reveal>
-          <span class="hero-name">{{ $data.hero.name }}</span>
-        </h1>
-        <p class="academic-role" data-reveal>{{ $data.hero.role }}</p>
-        <div class="academic-affiliations" data-reveal>
-          <span>{{ $data.hero.affiliation }}</span>
-          <span>
-            <a href="{{ $data.hero.current_url }}">{{ $data.hero.current }}</a>
-          </span>
-        </div>
-        <h2 data-reveal>{{ $data.hero.headline }}</h2>
-        <div class="hero-biography" data-reveal>
-          {{ range $data.hero.bio }}
-            <p>{{ . | markdownify }}</p>
-          {{ end }}
-        </div>
-
-        <div class="hero-interests" aria-label="Research interests" data-reveal>
-          {{ range $data.hero.interests }}<span>{{ . }}</span>{{ end }}
-        </div>
-
-        <div class="hero-actions" data-reveal>
-          <a class="portfolio-button portfolio-button--primary" href="{{ $data.hero.primary_cta.url }}">
-            {{ $data.hero.primary_cta.text }}
-          </a>
-          <span class="hero-status"><span aria-hidden="true"></span>{{ $data.hero.status }}</span>
-        </div>
-      </div>
-
+      </header>
     </div>
 
-  </div>
-
-  <section id="research" class="portfolio-section portfolio-section--research">
-    <span class="section-index" aria-hidden="true">01</span>
-    <div class="portfolio-container">
-      <div class="section-heading" data-reveal>
-        <div>
-          <p class="section-eyebrow">{{ $data.research.eyebrow }}</p>
-          <h2>{{ $data.research.title }}</h2>
+    <section class="portfolio-chapter about-chapter" aria-labelledby="about-heading">
+      <div class="portfolio-container">
+        <div class="chapter-heading chapter-heading--compact" data-reveal>
+          <div>
+            <p class="chapter-label">Profile</p>
+            <h2 id="about-heading">About me</h2>
+          </div>
+          <p>My work connects world modeling, robot learning, and video generation with real-world interaction.</p>
         </div>
-        <p>{{ $data.research.intro }}</p>
+
+        <div class="about-layout">
+          <div class="about-gallery" aria-label="Personal photography" data-reveal="image">
+            <figure class="photo-frame photo-frame--primary">
+              <img
+                src="{{ $aboutShore.RelPermalink }}"
+                width="{{ $aboutShore.Width }}"
+                height="{{ $aboutShore.Height }}"
+                alt="A quiet shoreline with a walker, tugboat, and distant hills"
+                loading="lazy"
+                decoding="async">
+            </figure>
+          </div>
+
+          <div class="about-copy" data-reveal>
+            {{ range $data.hero.bio }}
+              <p>{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="interest-list" aria-label="Research interests">
+              {{ range $data.hero.interests }}<span>{{ . }}</span>{{ end }}
+            </div>
+
+            <div class="availability-note">
+              <span class="availability-dot" aria-hidden="true"></span>
+              <strong>{{ $data.hero.status }}</strong>
+              <a href="mailto:{{ $data.contact.email }}">Email me</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-news" id="news" aria-labelledby="news-heading">
+          <div class="subsection-heading" data-reveal>
+            <div>
+              <p class="chapter-label">Updates</p>
+              <h2 id="news-heading">News</h2>
+            </div>
+            <a href="{{ "post/" | relURL }}">All news <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="news-list">
+            {{ range $index, $post := first 5 (where site.RegularPages.ByDate.Reverse "Type" "post") }}
+              {{ $newsTitle := replaceRE "^[^[:alnum:]]+[[:space:]]*" "" $post.Title }}
+              <a class="news-item" href="{{ $post.RelPermalink }}" data-reveal>
+                <time datetime="{{ $post.Date.Format "2006-01-02" }}">
+                  {{ $post.Params.display_date | default ($post.Date.Format "Jan 2006") }}
+                </time>
+                <span>{{ $newsTitle }}</span>
+                <i aria-hidden="true">↗</i>
+              </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  {{ end }}
+
+  {{ if eq $view "research" }}
+  <section id="research" class="portfolio-chapter research-chapter" aria-labelledby="research-heading">
+    <div class="portfolio-container">
+      <figure class="chapter-visual" data-reveal="image">
+        <img
+          src="{{ $researchPhoto.RelPermalink }}"
+          width="{{ $researchPhoto.Width }}"
+          height="{{ $researchPhoto.Height }}"
+          alt="Research vessels gathered in a coastal harbor"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async">
+        <h1 class="page-banner-title">Research</h1>
+      </figure>
+
+      <div class="chapter-heading chapter-heading--after-photo" data-reveal>
+        <div>
+          <p class="chapter-label">Research directions</p>
+          <h2 id="research-heading">World Model, RSL, and Video Generation</h2>
+        </div>
+        <div class="chapter-heading__body">
+          <p>{{ $data.research.intro }}</p>
+          <a href="{{ "publication/" | relURL }}">View all publications <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
 
-      <div class="research-grid">
+      <div class="research-areas">
         {{ range $index, $area := $data.research.areas }}
-          <article class="research-card" data-reveal>
-            <span class="card-number">{{ $area.number }}</span>
-            <span class="research-card-watermark" aria-hidden="true">{{ $area.number }}</span>
+          <article class="research-area" data-reveal>
+            <span>{{ printf "%02d" (add $index 1) }}</span>
             <h3>{{ $area.title }}</h3>
             <p>{{ $area.text }}</p>
-            <div class="tag-row">
+            <div class="research-area__tags">
               {{ range $area.tags }}<span>{{ . }}</span>{{ end }}
             </div>
           </article>
         {{ end }}
       </div>
-    </div>
-  </section>
 
-  <section id="robot-demos" class="portfolio-section portfolio-section--demos">
-    <span class="section-index" aria-hidden="true">02</span>
-    <div class="portfolio-container">
-      <div class="section-heading section-heading--light" data-reveal>
-        <div>
-          <p class="section-eyebrow">{{ $data.robot_demos.eyebrow }}</p>
-          <h2>{{ $data.robot_demos.title }}</h2>
+      <div class="research-journey" id="journey" aria-labelledby="journey-heading">
+        <div class="subsection-heading" data-reveal>
+          <div>
+            <p class="chapter-label">Experience</p>
+            <h2 id="journey-heading">Research journey</h2>
+          </div>
+          <a href="{{ "experience/" | relURL }}">Full experience <span aria-hidden="true">↗</span></a>
         </div>
-        <p>{{ $data.robot_demos.intro }}</p>
-      </div>
 
-      <div class="demo-grid">
-        {{ range $index, $demo := $data.robot_demos.items }}
-          {{ $video := $demo.video | default "" }}
-          {{ $poster := $demo.poster | default "" }}
-          {{ $isRemoteVideo := or (hasPrefix $video "https://") (hasPrefix $video "http://") }}
-          {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
-          {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
-          {{ $hasPoster := and $poster (fileExists (path.Join "static" $poster)) }}
-          <article class="demo-card{{ if eq $index 0 }} demo-card--featured{{ end }}" data-reveal="card">
-            <div class="demo-media">
-              {{ if $hasVideo }}
-                <video
-                  class="robot-video"
-                  muted
-                  loop
-                  playsinline
-                  controls
-                  preload="metadata"
-                  data-robot-video
-                  aria-label="{{ $demo.title }} demonstration video"
-                  {{ with $poster }}poster="{{ . | relURL }}"{{ end }}>
-                  <source src="{{ $video | relURL }}" type="video/mp4">
-                  Your browser does not support embedded video.
-                </video>
-              {{ else if $hasPoster }}
-                <img
-                  class="demo-poster"
-                  src="{{ $poster | relURL }}"
-                  alt="Real dual-arm robot teleoperation setup"
-                  loading="lazy"
-                  decoding="async">
-                <div class="poster-film" aria-hidden="true"></div>
-              {{ else }}
-                <div class="demo-placeholder" aria-label="Robot demonstration slot awaiting footage">
-                  <div class="demo-placeholder-grid" aria-hidden="true"></div>
-                  <div class="demo-radar" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div class="demo-scan" aria-hidden="true"></div>
-                  <p>PLAYBACK<br>READY</p>
-                </div>
-              {{ end }}
-
-              <div class="demo-media-topline">
-                <span>DEMO {{ $demo.number }}</span>
-                <span class="demo-state{{ if $hasVideo }} demo-state--online{{ end }}">
-                  <i aria-hidden="true"></i>
-                  {{ if $hasVideo }}Playing on view{{ else }}{{ $demo.status }}{{ end }}
-                </span>
+        <div class="journey-list">
+          {{ range $data.journey.items }}
+            <article class="journey-item{{ if .current }} journey-item--current{{ end }}" data-reveal>
+              <div class="journey-date">
+                {{ if .current }}<span class="current-pulse" aria-hidden="true"></span>{{ end }}
+                {{ .date }}
               </div>
-              {{ if and (not $hasVideo) $hasPoster }}
-                <div class="poster-notice">
-                  <span aria-hidden="true">▶</span>
-                  <span>Poster ready · MP4 pending</span>
-                </div>
-              {{ end }}
-            </div>
-
-            <div class="demo-info">
               <div>
-                <span class="card-number">{{ $demo.number }}</span>
-                <h3>{{ $demo.title }}</h3>
+                <h3>{{ .role }}</h3>
+                <p class="journey-place">{{ .place }}</p>
               </div>
-              <p>{{ $demo.description }}</p>
-              <div class="tag-row tag-row--dark">
-                {{ range $demo.tags }}<span>{{ . }}</span>{{ end }}
-              </div>
-            </div>
-          </article>
-        {{ end }}
+              <p class="journey-description">{{ .text }}</p>
+            </article>
+          {{ end }}
+        </div>
       </div>
-
-      <p class="demo-footnote" data-reveal>
-        <span aria-hidden="true">●</span>
-        MP4, WebM, or direct video URLs can be added without changing this layout.
-      </p>
     </div>
   </section>
+  {{ end }}
 
-  <section id="publication" class="portfolio-section portfolio-section--paper">
-    <span class="section-index" aria-hidden="true">03</span>
+  {{ if eq $view "publication" }}
+  <section id="publication" class="portfolio-chapter publication-chapter" aria-labelledby="publication-heading">
     <div class="portfolio-container">
-      <div class="paper-card" data-reveal="panel">
+      <figure class="chapter-visual chapter-visual--publication" data-reveal="image">
+        <img
+          src="{{ $publicationPhoto.RelPermalink }}"
+          width="{{ $publicationPhoto.Width }}"
+          height="{{ $publicationPhoto.Height }}"
+          alt="A coastal town and rocky shoreline beside the sea"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async">
+        <h1 class="page-banner-title">Publication</h1>
+      </figure>
+
+      <div class="chapter-heading chapter-heading--after-photo" data-reveal>
+        <div>
+          <p class="chapter-label">Selected work</p>
+          <h2 id="publication-heading">Selected publication</h2>
+        </div>
+        <p>Peer-reviewed research, project materials, and work currently in preparation.</p>
+      </div>
+
+      <article class="publication-card" data-reveal="panel">
         <div class="paper-visual">
           {{ with $paperVisual }}
             <img
@@ -249,36 +262,34 @@
           {{ end }}
           {{ with $iclrLogo }}
             <div class="paper-conference-mark" role="img" aria-label="{{ $data.publication.venue }} conference logo">
-              <img
-                src="{{ .RelPermalink }}"
-                width="282"
-                height="84"
-                alt=""
-                aria-hidden="true"
-                decoding="async">
-              <span class="paper-conference-mark__year" aria-hidden="true">{{ replace $data.publication.venue "ICLR " "" }}</span>
+              <img src="{{ .RelPermalink }}" width="282" height="84" alt="" aria-hidden="true" decoding="async">
+              <span aria-hidden="true">2025</span>
             </div>
-          {{ else }}
-            <div class="paper-venue">{{ $data.publication.venue }}</div>
           {{ end }}
-          <div class="paper-grid-mark" aria-hidden="true"></div>
         </div>
-        <div class="paper-copy">
-          <p class="section-eyebrow">{{ $data.publication.eyebrow }}</p>
-          <h2>{{ $data.publication.title }}</h2>
-          <p class="paper-summary">{{ $data.publication.summary }}</p>
-          <p class="paper-contribution">{{ $data.publication.contribution }}</p>
-          <div class="paper-actions">
+
+        <div class="publication-copy">
+          <p class="publication-venue">{{ $data.publication.venue }}</p>
+          <h3>{{ $data.publication.title }}</h3>
+          {{ with $paperPage.Params.authors }}
+            <p class="publication-authors">
+              {{ range $index, $author := . }}{{ if $index }} · {{ end }}{{ if eq $author "admin" }}<strong>Junqi Jing</strong>{{ else }}{{ $author }}{{ end }}{{ end }}
+            </p>
+          {{ end }}
+          <p class="publication-summary">{{ $data.publication.summary }}</p>
+          <p class="publication-contribution">{{ $data.publication.contribution }}</p>
+          <nav class="publication-actions" aria-label="Publication links">
             <a href="{{ $data.publication.paper_url }}" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
-            <a href="{{ $data.publication.project_url }}" target="_blank" rel="noopener">Project Page <span aria-hidden="true">↗</span></a>
+            <a href="{{ $data.publication.project_url }}" target="_blank" rel="noopener">Project page <span aria-hidden="true">↗</span></a>
             <a href="{{ $data.publication.openreview_url }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>
             <a href="{{ $data.publication.code_url }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>
-          </div>
+          </nav>
         </div>
-      </div>
+      </article>
+
       {{ with $data.publication.upcoming }}
-        <aside class="paper-upcoming" aria-labelledby="upcoming-publication-title" data-reveal="panel">
-          <span class="paper-upcoming__status">{{ .status }}</span>
+        <aside class="publication-upcoming" aria-labelledby="upcoming-publication-title" data-reveal="panel">
+          <span>{{ .status }}</span>
           <div>
             <h3 id="upcoming-publication-title">{{ .topic }}</h3>
             <p>{{ .note }}</p>
@@ -287,110 +298,81 @@
       {{ end }}
     </div>
   </section>
+  {{ end }}
 
-  <section id="journey" class="portfolio-section portfolio-section--journey">
-    <span class="section-index" aria-hidden="true">04</span>
+  {{ if eq $view "demos" }}
+  <section id="robot-demos" class="portfolio-chapter demos-chapter" aria-labelledby="demos-heading">
     <div class="portfolio-container">
-      <div class="section-heading" data-reveal>
+      <figure class="chapter-visual chapter-visual--demos" data-reveal="image">
+        <img
+          src="{{ $demosPhoto.RelPermalink }}"
+          width="{{ $demosPhoto.Width }}"
+          height="{{ $demosPhoto.Height }}"
+          alt="A tree-lined seaside promenade under a blue sky"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async">
+        <h1 class="page-banner-title">Robot Demos</h1>
+      </figure>
+
+      <div class="chapter-heading" data-reveal>
         <div>
-          <p class="section-eyebrow">{{ $data.journey.eyebrow }}</p>
-          <h2>{{ $data.journey.title }}</h2>
+          <p class="chapter-label">Real hardware</p>
+          <h2 id="demos-heading">Real robot videos</h2>
         </div>
-        <a class="section-link" href="{{ "experience/" | relURL }}">Full experience <span aria-hidden="true">↗</span></a>
+        <p>Real hardware, real interaction. Each video starts muted when it enters view and keeps native playback controls.</p>
       </div>
 
-      <div class="journey-list">
-        {{ range $data.journey.items }}
-          <article class="journey-item{{ if .current }} journey-item--current{{ end }}" data-reveal>
-            <div class="journey-date">
-              {{ if .current }}<span class="current-pulse" aria-hidden="true"></span>{{ end }}
-              {{ .date }}
-            </div>
-            <div>
-              <h3>{{ .role }}</h3>
-              <p class="journey-place">{{ .place }}</p>
-            </div>
-            <p class="journey-description">{{ .text }}</p>
-          </article>
+      <div class="demo-grid">
+        {{ range $demo := $data.robot_demos.items }}
+          {{ $video := $demo.video | default "" }}
+          {{ $isRemoteVideo := or (hasPrefix $video "https://") (hasPrefix $video "http://") }}
+          {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
+          {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
+          {{ if $hasVideo }}
+            <article class="demo-card" data-reveal="panel">
+              <div class="demo-media">
+                <video
+                  class="robot-video"
+                  muted
+                  loop
+                  playsinline
+                  controls
+                  preload="metadata"
+                  data-robot-video
+                  aria-label="{{ $demo.title }} demonstration video">
+                  <source src="{{ $video | relURL }}" type="video/mp4">
+                  Your browser does not support embedded video.
+                </video>
+                <span class="demo-number">Demo {{ $demo.number }}</span>
+              </div>
+              <div class="demo-copy">
+                <h3>{{ $demo.title }}</h3>
+                <p>{{ $demo.description }}</p>
+                <div class="demo-tags">
+                  {{ range $demo.tags }}<span>{{ . }}</span>{{ end }}
+                </div>
+              </div>
+            </article>
+          {{ end }}
         {{ end }}
       </div>
     </div>
   </section>
+  {{ end }}
 
-  <section id="projects" class="portfolio-section portfolio-section--projects">
-    <span class="section-index" aria-hidden="true">05</span>
-    <div class="portfolio-container">
-      <div class="section-heading" data-reveal>
-        <div>
-          <p class="section-eyebrow">{{ $data.projects.eyebrow }}</p>
-          <h2>{{ $data.projects.title }}</h2>
-        </div>
-        <a class="section-link" href="{{ "projects/" | relURL }}">All projects <span aria-hidden="true">↗</span></a>
+  {{ if eq $view "about" }}
+  <aside id="contact" class="contact-strip" aria-labelledby="contact-title" data-reveal="panel">
+    <div class="portfolio-container contact-strip__inner">
+      <div>
+        <p class="chapter-label">Research and collaboration</p>
+        <h2 id="contact-title">Open to research internships and industry collaboration.</h2>
       </div>
-
-      <div class="project-grid">
-        {{ range $data.projects.items }}
-          <a class="project-card" href="{{ .url | relURL }}" data-reveal>
-            <span class="project-metric">{{ .metric }}</span>
-            <h3>{{ .title }}</h3>
-            <p>{{ .text }}</p>
-            <div class="tag-row">
-              {{ range .tags }}<span>{{ . }}</span>{{ end }}
-            </div>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </a>
-        {{ end }}
-      </div>
-    </div>
-  </section>
-
-  <section id="news" class="portfolio-section portfolio-section--news">
-    <span class="section-index" aria-hidden="true">06</span>
-    <div class="portfolio-container">
-      <div class="section-heading" data-reveal>
-        <div>
-          <p class="section-eyebrow">Field notes</p>
-          <h2>Recent milestones.</h2>
-        </div>
-        <a class="section-link" href="{{ "post/" | relURL }}">All news <span aria-hidden="true">↗</span></a>
-      </div>
-
-      <div class="news-list">
-        {{ range $index, $post := first 4 (where site.RegularPages.ByDate.Reverse "Type" "post") }}
-          <a class="news-item" href="{{ $post.RelPermalink }}" data-reveal>
-            <span class="news-index" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>
-            <time datetime="{{ $post.Date.Format "2006-01-02" }}">
-              {{ $post.Params.display_date | default ($post.Date.Format "02 Jan 2006") }}
-            </time>
-            <h3>{{ $post.Title }}</h3>
-            <span aria-hidden="true">↗</span>
-          </a>
-        {{ end }}
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="portfolio-section portfolio-section--contact">
-    <span class="section-index" aria-hidden="true">07</span>
-    <div class="portfolio-container">
-      <div class="contact-card" data-reveal="panel">
-        <p class="section-eyebrow">{{ $data.contact.eyebrow }}</p>
-        <h2>{{ $data.contact.title }}</h2>
+      <div>
         <p>{{ $data.contact.text | markdownify }}</p>
-        <div class="contact-actions">
-          <a class="portfolio-button portfolio-button--primary" href="mailto:{{ $data.contact.email }}">
-            Start a conversation <span aria-hidden="true">↗</span>
-          </a>
-          <a
-            class="contact-email"
-            href="mailto:{{ $data.contact.email }}"
-            aria-label="Email {{ $data.contact.email }}">
-            {{ $data.contact.email }}
-          </a>
-        </div>
-        <div class="contact-orbit contact-orbit--one" aria-hidden="true"></div>
-        <div class="contact-orbit contact-orbit--two" aria-hidden="true"></div>
+        <a href="mailto:{{ $data.contact.email }}">{{ $data.contact.email }} <span aria-hidden="true">↗</span></a>
       </div>
     </div>
-  </section>
+  </aside>
+  {{ end }}
 </div>
