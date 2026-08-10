@@ -3,6 +3,8 @@ title: 🔬 Joined Tsinghua University’s LEAP Lab for a Research Internship
 summary: In December 2025, I joined Tsinghua University’s LEAP Lab for a research internship, working on embodied intelligence and real-world robot learning under the guidance of Prof. Gao Huang.
 date: 2025-12-28
 display_date: Dec 2025
+highlight_entities:
+  - Tsinghua University’s LEAP Lab
 
 authors:
   - admin

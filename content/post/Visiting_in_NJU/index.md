@@ -2,6 +2,8 @@
 title: 🏞️ Join the lab of Professor Kai Zhang in Nanjing University as Visiting student！
 summary: I'm thrilled to begin my visit to the Suzhou campus of Nanjing University, where I’ll be joining Prof. Kai Zhang's lab to explore the application of generative AI and diffusion policies in embodied intelligence.
 date: 2025-07-25
+highlight_entities:
+  - Nanjing University
 
 authors:
   - admin

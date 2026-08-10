@@ -7,7 +7,7 @@
 {{ $avatar := ($authorPage.Resources.ByType "image").GetMatch "avatar.jpg" }}
 {{ $portrait := "" }}
 {{ with $avatar }}
-  {{ $portrait = .Fill "800x800 Center webp q90" }}
+  {{ $portrait = .Fill "1000x1000 Center webp q90" }}
 {{ end }}
 
 {{ $paperPage := site.GetPage "/publication/conference-paper" }}
@@ -25,6 +25,10 @@
 {{ $researchPhoto := (resources.Get "media/portfolio/research-harbor.jpg").Fill "1600x640 Center webp q84" }}
 {{ $publicationPhoto := (resources.Get "media/portfolio/about-shore.jpg").Fill "1600x640 Center webp q86" }}
 {{ $demosPhoto := (resources.Get "media/portfolio/about-promenade.jpg").Fill "1600x640 Center webp q84" }}
+{{ $scholarIcon := resources.Get "media/icons/google-scholar.svg" }}
+{{ $githubIcon := resources.Get "media/icons/github.svg" }}
+{{ $researchGateIcon := resources.Get "media/icons/researchgate.svg" }}
+{{ $dblpIcon := resources.Get "media/icons/dblp.svg" }}
 
 <a class="skip-link" href="#portfolio-main">Skip to content</a>
 
@@ -80,6 +84,21 @@
                 decoding="async">
               {{ end }}
             </figure>
+
+            <nav class="profile-icon-row biography-socials" aria-label="Academic and social profiles">
+              <a href="https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+                <img src="{{ $scholarIcon.RelPermalink }}" width="32" height="32" alt="" aria-hidden="true">
+              </a>
+              <a href="https://github.com/YuanKJing" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                <img src="{{ $githubIcon.RelPermalink }}" width="32" height="32" alt="" aria-hidden="true">
+              </a>
+              <a href="https://www.researchgate.net/profile/Jing-Junqi?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
+                <img src="{{ $researchGateIcon.RelPermalink }}" width="32" height="32" alt="" aria-hidden="true">
+              </a>
+              <a href="https://dblp.org/pid/410/3976.html" target="_blank" rel="noopener" aria-label="DBLP" title="DBLP">
+                <img src="{{ $dblpIcon.RelPermalink }}" width="32" height="32" alt="" aria-hidden="true">
+              </a>
+            </nav>
           </div>
 
           <div class="about-copy" data-reveal>
@@ -97,25 +116,14 @@
               <strong>{{ $data.hero.status }}</strong>
               <a href="mailto:{{ $data.contact.email }}">Email me</a>
             </div>
-
-            <nav class="profile-icon-row biography-socials" aria-label="Academic and social profiles">
-              <a href="https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
-                {{ partial "functions/get_icon" (dict "name" "academicons/google-scholar" "attributes" `style="height: 1.45rem; width: 1.45rem;"`) }}
-              </a>
-              <a href="https://github.com/YuanKJing" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-                {{ partial "functions/get_icon" (dict "name" "brands/github" "attributes" `style="height: 1.45rem; width: 1.45rem;"`) }}
-              </a>
-              <a href="https://www.researchgate.net/profile/Jing-Junqi?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
-                {{ partial "functions/get_icon" (dict "name" "academicons/researchgate" "attributes" `style="height: 1.45rem; width: 1.45rem;"`) }}
-              </a>
-              <a href="https://dblp.org/pid/410/3976.html" target="_blank" rel="noopener" aria-label="DBLP" title="DBLP">
-                {{ partial "functions/get_icon" (dict "name" "academicons/dblp" "attributes" `style="height: 1.45rem; width: 1.45rem;"`) }}
-              </a>
-            </nav>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="about-news" id="news" aria-labelledby="news-heading">
+    <section class="portfolio-chapter news-chapter" id="news" aria-labelledby="news-heading">
+      <div class="portfolio-container">
+        <div class="about-news">
           <div class="subsection-heading" data-reveal>
             <div>
               <p class="chapter-label">Updates</p>
@@ -127,11 +135,16 @@
           <div class="news-list">
             {{ range $index, $post := first 5 (where site.RegularPages.ByDate.Reverse "Type" "post") }}
               {{ $newsTitle := replaceRE "^[^[:alnum:]]+[[:space:]]*" "" $post.Title }}
+              {{ $newsTitleMarkup := $newsTitle }}
+              {{ range $entity := $post.Params.highlight_entities }}
+                {{ $entityMarkup := printf `<mark class="news-entity">%s</mark>` ($entity | htmlEscape) }}
+                {{ $newsTitleMarkup = replace $newsTitleMarkup $entity $entityMarkup }}
+              {{ end }}
               <a class="news-item" href="{{ $post.RelPermalink }}" data-reveal>
                 <time datetime="{{ $post.Date.Format "2006-01-02" }}">
                   {{ $post.Params.display_date | default ($post.Date.Format "Jan 2006") }}
                 </time>
-                <span>{{ $newsTitle }}</span>
+                <span>{{ $newsTitleMarkup | safeHTML }}</span>
                 <i aria-hidden="true">↗</i>
               </a>
             {{ end }}
