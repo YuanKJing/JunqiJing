@@ -72,7 +72,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-padding-top: 5rem;
 }
 
@@ -82,6 +82,12 @@ body {
   font-family: "Atkinson Hyperlegible", Inter, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+.page-wrapper a {
+  -webkit-user-drag: none;
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 ::selection {
@@ -436,6 +442,7 @@ video:focus-visible,
   border-radius: var(--radius-md);
   background: var(--panel);
   box-shadow: var(--shadow-soft);
+  font-family: "Times New Roman", Times, "Liberation Serif", Georgia, serif;
 }
 
 .identity-strip__person {
@@ -455,7 +462,7 @@ video:focus-visible,
 .identity-strip__person h1 {
   margin: 0 0 0.25rem;
   color: var(--ink);
-  font-family: "Atkinson Hyperlegible", Inter, sans-serif;
+  font-family: inherit;
   font-size: clamp(1.45rem, 2.2vw, 1.85rem);
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -470,17 +477,17 @@ video:focus-visible,
 
 .identity-strip__current {
   min-width: 0;
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: linear-gradient(145deg, #ffffff, #f4f7f7);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .identity-strip__current > span {
   display: block;
   margin-bottom: 0.3rem;
   color: var(--muted);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: inherit;
   font-size: 0.69rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -504,10 +511,10 @@ video:focus-visible,
 
 .identity-strip__links {
   min-width: 0;
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: linear-gradient(145deg, #ffffff, #f4f7f7);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .identity-email {
@@ -1549,7 +1556,8 @@ video:focus-visible,
 
 @media (min-width: 1024px) {
   html {
-    scroll-padding-top: 0;
+    /* Theme JS measures the fixed side rail as a top navbar; override its full-height inline padding. */
+    scroll-padding-top: 1px !important;
   }
 
   .page-header {
@@ -1730,8 +1738,8 @@ video:focus-visible,
     gap: 1.5rem;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
-    border: 1px solid var(--line);
+    padding: 0;
+    border: 0;
   }
 
   .about-chapter .biography-socials {
@@ -1878,8 +1886,8 @@ video:focus-visible,
   .identity-strip__current,
   .identity-strip__links {
     grid-column: auto;
-    padding: 1rem;
-    border: 1px solid var(--line);
+    padding: 0;
+    border: 0;
   }
 
   .identity-strip__links {

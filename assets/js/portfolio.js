@@ -110,6 +110,17 @@
       if (!reduceMotion && !saveData) visibleVideos.forEach(playVideo);
     });
 
+    document.addEventListener(
+      "click",
+      (event) => {
+        const link = event.target.closest?.("a");
+        const selection = window.getSelection();
+        if (!link || !selection || selection.isCollapsed || !selection.toString().trim()) return;
+        if (selection.containsNode(link, true)) event.preventDefault();
+      },
+      true,
+    );
+
     const normalizedPath = (value) => value.replace(/\/+$/, "") || "/";
     const currentPath = normalizedPath(window.location.pathname);
     document.querySelectorAll("#nav-menu a").forEach((link) => {
