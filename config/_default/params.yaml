@@ -38,7 +38,7 @@ header:
     show_theme_chooser: false
     align: center
     logo:
-      text: "JUNQI JING"
+      text: "Junqi"
     button:
       enable: true
       text: "Email me"

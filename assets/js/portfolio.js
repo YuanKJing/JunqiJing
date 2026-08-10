@@ -51,12 +51,23 @@
     }
 
     const videos = [...document.querySelectorAll("[data-robot-video]")];
-    let activeVideo = null;
+    const visibleVideos = new Set();
 
     const pauseVideo = (video) => {
       if (!video) return;
       if (!video.paused) video.pause();
       video.closest(".demo-card")?.classList.remove("is-playing");
+    };
+
+    const playVideo = (video) => {
+      if (!video) return;
+      video.muted = true;
+      const playRequest = video.play();
+      if (playRequest) {
+        playRequest
+          .then(() => video.closest(".demo-card")?.classList.add("is-playing"))
+          .catch(() => video.closest(".demo-card")?.classList.remove("is-playing"));
+      }
     };
 
     videos.forEach((video) => {
@@ -67,27 +78,22 @@
     });
 
     if (videos.length && !reduceMotion && !saveData) {
+      videos.forEach((video) => {
+        video.autoplay = true;
+      });
+
       const videoObserver = new IntersectionObserver(
         (entries) => {
-          entries
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-            .forEach((entry) => {
-              const video = entry.target;
-              if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
-                if (activeVideo && activeVideo !== video) pauseVideo(activeVideo);
-                activeVideo = video;
-                video.muted = true;
-                const playRequest = video.play();
-                if (playRequest) {
-                  playRequest
-                    .then(() => video.closest(".demo-card")?.classList.add("is-playing"))
-                    .catch(() => video.closest(".demo-card")?.classList.remove("is-playing"));
-                }
-              } else if (activeVideo === video || !entry.isIntersecting) {
-                pauseVideo(video);
-                if (activeVideo === video) activeVideo = null;
-              }
-            });
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+              visibleVideos.add(video);
+              playVideo(video);
+            } else {
+              visibleVideos.delete(video);
+              pauseVideo(video);
+            }
+          });
         },
         { threshold: [0, 0.25, 0.55, 0.8] },
       );
@@ -96,9 +102,12 @@
     }
 
     document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) return;
-      videos.forEach(pauseVideo);
-      activeVideo = null;
+      if (document.hidden) {
+        videos.forEach(pauseVideo);
+        return;
+      }
+
+      if (!reduceMotion && !saveData) visibleVideos.forEach(playVideo);
     });
 
     const normalizedPath = (value) => value.replace(/\/+$/, "") || "/";

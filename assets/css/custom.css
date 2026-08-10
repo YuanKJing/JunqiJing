@@ -61,7 +61,7 @@
   --accent-deep: #285f78;
   --accent-soft: #e0eff6;
   --sand: #d4b47a;
-  --video-bg: #132e3a;
+  --video-bg: #eef3f5;
   --radius-sm: 0.75rem;
   --radius-md: 1rem;
   --radius-lg: 1.25rem;
@@ -157,8 +157,8 @@ video:focus-visible,
   align-items: center;
   height: 100%;
   color: var(--ink);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.83rem;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: 0.13em;
   text-decoration: none;
@@ -445,23 +445,6 @@ video:focus-visible,
   min-width: 0;
 }
 
-.identity-avatar {
-  flex: 0 0 5.25rem;
-  overflow: hidden;
-  width: 5.25rem;
-  height: 5.25rem;
-  border: 3px solid #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px var(--line-strong);
-  background: var(--panel-soft);
-}
-
-.identity-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .identity-strip__person strong {
   display: block;
   color: var(--ink);
@@ -563,13 +546,14 @@ video:focus-visible,
   padding-top: clamp(3.25rem, 6vw, 5.5rem);
   border-top: 0;
   color: #ffffff;
-  background: #2d6c86;
+  background: #1f6d93;
 }
 
 .about-chapter .chapter-label,
 .about-chapter .chapter-heading h2,
 .about-chapter .subsection-heading h2,
 .about-chapter .subsection-heading > a,
+.about-chapter .about-copy h2,
 .about-chapter .about-copy,
 .about-chapter .about-copy strong,
 .about-chapter .about-copy a,
@@ -587,7 +571,7 @@ video:focus-visible,
 .about-chapter .chapter-heading--compact > p,
 .about-chapter .about-copy,
 .about-chapter .news-item time {
-  color: #e4f0f5;
+  color: #eaf5fa;
 }
 
 .about-chapter .about-layout,
@@ -599,7 +583,7 @@ video:focus-visible,
 
 .about-chapter .photo-frame {
   border-color: rgba(255, 255, 255, 0.38);
-  background: #235a72;
+  background: #195f81;
 }
 
 .about-chapter .interest-list span {
@@ -624,16 +608,14 @@ video:focus-visible,
 
 .about-layout {
   display: grid;
-  grid-template-columns: minmax(15rem, 0.78fr) minmax(0, 1.22fr);
-  gap: clamp(2.5rem, 6vw, 6.5rem);
-  padding-top: clamp(2rem, 4vw, 3.5rem);
-  border-top: 1px solid var(--line-strong);
+  grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.4fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
 }
 
 .about-gallery {
-  display: grid;
-  gap: 0.9rem;
-  align-content: start;
+  display: block;
+  align-self: start;
 }
 
 .photo-frame {
@@ -644,14 +626,15 @@ video:focus-visible,
   box-shadow: 0 12px 30px rgba(12, 43, 57, 0.12);
 }
 
-.photo-frame--primary {
-  aspect-ratio: 4 / 3;
+.biography-portrait {
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 31rem;
+  border-radius: 0.75rem;
 }
 
-.photo-frame--secondary {
-  aspect-ratio: 8 / 5;
-  width: 84%;
-  margin-left: auto;
+.biography-portrait img {
+  object-position: center 34%;
 }
 
 .photo-frame img {
@@ -661,19 +644,20 @@ video:focus-visible,
   transition: transform 360ms var(--ease);
 }
 
-.photo-frame--primary img {
-  object-position: center 58%;
-}
-
-.photo-frame--secondary img {
-  object-position: center 56%;
-}
-
 .about-copy {
   max-width: 50rem;
   color: var(--ink-soft);
   font-size: clamp(1.02rem, 1.5vw, 1.16rem);
   line-height: 1.78;
+}
+
+.about-copy h2 {
+  margin: -0.1rem 0 1.65rem;
+  font-family: "Atkinson Hyperlegible", Inter, sans-serif;
+  font-size: clamp(2rem, 3vw, 2.65rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
 }
 
 .about-copy > p + p {
@@ -691,6 +675,39 @@ video:focus-visible,
   text-decoration: underline;
   text-decoration-color: rgba(63, 116, 114, 0.42);
   text-underline-offset: 0.2em;
+}
+
+.about-chapter .about-copy a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.85);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.17em;
+}
+
+.about-chapter .about-copy a:hover {
+  color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.about-chapter .biography-socials {
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.about-chapter .biography-socials a {
+  width: 3rem;
+  height: 3rem;
+  border-color: rgba(255, 255, 255, 0.58);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.about-chapter .biography-socials a:hover {
+  border-color: #ffffff;
+  color: #1f6d93;
+  background: #ffffff;
 }
 
 .about-copy a:hover {
@@ -1228,13 +1245,16 @@ video:focus-visible,
 }
 
 .demos-chapter .chapter-heading {
+  grid-template-columns: 1fr;
   margin-top: clamp(1.8rem, 4vw, 3rem);
 }
 
 .demo-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(20rem, 1.1fr) minmax(17rem, 0.9fr);
+  grid-template-rows: repeat(2, auto);
   gap: clamp(1.25rem, 3vw, 2.2rem);
+  align-items: start;
 }
 
 .demo-card {
@@ -1252,6 +1272,10 @@ video:focus-visible,
   box-shadow: 0 18px 42px rgba(25, 55, 68, 0.14);
 }
 
+.demo-card--featured {
+  grid-row: 1 / span 2;
+}
+
 .demo-card:focus-within {
   border-color: rgba(59, 130, 160, 0.75);
   box-shadow: var(--shadow-lift);
@@ -1260,15 +1284,31 @@ video:focus-visible,
 .demo-media {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
   background: var(--video-bg);
 }
 
+.demo-card--portrait .demo-media {
+  aspect-ratio: 9 / 16;
+}
+
+.demo-card--landscape .demo-media {
+  aspect-ratio: 16 / 9;
+}
+
+.demo-card--featured.demo-card--portrait .demo-media {
+  aspect-ratio: 4 / 5;
+}
+
 .robot-video {
+  display: block;
   width: 100%;
   height: 100%;
-  background: var(--video-bg);
-  object-fit: contain;
+  background: transparent;
+  object-fit: cover;
+}
+
+.demo-card--featured .robot-video {
+  object-position: center 62%;
 }
 
 .robot-video:focus-visible {
@@ -1483,7 +1523,7 @@ video:focus-visible,
     left: 0;
     width: var(--rail-width);
     height: 100dvh;
-    border-right: 1px solid #2a2a2a;
+    border-right: 0;
     border-bottom: 0;
     background: #171717;
   }
@@ -1494,6 +1534,7 @@ video:focus-visible,
     align-items: stretch;
     justify-content: flex-start;
     padding: 2rem 1.35rem !important;
+    font-family: "Times New Roman", Times, "Liberation Serif", Georgia, serif;
   }
 
   #site-header,
@@ -1509,10 +1550,13 @@ video:focus-visible,
   #site-header .navbar-brand {
     display: block;
     height: auto;
-    padding: 0.4rem 0.75rem;
+    padding: 0.35rem 0.75rem;
     color: #f2f8fb;
-    font-size: 0.86rem;
-    line-height: 1.5;
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
   }
 
   #site-header .navbar-brand::after {
@@ -1520,8 +1564,8 @@ video:focus-visible,
     margin-top: 0.65rem;
     color: #a9c0cb;
     content: "Embodied AI Researcher";
-    font-family: "Atkinson Hyperlegible", sans-serif;
-    font-size: 0.78rem;
+    font-family: "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+    font-size: 0.94rem;
     font-weight: 400;
     letter-spacing: 0;
     text-transform: none;
@@ -1553,20 +1597,37 @@ video:focus-visible,
   #nav-menu .nav-link {
     min-height: 2.85rem;
     padding: 0.65rem 0.8rem;
-    font-size: 0.95rem;
+    border: 0;
+    border-radius: 0;
+    font-family: "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+    font-size: 1.12rem;
+    line-height: 1.3;
+    transform: none;
   }
 
   #nav-menu .nav-link {
     color: #d7e5eb;
   }
 
-  #nav-menu .nav-link:hover,
+  #nav-menu .nav-link:hover {
+    border: 0;
+    color: #cdefff;
+    background: transparent;
+    transform: none;
+  }
+
   #nav-menu .nav-link.is-current,
   #nav-menu .nav-link.active,
-  #nav-menu .nav-link[aria-current="location"] {
-    border-left-color: #8fc2d6;
-    color: #17323f;
-    background: #ffffff;
+  #nav-menu .nav-link[aria-current="location"],
+  #nav-menu .nav-link[aria-current="page"] {
+    border: 0;
+    color: #e7f7ff;
+    background: linear-gradient(90deg, #e7f7ff 0%, #a9def5 52%, #78c8e8 100%);
+    background-clip: text;
+    font-weight: 700;
+    transform: none;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   #nav-menu > li.mt-4 {
@@ -1578,32 +1639,33 @@ video:focus-visible,
     display: flex;
     width: 100%;
     margin: auto 0 0 !important;
-    padding-top: 1.25rem;
-    border-top: 1px solid #363636;
+    padding-top: 1rem;
+    border-top: 0;
   }
 
   #site-header .navbar > div:last-child > a {
     display: inline-flex !important;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    width: auto;
     min-height: 2.85rem;
     margin: 0 !important;
     padding: 0.65rem 0.9rem;
-    border: 1px solid #8fc2d6;
-    border-radius: var(--radius-sm);
+    border: 0;
+    border-radius: 0;
     color: #ffffff;
-    background: #3b82a0;
-    font-size: 0.91rem;
+    background: transparent;
+    font-family: "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+    font-size: 1.08rem;
     font-weight: 700;
     text-decoration: none;
     transition: background-color 180ms ease, transform 200ms var(--ease);
   }
 
   #site-header .navbar > div:last-child > a:hover {
-    color: #ffffff;
+    color: #bde8fb;
     background: transparent;
-    transform: translateY(-0.14rem);
+    transform: translateX(0.15rem);
   }
 
   .page-body,
@@ -1636,8 +1698,8 @@ video:focus-visible,
     border: 1px solid var(--line);
   }
 
-  .profile-icon-row {
-    margin-top: 0;
+  .about-chapter .biography-socials {
+    margin-top: 1.8rem;
   }
 
   .journey-item {
@@ -1677,12 +1739,29 @@ video:focus-visible,
   }
 
   .about-gallery {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    align-items: end;
+    display: block;
   }
 
-  .photo-frame--secondary {
-    width: 100%;
+  .demo-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .demo-card--featured {
+    grid-row: auto;
+  }
+
+  .demo-card--portrait {
+    width: min(100%, 30rem);
+    justify-self: center;
+  }
+
+  .demo-card--featured.demo-card--portrait .demo-media {
+    aspect-ratio: 9 / 16;
+  }
+
+  .demo-card--featured .robot-video {
+    object-position: center;
   }
 
   .research-intro {
@@ -1692,10 +1771,6 @@ video:focus-visible,
 
   .research-intro > a {
     width: fit-content;
-  }
-
-  .demo-grid {
-    grid-template-columns: 1fr;
   }
 
   .contact-strip__inner {
@@ -1761,6 +1836,10 @@ video:focus-visible,
 
   .profile-icon-row {
     margin-top: 0.75rem;
+  }
+
+  .about-chapter .biography-socials {
+    margin-top: 1.6rem;
   }
 
   .chapter-visual {
@@ -1846,14 +1925,6 @@ video:focus-visible,
     padding-top: 0;
   }
 
-  .about-gallery {
-    grid-template-columns: 1fr;
-  }
-
-  .photo-frame--secondary {
-    width: 82%;
-  }
-
   .availability-note {
     grid-template-columns: auto minmax(0, 1fr);
   }
@@ -1905,10 +1976,6 @@ video:focus-visible,
     width: min(10.5rem, calc(100% - 2rem));
   }
 
-  .demo-media {
-    aspect-ratio: 4 / 3;
-  }
-
   .portfolio-footer__inner {
     padding-inline: 1rem;
   }
@@ -1922,12 +1989,6 @@ video:focus-visible,
 @media (max-width: 390px) {
   .identity-strip__person {
     align-items: flex-start;
-  }
-
-  .identity-avatar {
-    flex-basis: 4.5rem;
-    width: 4.5rem;
-    height: 4.5rem;
   }
 
   .home-hero__copy h1 {

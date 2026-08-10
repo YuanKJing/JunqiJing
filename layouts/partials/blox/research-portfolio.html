@@ -7,7 +7,7 @@
 {{ $avatar := ($authorPage.Resources.ByType "image").GetMatch "avatar.jpg" }}
 {{ $portrait := "" }}
 {{ with $avatar }}
-  {{ $portrait = .Fill "360x360 Center webp q88" }}
+  {{ $portrait = .Fill "800x800 Center webp q90" }}
 {{ end }}
 
 {{ $paperPage := site.GetPage "/publication/conference-paper" }}
@@ -22,9 +22,8 @@
 {{ $heroSmall := $heroSource.Resize "720x webp q82" }}
 {{ $heroMedium := $heroSource.Resize "1200x webp q84" }}
 {{ $heroLarge := $heroSource.Resize "1920x webp q86" }}
-{{ $aboutShore := (resources.Get "media/portfolio/about-shore.jpg").Fill "960x720 Center webp q84" }}
 {{ $researchPhoto := (resources.Get "media/portfolio/research-harbor.jpg").Fill "1600x640 Center webp q84" }}
-{{ $publicationPhoto := (resources.Get "media/portfolio/publication-coast.jpg").Fill "1600x640 Center webp q84" }}
+{{ $publicationPhoto := (resources.Get "media/portfolio/about-shore.jpg").Fill "1600x640 Center webp q86" }}
 {{ $demosPhoto := (resources.Get "media/portfolio/about-promenade.jpg").Fill "1600x640 Center webp q84" }}
 
 <a class="skip-link" href="#portfolio-main">Skip to content</a>
@@ -50,16 +49,6 @@
 
       <header class="identity-strip" aria-labelledby="portfolio-title" data-reveal="panel">
         <div class="identity-strip__person">
-          <div class="identity-avatar">
-            {{ with $portrait }}
-              <img
-                src="{{ .RelPermalink }}"
-                width="{{ .Width }}"
-                height="{{ .Height }}"
-                alt="Formal portrait of Junqi Jing"
-                decoding="async">
-            {{ end }}
-          </div>
           <div>
             <h1 id="portfolio-title">{{ $data.hero.name }}</h1>
             <strong>{{ $data.hero.role }}</strong>
@@ -72,48 +61,29 @@
         </div>
         <div class="identity-strip__links">
           <a class="identity-email" href="mailto:{{ $data.contact.email }}">{{ $data.contact.email }}</a>
-          <div class="profile-icon-row" aria-label="Academic and social profiles">
-            <a href="https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
-              {{ partial "functions/get_icon" (dict "name" "academicons/google-scholar" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
-            </a>
-            <a href="https://github.com/YuanKJing" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-              {{ partial "functions/get_icon" (dict "name" "brands/github" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
-            </a>
-            <a href="https://www.researchgate.net/profile/Jing-Junqi?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
-              {{ partial "functions/get_icon" (dict "name" "academicons/researchgate" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
-            </a>
-            <a href="https://dblp.org/pid/410/3976.html" target="_blank" rel="noopener" aria-label="DBLP" title="DBLP">
-              {{ partial "functions/get_icon" (dict "name" "academicons/dblp" "attributes" `style="height: 1.15rem; width: 1.15rem;"`) }}
-            </a>
-          </div>
         </div>
       </header>
     </div>
 
     <section class="portfolio-chapter about-chapter" aria-labelledby="about-heading">
       <div class="portfolio-container">
-        <div class="chapter-heading chapter-heading--compact" data-reveal>
-          <div>
-            <p class="chapter-label">Profile</p>
-            <h2 id="about-heading">About me</h2>
-          </div>
-          <p>My work connects world modeling, robot learning, and video generation with real-world interaction.</p>
-        </div>
-
         <div class="about-layout">
-          <div class="about-gallery" aria-label="Personal photography" data-reveal="image">
-            <figure class="photo-frame photo-frame--primary">
+          <div class="about-gallery" data-reveal="image">
+            <figure class="photo-frame biography-portrait">
+              {{ with $portrait }}
               <img
-                src="{{ $aboutShore.RelPermalink }}"
-                width="{{ $aboutShore.Width }}"
-                height="{{ $aboutShore.Height }}"
-                alt="A quiet shoreline with a walker, tugboat, and distant hills"
+                src="{{ .RelPermalink }}"
+                width="{{ .Width }}"
+                height="{{ .Height }}"
+                alt="Formal portrait of Junqi Jing"
                 loading="lazy"
                 decoding="async">
+              {{ end }}
             </figure>
           </div>
 
           <div class="about-copy" data-reveal>
+            <h2 id="about-heading">Biography</h2>
             {{ range $data.hero.bio }}
               <p>{{ . | markdownify }}</p>
             {{ end }}
@@ -127,6 +97,21 @@
               <strong>{{ $data.hero.status }}</strong>
               <a href="mailto:{{ $data.contact.email }}">Email me</a>
             </div>
+
+            <nav class="profile-icon-row biography-socials" aria-label="Academic and social profiles">
+              <a href="https://scholar.google.com/citations?user=EFVJ4AkAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+                {{ partial "functions/get_icon" (dict "name" "academicons/google-scholar" "attributes" `style="height: 1.45rem; width: 1.45rem;"`) }}
+              </a>
+              <a href="https://github.com/YuanKJing" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                {{ partial "functions/get_icon" (dict "name" "brands/github" "attributes" `style="height: 1.45rem; width: 1.45rem;"`) }}
+              </a>
+              <a href="https://www.researchgate.net/profile/Jing-Junqi?ev=hdr_xprf" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
+                {{ partial "functions/get_icon" (dict "name" "academicons/researchgate" "attributes" `style="height: 1.45rem; width: 1.45rem;"`) }}
+              </a>
+              <a href="https://dblp.org/pid/410/3976.html" target="_blank" rel="noopener" aria-label="DBLP" title="DBLP">
+                {{ partial "functions/get_icon" (dict "name" "academicons/dblp" "attributes" `style="height: 1.45rem; width: 1.45rem;"`) }}
+              </a>
+            </nav>
           </div>
         </div>
 
@@ -233,7 +218,7 @@
           src="{{ $publicationPhoto.RelPermalink }}"
           width="{{ $publicationPhoto.Width }}"
           height="{{ $publicationPhoto.Height }}"
-          alt="A coastal town and rocky shoreline beside the sea"
+          alt="A quiet shoreline with a walker, tugboat, and distant hills"
           loading="eager"
           fetchpriority="high"
           decoding="async">
@@ -320,17 +305,16 @@
           <p class="chapter-label">Real hardware</p>
           <h2 id="demos-heading">Real robot videos</h2>
         </div>
-        <p>Real hardware, real interaction. Each video starts muted when it enters view and keeps native playback controls.</p>
       </div>
 
       <div class="demo-grid">
-        {{ range $demo := $data.robot_demos.items }}
+        {{ range $index, $demo := $data.robot_demos.items }}
           {{ $video := $demo.video | default "" }}
           {{ $isRemoteVideo := or (hasPrefix $video "https://") (hasPrefix $video "http://") }}
           {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
           {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
           {{ if $hasVideo }}
-            <article class="demo-card" data-reveal="panel">
+            <article class="demo-card{{ if eq $index 0 }} demo-card--featured{{ end }} demo-card--{{ $demo.orientation | default "landscape" }}" data-reveal="panel">
               <div class="demo-media">
                 <video
                   class="robot-video"

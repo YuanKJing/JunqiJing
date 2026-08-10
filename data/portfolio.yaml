@@ -80,6 +80,7 @@ robot_demos:
   items:
     - number: "01"
       title: Dual-arm teleoperation
+      orientation: portrait
       description: >-
         A real-robot workspace for studying coordinated manipulation,
         demonstration collection, and human-in-the-loop control.
@@ -91,6 +92,7 @@ robot_demos:
         - Teleoperation
     - number: "02"
       title: Dual-arm ball catching
+      orientation: landscape
       description: >-
         A real-robot demonstration of coordinated dual-arm interception and
         catching of small objects in a tabletop workspace.
