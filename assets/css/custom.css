@@ -1228,20 +1228,6 @@ video:focus-visible {
   margin-top: 1.5rem;
 }
 
-.portfolio-button--light {
-  background: white;
-  color: var(--dark);
-}
-
-.portfolio-button--light:hover {
-  color: var(--accent);
-}
-
-.contact-actions > span {
-  color: rgba(249, 255, 251, 0.62);
-  font-size: 0.72rem;
-}
-
 .contact-orbit {
   display: none;
 }
@@ -1934,15 +1920,15 @@ body {
 }
 
 .research-grid {
-  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: 1fr;
+  gap: clamp(0.85rem, 1.5vw, 1.1rem);
 }
 
 .research-card {
   position: relative;
   display: flex;
-  min-height: 16.5rem;
+  min-height: clamp(20rem, 27vw, 22rem);
   overflow: hidden;
   flex-direction: column;
   padding: clamp(1.5rem, 3vw, 2rem);
@@ -1950,10 +1936,9 @@ body {
 }
 
 .research-card:first-child {
-  min-height: 34rem;
-  grid-row: 1 / span 2;
-  background:
-    linear-gradient(145deg, color-mix(in srgb, var(--accent-soft) 58%, var(--panel)), var(--panel) 58%);
+  min-height: clamp(20rem, 27vw, 22rem);
+  grid-row: auto;
+  background: var(--panel);
 }
 
 .research-card::before {
@@ -2156,9 +2141,12 @@ body {
 
 .contact-card {
   isolation: isolate;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
   background:
-    radial-gradient(circle at 88% 18%, rgba(79, 212, 154, 0.13), transparent 23rem),
-    var(--dark);
+    radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 23rem),
+    linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 86%, var(--panel)), color-mix(in srgb, var(--panel) 92%, var(--accent-soft)));
+  box-shadow: var(--shadow);
+  color: var(--text);
 }
 
 .contact-card > :not(.contact-orbit) {
@@ -2167,17 +2155,53 @@ body {
 }
 
 .contact-card h2 {
-  max-width: 18ch;
-  font-size: clamp(2.8rem, 5vw, 4.6rem);
-  letter-spacing: -0.045em;
-  line-height: 0.98;
+  max-width: 22ch;
+  color: var(--text);
+  font-size: clamp(2.1rem, 3.2vw, 3rem);
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+.contact-card .section-eyebrow {
+  color: color-mix(in srgb, var(--accent) 82%, var(--text));
+}
+
+.contact-card > p:not(.section-eyebrow) {
+  max-width: 54rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.25vw, 1.08rem);
+  font-weight: 520;
+  line-height: 1.68;
+}
+
+.contact-card > p:not(.section-eyebrow) strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.contact-email {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration-color: color-mix(in srgb, var(--accent) 58%, transparent);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.contact-email:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 .contact-orbit {
   position: absolute;
   z-index: 1;
   display: block;
-  border: 1px solid rgba(79, 212, 154, 0.2);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -2186,7 +2210,7 @@ body {
 .contact-orbit::after {
   position: absolute;
   border-radius: 50%;
-  background: var(--accent-bright);
+  background: var(--accent);
   content: "";
 }
 
@@ -2249,10 +2273,6 @@ body {
     font-size: clamp(4rem, 7.8vw, 5.2rem);
   }
 
-  .research-card:first-child {
-    min-height: 31rem;
-  }
-
   .paper-card {
     grid-template-columns: 1fr;
   }
@@ -2264,6 +2284,11 @@ body {
     min-height: 2.75rem;
     align-items: center;
     justify-content: center;
+  }
+
+  .section-heading {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   .portfolio-home::before {
@@ -2296,7 +2321,7 @@ body {
   }
 
   .research-card:first-child {
-    min-height: 22rem;
+    min-height: 18rem;
     grid-row: auto;
   }
 
@@ -2377,6 +2402,12 @@ body {
     font-size: clamp(2.65rem, 13vw, 3.45rem);
   }
 
+  .section-heading > p,
+  .research-card > p,
+  .contact-email {
+    font-size: 1rem;
+  }
+
   .research-card:first-child,
   .research-card {
     min-height: 19rem;
@@ -2416,7 +2447,7 @@ body {
   }
 
   .contact-card h2 {
-    font-size: clamp(2.7rem, 13vw, 3.6rem);
+    font-size: clamp(2rem, 9vw, 2.8rem);
   }
 
   .contact-orbit--one {

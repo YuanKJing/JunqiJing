@@ -359,7 +359,9 @@
         {{ range $index, $post := first 4 (where site.RegularPages.ByDate.Reverse "Type" "post") }}
           <a class="news-item" href="{{ $post.RelPermalink }}" data-reveal>
             <span class="news-index" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>
-            <time datetime="{{ $post.Date.Format "2006-01-02" }}">{{ $post.Date.Format "02 Jan 2006" }}</time>
+            <time datetime="{{ $post.Date.Format "2006-01-02" }}">
+              {{ $post.Params.display_date | default ($post.Date.Format "02 Jan 2006") }}
+            </time>
             <h3>{{ $post.Title }}</h3>
             <span aria-hidden="true">↗</span>
           </a>
@@ -374,12 +376,17 @@
       <div class="contact-card" data-reveal="panel">
         <p class="section-eyebrow">{{ $data.contact.eyebrow }}</p>
         <h2>{{ $data.contact.title }}</h2>
-        <p>{{ $data.contact.text }}</p>
+        <p>{{ $data.contact.text | markdownify }}</p>
         <div class="contact-actions">
-          <a class="portfolio-button portfolio-button--light" href="mailto:{{ $data.contact.email }}">
+          <a class="portfolio-button portfolio-button--primary" href="mailto:{{ $data.contact.email }}">
             Start a conversation <span aria-hidden="true">↗</span>
           </a>
-          <span>{{ $data.contact.email }}</span>
+          <a
+            class="contact-email"
+            href="mailto:{{ $data.contact.email }}"
+            aria-label="Email {{ $data.contact.email }}">
+            {{ $data.contact.email }}
+          </a>
         </div>
         <div class="contact-orbit contact-orbit--one" aria-hidden="true"></div>
         <div class="contact-orbit contact-orbit--two" aria-hidden="true"></div>

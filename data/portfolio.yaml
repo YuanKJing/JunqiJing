@@ -4,10 +4,10 @@ hero:
   affiliation: Harbin Institute of Technology
   current: AI Research Intern at KNOWIN AI
   current_url: https://knowinai.com/
-  headline: World Action Models, VLA systems, and real-world robot learning.
+  headline: World Model, RSL, and Video Generation.
   bio:
     - >-
-      I’m **Junqi Jing (荆浚淇)**, a B.E. candidate in Software Engineering at
+      I’m **Junqi Jing**, a B.E. candidate in Software Engineering at
       Harbin Institute of Technology, expected to graduate in 2027. My research
       interests center on Embodied AI and world models, with a particular
       interest in generative approaches to learning and planning for physical
@@ -19,9 +19,10 @@ hero:
       I spent a semester as an exchange student at **POSTECH**, conducting
       research in the [MLV
       Lab](https://sites.google.com/view/mlvlab/home?authuser=0) with Prof.
-      [Kwang In Kim](https://sites.google.com/view/kimki), and later visited
-      [**Tsinghua University’s LEAP Lab**](https://www.leaplab.ai/) under the
-      guidance of Prof. [Gao Huang](https://gaohuang-net.github.io/).
+      [Kwang In Kim](https://sites.google.com/view/kimki), and later joined
+      [**Tsinghua University’s LEAP Lab**](https://www.leaplab.ai/) for a
+      research internship under the guidance of Prof. [Gao
+      Huang](https://gaohuang-net.github.io/).
     - >-
       I am currently seeking **research-oriented internship opportunities** and
       look forward to connecting with research teams across industry,
@@ -32,43 +33,42 @@ hero:
     text: Watch robot demos
     url: "#robot-demos"
   interests:
-    - Embodied AI
-    - World Action Models
-    - Vision-Language-Action
-    - Dexterous Manipulation
+    - World Model
+    - RSL
+    - Video Generation
 
 research:
   eyebrow: Research agenda
   title: From prediction to physical action.
   intro: >-
-    My work connects visual generation, temporal reasoning, and robot control.
-    I am especially interested in representations that help an embodied agent
-    anticipate what comes next—and choose what to do.
+    My work connects world modeling, robot learning, and video generation. I am
+    especially interested in representations that capture how environments
+    evolve and support reliable physical interaction.
   areas:
     - number: "01"
-      title: World Action Models
+      title: World Model
       text: >-
-        Learning predictive models that connect observations, actions, and
-        future physical states for planning and decision making.
+        Learning predictive representations of environment dynamics for
+        reasoning, planning, and decision-making.
       tags:
-        - World models
-        - Action-conditioned prediction
+        - Predictive modeling
+        - Planning
     - number: "02"
-      title: VLA & Dexterous Manipulation
+      title: RSL
       text: >-
-        Building vision-language-action systems that translate high-level
-        intent into reliable behavior on real dexterous hands.
+        Developing learning systems that turn interaction and feedback into
+        robust, transferable robot skills.
       tags:
-        - VLA
-        - Real-world robotics
+        - Policy learning
+        - Robot control
     - number: "03"
-      title: Generative Physical Intelligence
+      title: Video Generation
       text: >-
-        Exploring intermediate representations and generative objectives that
-        make physical reasoning more structured, transferable, and useful.
+        Building controllable video models that capture temporal dynamics and
+        generate coherent future visual states.
       tags:
-        - Generative AI
-        - Intermediate representations
+        - Generative video
+        - Temporal modeling
 
 robot_demos:
   eyebrow: Real-robot work
@@ -143,9 +143,9 @@ journey:
       text: Dexterous-hand manipulation with VLA models and exploratory work on World Action Models.
       current: true
     - date: Dec 2025 — Mar 2026
-      role: Visiting Student
+      role: Research Internship
       place: Tsinghua University · LEAP Lab
-      text: Real-hardware practice, teleoperation, and exploration of world-action modeling.
+      text: Research on real-hardware interaction, robot learning, and world modeling at LEAP Lab.
     - date: Sep 2025 — Dec 2025
       role: Exchange Student Researcher
       place: POSTECH · MLV Lab
@@ -185,7 +185,7 @@ contact:
   eyebrow: Collaboration
   title: Let’s build systems that can understand—and change—the physical world.
   text: >-
-    I am open to research internships, technical conversations, and
-    collaborations with industry research teams working on Embodied AI, World
-    Models, and robot learning.
+    I am actively seeking **research-oriented internship opportunities at
+    leading technology companies** and welcome **research collaborations** with
+    industry teams working on World Model, RSL, and Video Generation.
   email: xingkong8527@gmail.com

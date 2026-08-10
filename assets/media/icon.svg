@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title>Junqi Jing J monogram</title>
+  <defs>
+    <linearGradient id="j-gradient" x1="112" y1="72" x2="378" y2="452" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#dff7ec"/>
+      <stop offset="0.52" stop-color="#b8e8d4"/>
+      <stop offset="1" stop-color="#8fd4b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="#ffffff"/>
+  <path
+    fill="url(#j-gradient)"
+    d="M120 92h284l-15 72h-52v160c0 88-52 140-139 140-64 0-111-31-133-86l72-31c11 32 31 50 62 50 43 0 63-26 63-78V164H139z"/>
+</svg>

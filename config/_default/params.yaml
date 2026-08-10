@@ -15,7 +15,7 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'Junqi Jing is an Embodied AI researcher working on World Action Models, VLA systems, and real-world dexterous manipulation.'
+    description: 'Junqi Jing is an Embodied AI researcher working on World Model, RSL, and Video Generation.'
     twitter: ''
   analytics:
     google_analytics: ''
@@ -46,7 +46,7 @@ header:
 
 # Site footer
 footer:
-  text: 'Embodied AI · World Models · Robot Learning'
+  text: 'World Model · RSL · Video Generation'
   copyright:
     notice: '© {year} Junqi Jing'
     license:
