@@ -353,6 +353,10 @@ video:focus-visible,
   line-height: 1.08;
 }
 
+.chapter-heading--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .chapter-heading > p,
 .chapter-heading--compact > p {
   color: var(--muted);
@@ -441,6 +445,63 @@ video:focus-visible,
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
+}
+
+.home-banner-title__write {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+@keyframes home-title-write {
+  from {
+    clip-path: inset(-0.22em 100% -0.28em -0.08em);
+  }
+
+  to {
+    clip-path: inset(-0.22em -0.08em -0.28em -0.08em);
+  }
+}
+
+@keyframes home-title-sweep {
+  0% {
+    clip-path: inset(-0.22em 100% -0.28em -0.08em);
+    opacity: 0;
+  }
+
+  16% {
+    opacity: 0.92;
+  }
+
+  78% {
+    clip-path: inset(-0.22em -0.08em -0.28em -0.08em);
+    opacity: 1;
+  }
+
+  100% {
+    clip-path: inset(-0.22em -0.08em -0.28em -0.08em);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-motion.portfolio-ready .home-banner-title__write {
+    clip-path: inset(-0.22em 100% -0.28em -0.08em);
+  }
+
+  .portfolio-motion.portfolio-ready .home-banner-title__write.is-writing {
+    animation: home-title-write 3.2s steps(34, end) 0.55s both;
+  }
+
+  .portfolio-motion.portfolio-ready .home-banner-title__write.is-writing::after {
+    position: absolute;
+    inset: 0;
+    color: #ffffff;
+    content: attr(data-text);
+    text-shadow: 0 0 0.18em rgba(255, 255, 255, 0.72), 0 2px 14px rgba(4, 21, 29, 0.58);
+    pointer-events: none;
+    animation: home-title-sweep 0.58s var(--ease) 3.95s both;
+  }
 }
 
 .home-banner-tagline {
@@ -2162,9 +2223,27 @@ video:focus-visible,
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+
+  .home-banner-title__write {
+    clip-path: none !important;
+    animation: none !important;
+  }
+
+  .home-banner-title__write::after {
+    display: none !important;
+  }
 }
 
 @media print {
+  .home-banner-title__write {
+    clip-path: none !important;
+    animation: none !important;
+  }
+
+  .home-banner-title__write::after {
+    display: none !important;
+  }
+
   [data-scroll-parallax] > img {
     animation: none !important;
     transform: none !important;

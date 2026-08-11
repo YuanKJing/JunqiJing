@@ -3,6 +3,7 @@ title: "Masked Temporal Interpolation Diffusion for Procedure Planning in Instru
 
 authors:
   - Yufan Zhou
+  - Zhaobo Qi
   - Lingshuai Lin
   - admin
   - et al.

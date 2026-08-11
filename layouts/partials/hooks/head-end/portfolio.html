@@ -1,4 +1,7 @@
 <meta name="theme-color" content="#f5f5f2">
+{{ if .IsHome }}
+  <link rel="preload" href="{{ "fonts/caveat-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{ end }}
 <script>
   if (
     "IntersectionObserver" in window &&
