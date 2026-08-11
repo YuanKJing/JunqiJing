@@ -257,6 +257,19 @@ video:focus-visible,
   transform: translateX(0.18rem);
 }
 
+#nav-menu .nav-link[href$="/hobbies/"] {
+  color: #875a18;
+}
+
+#nav-menu .nav-link[href$="/hobbies/"]:hover,
+#nav-menu .nav-link[href$="/hobbies/"].is-current,
+#nav-menu .nav-link[href$="/hobbies/"].active,
+#nav-menu .nav-link[href$="/hobbies/"][aria-current] {
+  border-left-color: #b98631;
+  color: #6d470f;
+  background: rgba(212, 180, 122, 0.16);
+}
+
 #site-header .navbar > div:last-child {
   display: none;
 }
@@ -1425,13 +1438,15 @@ video:focus-visible,
 
 .research-chapter,
 .publication-chapter,
-.demos-chapter {
+.demos-chapter,
+.hobbies-chapter {
   padding-top: 0;
 }
 
 .research-chapter > .portfolio-container,
 .publication-chapter > .portfolio-container,
-.demos-chapter > .portfolio-container {
+.demos-chapter > .portfolio-container,
+.hobbies-chapter > .portfolio-container {
   width: 100%;
   max-width: none;
   padding-inline: 0;
@@ -1444,7 +1459,10 @@ video:focus-visible,
 .publication-chapter .publication-card,
 .publication-chapter .publication-upcoming,
 .demos-chapter .chapter-heading,
-.demos-chapter .demo-grid {
+.demos-chapter .demo-grid,
+.hobbies-chapter .chapter-heading,
+.hobbies-chapter .hobbies-list,
+.hobbies-chapter .hobbies-invite {
   width: calc(100% - clamp(2rem, 8vw, 8rem));
   max-width: 72rem;
   margin-right: auto;
@@ -1562,6 +1580,73 @@ video:focus-visible,
   margin-top: 1.25rem;
 }
 
+/* Personal interests stay warm and conversational without overpowering the academic pages. */
+.hobbies-chapter {
+  background: linear-gradient(180deg, #fafaf8 0%, #f7f5ef 100%);
+}
+
+.chapter-visual--hobbies > img {
+  object-position: center 55%;
+}
+
+.hobbies-chapter .chapter-label {
+  color: #84652f;
+}
+
+.hobbies-list {
+  border-top: 1px solid #d4d3cc;
+}
+
+.hobby-entry {
+  padding: clamp(1.7rem, 4vw, 2.7rem) 0;
+  border-bottom: 1px solid #d4d3cc;
+}
+
+.hobby-entry h3 {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  color: var(--ink);
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  line-height: 1.15;
+}
+
+.hobby-entry h3 span {
+  flex: 0 0 auto;
+  font-size: 1.15em;
+}
+
+.hobby-entry p {
+  max-width: 66rem;
+  margin-top: 0.85rem !important;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.35vw, 1.08rem);
+  line-height: 1.72;
+}
+
+.hobbies-invite {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: clamp(1.5rem, 4vw, 2.8rem);
+  padding: 1.2rem 0 0;
+  border-top: 2px solid rgba(132, 101, 47, 0.35);
+}
+
+.hobbies-invite p {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hobbies-invite a {
+  flex: 0 0 auto;
+  color: #73511d;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
 .contact-strip {
   padding-block: clamp(3.5rem, 7vw, 5.5rem);
   border-top: 3px solid var(--accent);
@@ -1609,7 +1694,7 @@ video:focus-visible,
   text-underline-offset: 0.25em;
 }
 
-/* Footer stays compact so the four requested chapters remain the main IA. */
+/* Footer stays compact so the five requested chapters remain the main IA. */
 .portfolio-footer {
   border-top: 1px solid var(--line);
   background: #ffffff;
@@ -1836,6 +1921,23 @@ video:focus-visible,
     transform: none;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  #nav-menu .nav-link[href$="/hobbies/"] {
+    color: #e5c88e;
+  }
+
+  #nav-menu .nav-link[href$="/hobbies/"]:hover {
+    color: #ffe0a8;
+  }
+
+  #nav-menu .nav-link[href$="/hobbies/"].is-current,
+  #nav-menu .nav-link[href$="/hobbies/"].active,
+  #nav-menu .nav-link[href$="/hobbies/"][aria-current="location"],
+  #nav-menu .nav-link[href$="/hobbies/"][aria-current="page"] {
+    color: #ffe0a8;
+    background: none;
+    -webkit-text-fill-color: currentColor;
   }
 
   #nav-menu > li.mt-4 {
@@ -2157,8 +2259,15 @@ video:focus-visible,
 
   .research-chapter,
   .publication-chapter,
-  .demos-chapter {
+  .demos-chapter,
+  .hobbies-chapter {
     padding-top: 0;
+  }
+
+  .hobbies-invite {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.7rem;
   }
 
   .availability-note {

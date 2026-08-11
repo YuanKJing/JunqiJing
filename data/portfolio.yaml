@@ -119,6 +119,47 @@ publication:
       A new study on object detection from egocentric visual observations is
       currently in preparation.
 
+hobbies:
+  intro: >-
+    Away from the lab, I recharge through movement, travel, making,
+    volunteering, and strategy games.
+  items:
+    - title: Keep Moving
+      emoji: "🥾"
+      text: >-
+        I am a dedicated fan of hiking, strength training, and badminton. If
+        you are planning a trail, a gym session, or a friendly match, I would
+        love to join. 🏸
+    - title: Travel and Making
+      emoji: "🧳"
+      text: >-
+        Travel is one of my favorite ways to discover new places and
+        perspectives. During my exchange semester in Korea, I visited 12
+        cities, an experience that left me with many unforgettable memories.
+        I also love making things with my hands, especially puzzles and LEGO
+        builds. Recently, I have become fascinated by 3D printing and have
+        been experimenting with all kinds of playful creations. 🧩
+    - title: Giving Back
+      emoji: "💛"
+      text: >-
+        I have contributed nearly 100 hours to volunteer activities. I care
+        deeply about supporting children on the autism spectrum, and I hope
+        to keep giving my time, attention, and patience to inclusive
+        communities.
+    - title: Strategy and Games
+      emoji: "🎮"
+      text: >-
+        I am a long-time strategy-game enthusiast, especially when it comes
+        to Civilization VI, Teamfight Tactics, Command & Conquer: Red Alert,
+        and StarCraft. I am also a long-time Minecraft player. If you are up
+        for a match, a co-op session, or an ambitious build, come find me!
+    - title: Photography
+      emoji: "📷"
+      text: >-
+        Photography is another creative outlet I care deeply about. All of the
+        photography featured across this website is my own, and I am now
+        beginning to shape these images into a personal photography portfolio.
+
 journey:
   eyebrow: Research Experiences
   title: Learning across models, labs, and machines.

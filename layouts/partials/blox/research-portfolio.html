@@ -25,6 +25,7 @@
 {{ $researchPhoto := (resources.Get "media/portfolio/research-harbor.jpg").Fill "1600x640 Center webp q84" }}
 {{ $publicationPhoto := (resources.Get "media/portfolio/about-shore.jpg").Fill "1600x640 Center webp q86" }}
 {{ $demosPhoto := (resources.Get "media/portfolio/about-promenade.jpg").Fill "1600x640 Center webp q84" }}
+{{ $hobbiesPhoto := (resources.Get "media/portfolio/hobbies-temple.jpg").Fill "1440x576 Center webp q88" }}
 {{ $scholarIcon := resources.Get "media/icons/google-scholar.svg" }}
 {{ $githubIcon := resources.Get "media/icons/github.svg" }}
 {{ $researchGateIcon := resources.Get "media/icons/researchgate.svg" }}
@@ -361,6 +362,48 @@
             </article>
           {{ end }}
         {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ if eq $view "hobbies" }}
+  <section id="hobbies" class="portfolio-chapter hobbies-chapter" aria-labelledby="hobbies-heading">
+    <div class="portfolio-container">
+      <figure class="chapter-visual chapter-visual--hobbies" data-reveal="image" data-scroll-parallax>
+        <img
+          src="{{ $hobbiesPhoto.RelPermalink }}"
+          width="{{ $hobbiesPhoto.Width }}"
+          height="{{ $hobbiesPhoto.Height }}"
+          alt="Sunlit pine trees surrounding a Korean temple, photographed by Junqi Jing"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async">
+        <h1 class="page-banner-title">Hobbies</h1>
+      </figure>
+
+      <div class="chapter-heading chapter-heading--after-photo" data-reveal>
+        <div>
+          <p class="chapter-label">Beyond research</p>
+          <h2 id="hobbies-heading">What keeps me curious and moving</h2>
+        </div>
+        <div class="chapter-heading__body">
+          <p>{{ $data.hobbies.intro }}</p>
+        </div>
+      </div>
+
+      <div class="hobbies-list">
+        {{ range $item := $data.hobbies.items }}
+          <article class="hobby-entry" data-reveal>
+            <h3><span aria-hidden="true">{{ $item.emoji }}</span>{{ $item.title }}</h3>
+            <p>{{ $item.text | markdownify }}</p>
+          </article>
+        {{ end }}
+      </div>
+
+      <div class="hobbies-invite" data-reveal="panel">
+        <p>Up for a hike, a badminton match, or a Civilization VI session?</p>
+        <a href="mailto:{{ $data.contact.email }}">Let me know <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>

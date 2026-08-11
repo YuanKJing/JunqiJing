@@ -16,3 +16,6 @@ main:
   - name: Robot Demos
     url: /robot-demos/
     weight: 40
+  - name: Hobbies
+    url: /hobbies/
+    weight: 50
