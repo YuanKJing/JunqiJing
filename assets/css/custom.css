@@ -454,11 +454,37 @@ video:focus-visible,
 }
 
 @keyframes home-title-write {
-  from {
+  0% {
     clip-path: inset(-0.22em 100% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.18, 1);
   }
 
-  to {
+  27% {
+    clip-path: inset(-0.22em 74% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+
+  34% {
+    clip-path: inset(-0.22em 71% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.18, 1);
+  }
+
+  58% {
+    clip-path: inset(-0.22em 46% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+
+  65% {
+    clip-path: inset(-0.22em 43% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.18, 1);
+  }
+
+  94% {
+    clip-path: inset(-0.22em 4% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  }
+
+  100% {
     clip-path: inset(-0.22em -0.08em -0.28em -0.08em);
   }
 }
@@ -490,28 +516,8 @@ video:focus-visible,
   }
 
   .portfolio-motion.portfolio-ready .home-banner-title__write.is-writing {
-    animation: home-title-write 3.65s cubic-bezier(0.42, 0, 0.58, 1) 0.42s both;
-    animation-timing-function: linear(
-      0,
-      0.012 4%,
-      0.05 9%,
-      0.12 15%,
-      0.22 21%,
-      0.27 25%,
-      0.285 31%,
-      0.3 35%,
-      0.36 40%,
-      0.47 47%,
-      0.56 53%,
-      0.595 58%,
-      0.61 64%,
-      0.64 68%,
-      0.73 74%,
-      0.84 82%,
-      0.925 90%,
-      0.98 96%,
-      1
-    );
+    will-change: clip-path;
+    animation: home-title-write 2.65s ease-in-out 0.25s both;
   }
 
   .portfolio-motion.portfolio-ready .home-banner-title__write.is-writing::after {
@@ -521,7 +527,7 @@ video:focus-visible,
     content: attr(data-text);
     text-shadow: 0 0 0.18em rgba(255, 255, 255, 0.72), 0 2px 14px rgba(4, 21, 29, 0.58);
     pointer-events: none;
-    animation: home-title-sweep 0.52s cubic-bezier(0.2, 0.78, 0.25, 1) 4.16s both;
+    animation: home-title-sweep 0.4s cubic-bezier(0.2, 0.78, 0.25, 1) 3.02s both;
   }
 }
 
