@@ -62,6 +62,14 @@
   src: url("../fonts/caveat-400.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "Allura";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/allura-400.woff2") format("woff2");
+}
+
 :root {
   --rail-width: 14.5rem;
   --page-bg: #f5f5f2;
@@ -419,6 +427,7 @@ video:focus-visible,
   border: 1px solid rgba(23, 39, 46, 0.13);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   background: #d7d2c5;
+  isolation: isolate;
 }
 
 .home-hero__media::after {
@@ -464,6 +473,35 @@ video:focus-visible,
   position: relative;
   display: inline-block;
   max-width: 100%;
+}
+
+.photo-watermark {
+  position: absolute;
+  right: clamp(1rem, 2.4vw, 2rem);
+  bottom: clamp(0.8rem, 2vw, 1.55rem);
+  z-index: 3;
+  margin: 0;
+  padding: 0 0.08em 0.12em 0;
+  color: #4f3515;
+  font-family: "Allura", "Segoe Script", "Snell Roundhand", cursive;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.18;
+  white-space: nowrap;
+  text-shadow: 0 1px 1px rgba(255, 244, 214, 0.2), 0 1px 3px rgba(8, 13, 14, 0.18);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .photo-watermark {
+    color: transparent;
+    background: linear-gradient(110deg, #261d12 0%, #5b3c16 34%, #a87a2c 61%, #4a3011 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 @keyframes home-title-write {
@@ -1042,6 +1080,7 @@ video:focus-visible,
   border: 1px solid var(--line-strong);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   background: #bacbd0;
+  isolation: isolate;
 }
 
 .chapter-visual > img {
@@ -2211,6 +2250,14 @@ video:focus-visible,
     background: transparent;
   }
 
+  .photo-watermark {
+    right: 0.62rem;
+    bottom: 0.5rem;
+    padding-bottom: 0.12em;
+    font-size: clamp(1.2rem, 5.7vw, 1.5rem);
+    line-height: 1.2;
+  }
+
   .chapter-visual > img {
     position: static;
     aspect-ratio: 16 / 9;
@@ -2405,6 +2452,13 @@ video:focus-visible,
   [data-scroll-parallax] > img {
     animation: none !important;
     transform: none !important;
+  }
+
+  .photo-watermark {
+    color: #5d3b0e !important;
+    background: none !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #5d3b0e !important;
   }
 
   .page-header,
