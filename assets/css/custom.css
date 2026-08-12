@@ -482,7 +482,7 @@ video:focus-visible,
   z-index: 3;
   margin: 0;
   padding: 0 0.08em 0.12em 0;
-  color: #4f3515;
+  color: #75521f;
   font-family: "Allura", "Segoe Script", "Snell Roundhand", cursive;
   font-size: clamp(1.35rem, 2.2vw, 2rem);
   font-weight: 400;
@@ -497,7 +497,7 @@ video:focus-visible,
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .photo-watermark {
     color: transparent;
-    background: linear-gradient(110deg, #261d12 0%, #5b3c16 34%, #a87a2c 61%, #4a3011 100%);
+    background: linear-gradient(110deg, #4b3518 0%, #8a6427 34%, #d5ad58 61%, #6b4819 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2455,10 +2455,10 @@ video:focus-visible,
   }
 
   .photo-watermark {
-    color: #5d3b0e !important;
+    color: #745019 !important;
     background: none !important;
     text-shadow: none !important;
-    -webkit-text-fill-color: #5d3b0e !important;
+    -webkit-text-fill-color: #745019 !important;
   }
 
   .page-header,
