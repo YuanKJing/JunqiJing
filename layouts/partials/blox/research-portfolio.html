@@ -349,6 +349,7 @@
                   playsinline
                   controls
                   preload="metadata"
+                  {{ with $demo.poster }}poster="{{ . | relURL }}"{{ end }}
                   data-robot-video
                   aria-label="{{ $demo.title }} demonstration video">
                   <source src="{{ $video | relURL }}" type="video/mp4">

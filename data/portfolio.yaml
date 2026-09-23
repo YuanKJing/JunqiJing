@@ -73,6 +73,19 @@ robot_demos:
     and full-screen viewing.
   items:
     - number: "01"
+      title: PiPER tabletop pick-and-place
+      orientation: landscape
+      description: >-
+        A PiPER pick-and-place demo controlled by Astra + Jev + a robot control
+        backend. RGB-only perception, with no depth input.
+      poster: images/demos/piper-block-pick-and-place.jpg
+      video: videos/piper-block-pick-and-place.mp4
+      status: Real robot video
+      tags:
+        - Astra + Jev
+        - RGB-only
+        - No depth
+    - number: "02"
       title: Dual-arm teleoperation
       orientation: portrait
       description: >-
@@ -84,7 +97,7 @@ robot_demos:
       tags:
         - Real robot
         - Teleoperation
-    - number: "02"
+    - number: "03"
       title: Dual-arm ball catching
       orientation: landscape
       description: >-
