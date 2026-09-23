@@ -73,7 +73,7 @@ robot_demos:
     and full-screen viewing.
   items:
     - number: "01"
-      title: PiPER tabletop pick-and-place
+      title: "Astra + Jev Real-World Demo: Grasping a Yellow Object"
       orientation: landscape
       description: >-
         A PiPER pick-and-place demo controlled by Astra + Jev + a robot control
