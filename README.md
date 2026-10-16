@@ -20,7 +20,7 @@ The site is built with Hugo Blox and deployed to GitHub Pages.
 1. Put a web-ready MP4 in `static/videos/`, for example:
    `static/videos/grasping-demo.mp4`.
 2. Open `data/portfolio.yaml`.
-3. In `robot_demos.items`, update a reserved slot:
+3. Add an entry to `robot_demos.items`; set `featured: true` on the single lead demo:
 
 ```yaml
 - number: "02"
@@ -42,6 +42,10 @@ preferences disable automatic playback.
 Direct HTTPS MP4 URLs are also supported in the `video` field. Keep homepage
 videos short and compressed; use external object storage or a CDN for large
 files.
+
+## Add a publication
+
+Add a page bundle under `content/publication/` with author metadata and a `featured.jpg` figure. Add its page path, venue, year, summary, and resource links to `publication.items` in `data/portfolio.yaml`, newest first. Set `status: Under review` for submissions; omit it for accepted papers. Cards share the same layout and display only available resource links.
 
 ## Prepare phone or MOV footage
 

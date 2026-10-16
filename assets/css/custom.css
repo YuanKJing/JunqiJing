@@ -1509,14 +1509,13 @@ video:focus-visible,
 }
 
 .demos-chapter .chapter-heading {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   margin-top: clamp(1.8rem, 4vw, 3rem);
 }
 
 .demo-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
-  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.25rem, 3vw, 2.2rem);
   align-items: start;
 }
@@ -1537,12 +1536,26 @@ video:focus-visible,
 }
 
 .demo-card--featured {
-  grid-column: 1;
-  grid-row: 1 / span 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  grid-column: 1 / -1;
+  background: #f0f5f5;
+}
+
+.demo-card--featured .demo-copy {
+  align-self: center;
+}
+
+.demo-card--featured .demo-media {
+  align-self: center;
+}
+
+.demo-card--featured .robot-video {
+  object-fit: contain;
 }
 
 .demo-card:not(.demo-card--featured) {
-  grid-column: 2;
+  grid-column: auto;
 }
 
 .demo-card:not(.demo-card--featured) .demo-media {
@@ -1630,6 +1643,7 @@ video:focus-visible,
 }
 
 .demo-copy h3 {
+  margin-top: 0.6rem;
   color: var(--ink);
   font-size: clamp(1.35rem, 2.3vw, 1.75rem);
   line-height: 1.15;
@@ -1643,6 +1657,43 @@ video:focus-visible,
 
 .demo-tags {
   margin-top: 1.25rem;
+}
+
+.demo-status {
+  display: inline-block;
+  color: var(--accent-deep);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.demo-copy > .demo-announcement {
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line-strong);
+  color: var(--accent-deep);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.publication-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.publication-status {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #d8c49a;
+  border-radius: 999px;
+  color: #74531b;
+  background: #fff5df;
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 /* Personal interests stay warm and conversational without overpowering the academic pages. */
@@ -2167,6 +2218,25 @@ video:focus-visible,
   .contact-strip__inner {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .demo-card--featured {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-card--featured .demo-media {
+    width: 100%;
+  }
+
+  .demo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .demos-chapter .chapter-heading {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
   }
 }
 

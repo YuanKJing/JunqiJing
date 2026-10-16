@@ -10,12 +10,6 @@
   {{ $portrait = .Fill "1000x1000 Center webp q90" }}
 {{ end }}
 
-{{ $paperPage := site.GetPage "/publication/conference-paper" }}
-{{ $paperImage := ($paperPage.Resources.ByType "image").GetMatch "*featured*" }}
-{{ $paperVisual := "" }}
-{{ with $paperImage }}
-  {{ $paperVisual = .Fit "1500x900 webp q88" }}
-{{ end }}
 {{ $iclrLogo := resources.Get "media/iclr-logo.svg" }}
 
 {{ $heroSource := resources.Get "media/portfolio/home-motorcycle.jpg" }}
@@ -254,10 +248,15 @@
       <div class="chapter-heading chapter-heading--after-photo chapter-heading--single" data-reveal>
         <div>
           <p class="chapter-label">Selected work</p>
-          <h2 id="publication-heading">Selected publication</h2>
+          <h2 id="publication-heading">Selected publications</h2>
         </div>
       </div>
 
+      {{ range $publication := $data.publication.items }}
+        {{ $paperPage := site.GetPage $publication.page }}
+        {{ $paperImage := ($paperPage.Resources.ByType "image").GetMatch "*featured*" }}
+        {{ $paperVisual := "" }}
+        {{ with $paperImage }}{{ $paperVisual = .Fit "1500x1000 webp q88" }}{{ end }}
       <article class="publication-card" data-reveal="panel">
         <div class="paper-visual">
           {{ with $paperVisual }}
@@ -266,36 +265,41 @@
               src="{{ .RelPermalink }}"
               width="{{ .Width }}"
               height="{{ .Height }}"
-              alt="MTID procedure planning method overview"
+              alt="{{ $publication.image_alt }}"
               loading="lazy"
               decoding="async">
           {{ end }}
           {{ with $iclrLogo }}
-            <div class="paper-conference-mark" role="img" aria-label="{{ $data.publication.venue }} conference logo">
+            <div class="paper-conference-mark" role="img" aria-label="{{ $publication.venue }} conference logo">
               <img src="{{ .RelPermalink }}" width="282" height="84" alt="" aria-hidden="true" decoding="async">
-              <span aria-hidden="true">2025</span>
+              <span aria-hidden="true">{{ $publication.year }}</span>
             </div>
           {{ end }}
         </div>
 
         <div class="publication-copy">
-          <p class="publication-venue">{{ $data.publication.venue }}</p>
-          <h3>{{ $data.publication.title }}</h3>
+          <div class="publication-meta">
+            <p class="publication-venue">{{ $publication.venue }}</p>
+            {{ with $publication.status }}<span class="publication-status">{{ . }}</span>{{ end }}
+          </div>
+          <h3>{{ $publication.title }}</h3>
           {{ with $paperPage.Params.authors }}
             <p class="publication-authors">
               {{ range $index, $author := . }}{{ if $index }} · {{ end }}{{ if eq $author "admin" }}<strong>Junqi Jing</strong>{{ else }}{{ $author }}{{ end }}{{ end }}
             </p>
           {{ end }}
-          <p class="publication-summary">{{ $data.publication.summary }}</p>
-          <p class="publication-contribution">{{ $data.publication.contribution }}</p>
-          <nav class="publication-actions" aria-label="Publication links">
-            <a href="{{ $data.publication.paper_url }}" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
-            <a href="{{ $data.publication.project_url }}" target="_blank" rel="noopener">Project page <span aria-hidden="true">↗</span></a>
-            <a href="{{ $data.publication.openreview_url }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>
-            <a href="{{ $data.publication.code_url }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>
+          <p class="publication-summary">{{ $publication.summary }}</p>
+          <p class="publication-contribution">{{ $publication.contribution }}</p>
+          <nav class="publication-actions" aria-label="Links for {{ $publication.title }}">
+            <a href="{{ $publication.paper_url }}" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+            {{ with $publication.project_url }}<a href="{{ . }}" target="_blank" rel="noopener">Project page <span aria-hidden="true">↗</span></a>{{ end }}
+            <a href="{{ $publication.openreview_url }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>
+            {{ with $publication.code_url }}<a href="{{ . }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>{{ end }}
           </nav>
         </div>
       </article>
+
+      {{ end }}
 
       {{ with $data.publication.upcoming }}
         <aside class="publication-upcoming" aria-labelledby="upcoming-publication-title" data-reveal="panel">
@@ -326,11 +330,12 @@
         <figcaption class="photo-watermark">Photographed by JJ</figcaption>
       </figure>
 
-      <div class="chapter-heading" data-reveal>
+      <div class="chapter-heading chapter-heading--after-photo" data-reveal>
         <div>
-          <p class="chapter-label">Real hardware</p>
-          <h2 id="demos-heading">Real robot videos</h2>
+          <p class="chapter-label">{{ $data.robot_demos.eyebrow }}</p>
+          <h2 id="demos-heading">From demonstrations to robot skills.</h2>
         </div>
+        <div class="chapter-heading__body"><p>{{ $data.robot_demos.intro }}</p></div>
       </div>
 
       <div class="demo-grid">
@@ -340,7 +345,7 @@
           {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
           {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
           {{ if $hasVideo }}
-            <article class="demo-card{{ if eq $index 0 }} demo-card--featured{{ end }} demo-card--{{ $demo.orientation | default "landscape" }}" data-reveal="panel">
+            <article class="demo-card{{ if $demo.featured }} demo-card--featured{{ end }} demo-card--{{ $demo.orientation | default "landscape" }}" data-reveal="panel">
               <div class="demo-media">
                 <video
                   class="robot-video"
@@ -358,8 +363,10 @@
                 <span class="demo-number">Demo {{ $demo.number }}</span>
               </div>
               <div class="demo-copy">
+                <span class="demo-status">{{ $demo.status }}</span>
                 <h3>{{ $demo.title }}</h3>
                 <p>{{ $demo.description }}</p>
+                {{ with $demo.announcement }}<p class="demo-announcement">{{ . }}</p>{{ end }}
                 <div class="demo-tags">
                   {{ range $demo.tags }}<span>{{ . }}</span>{{ end }}
                 </div>

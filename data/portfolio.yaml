@@ -68,11 +68,27 @@ robot_demos:
   eyebrow: Real-robot work
   title: Robots, not just benchmarks.
   intro: >-
-    This reel is built for real hardware footage. Videos play muted when they
-    enter the viewport, pause off-screen, and retain native controls for sound
-    and full-screen viewing.
+    From teleoperated demonstrations to model-driven manipulation: a look at
+    real-world robot interaction, data collection, and coordinated control.
   items:
     - number: "01"
+      title: Real-World Teleoperation Data for Robot Foundation Models
+      featured: true
+      orientation: landscape
+      description: >-
+        A first look at real-world manipulation with robot foundation models
+        and teleoperated demonstration data. This preview connects hands-on
+        data collection with the goal of learning useful physical skills
+        from human demonstrations.
+      announcement: Stay tuned for the upcoming preview on X (Twitter), with more footage and details.
+      poster: images/demos/teleop-foundation-model-demo.jpg
+      video: videos/teleop-foundation-model-demo.mp4
+      status: Research preview
+      tags:
+        - Foundation models
+        - Teleoperation data
+        - Real-world manipulation
+    - number: "02"
       title: "Astra + Jev Real-World Demo: Grasping a Yellow Object"
       orientation: landscape
       description: >-
@@ -85,25 +101,25 @@ robot_demos:
         - Astra + Jev
         - RGB-only
         - No depth
-    - number: "02"
+    - number: "03"
       title: Dual-arm teleoperation
       orientation: portrait
       description: >-
         A real-robot workspace for studying coordinated manipulation,
         demonstration collection, and human-in-the-loop control.
-      poster: ""
+      poster: images/demos/teleoperation.jpg
       video: videos/teleoperation.mp4
       status: Real robot video
       tags:
         - Real robot
         - Teleoperation
-    - number: "03"
+    - number: "04"
       title: Dual-arm ball catching
       orientation: landscape
       description: >-
         A real-robot demonstration of coordinated dual-arm interception and
         catching of small objects in a tabletop workspace.
-      poster: ""
+      poster: images/demos/dual-arm-ball-catching.jpg
       video: videos/dual-arm-ball-catching.mp4
       status: Real robot video
       tags:
@@ -111,26 +127,41 @@ robot_demos:
         - Dual-arm coordination
 
 publication:
-  eyebrow: Selected publication
-  venue: ICLR 2025
-  title: Masked Temporal Interpolation Diffusion for Procedure Planning in Instructional Videos
-  summary: >-
-    MTID introduces latent-space temporal interpolation and task-aware masking
-    to improve action-sequence planning between observed start and goal states.
-  contribution: >-
-    The method supplies visual mid-state supervision directly in latent space,
-    encouraging temporally coherent plans without relying only on text-level
-    supervision.
-  paper_url: https://openreview.net/pdf?id=HnpDHiItd2
-  project_url: https://yuankjing.github.io/MTID-Project-Page/
-  openreview_url: https://openreview.net/forum?id=HnpDHiItd2
-  code_url: https://github.com/WiserZhou/MTID
+  eyebrow: Selected publications
+  items:
+  - page: /publication/q-physjepa
+    venue: ICLR 2027
+    year: '2027'
+    status: Under review
+    title: 'Q-PhysJEPA: Query-Conditioned Physical Abstraction for JEPA World Models'
+    image_alt: 'Q-PhysJEPA Figure 1: task queries reweight interaction history before compression
+      to preserve task-relevant physical evidence'
+    summary: Q-PhysJEPA conditions history compression on the task query, learning compact
+      representations that retain physical evidence relevant to the current objective.
+    contribution: Visual, proprioceptive, and action histories are organized into evidence
+      slots and reweighted before compression. Latent future prediction and utility learning
+      connect these abstractions to candidate selection.
+    paper_url: https://openreview.net/pdf?id=CiSKLLStye
+    openreview_url: https://openreview.net/forum?id=CiSKLLStye
+  - venue: ICLR 2025
+    title: Masked Temporal Interpolation Diffusion for Procedure Planning in Instructional
+      Videos
+    summary: MTID introduces latent-space temporal interpolation and task-aware masking
+      to improve action-sequence planning between observed start and goal states.
+    contribution: The method supplies visual mid-state supervision directly in latent space,
+      encouraging temporally coherent plans without relying only on text-level supervision.
+    paper_url: https://openreview.net/pdf?id=HnpDHiItd2
+    project_url: https://yuankjing.github.io/MTID-Project-Page/
+    openreview_url: https://openreview.net/forum?id=HnpDHiItd2
+    code_url: https://github.com/WiserZhou/MTID
+    page: /publication/conference-paper
+    year: '2025'
+    image_alt: MTID procedure planning method overview
   upcoming:
     status: Coming soon
     topic: Egocentric Object Detection
-    note: >-
-      A new study on object detection from egocentric visual observations is
-      currently in preparation.
+    note: A new study on object detection from egocentric visual observations is currently
+      in preparation.
 
 hobbies:
   intro: >-
