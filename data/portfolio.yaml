@@ -206,8 +206,6 @@ hobbies:
         portfolio**.
 
 journey:
-  eyebrow: Education, research & internships
-  title: Learning across models, labs, and machines.
   items:
     - date: Apr 2026 — Present
       role: AI Research Intern
@@ -215,6 +213,13 @@ journey:
       place_url: https://knowinai.com/
       text: Dexterous-hand manipulation with VLA models and exploratory work on World Action Models.
       current: true
+      mentorship:
+        label: Leader
+        people:
+          - name: Yingcong Chen
+            url: https://www.yingcong.me/
+          - name: Kaiwen Zhou
+            url: https://kaiwenzhou2003.github.io/
       logos:
         - name: KNOWIN AI
           file: knowin.svg
@@ -226,6 +231,11 @@ journey:
       place: Tsinghua University · LEAP Lab
       place_url: https://www.leaplab.ai/
       text: Research on real-hardware interaction, robot learning, and world modeling at LEAP Lab.
+      mentorship:
+        label: Advisor
+        people:
+          - name: Gao Huang
+            url: https://www.au.tsinghua.edu.cn/info/1075/3183.htm
       logos:
         - name: LEAP Lab
           file: leap.png
@@ -241,51 +251,28 @@ journey:
       role: Exchange Student Researcher
       place: POSTECH · MLV Lab
       place_url: https://sites.google.com/view/mlvlab/home?authuser=0
-      text: Embodied AI and generative-model research with Prof. Kwang In Kim.
+      text: Embodied AI and generative-model research at MLV Lab.
+      mentorship:
+        label: Advisor
+        people:
+          - name: Kim Kwang in
+            url: https://sites.google.com/view/kimki?pli=1&authuser=0
       logos:
         - name: POSTECH
           file: postech.svg
           width: 1980
           height: 168
           style: wordmark
-    - date: Jul 2025 — Aug 2025
-      role: Research Assistant
-      place: Nanjing University · Suzhou Campus
-      place_url: https://cszn.github.io/
-      text: Research on embodied intelligence and generative AI with Prof. Kai Zhang.
-      logos:
-        - name: Nanjing University
-          file: nju.png
-          width: 439
-          height: 135
-          style: wordmark
-    - date: Research visit
-      role: Visiting Student
-      place: Westlake University · MiLab
-      place_url: https://milab.westlake.edu.cn/
-      text: Visiting research at the Machine Intelligence Lab.
-      logos:
-        - name: Westlake University
-          file: westlake.png
-          width: 522
-          height: 162
-          style: wordmark
-    - date: Since Nov 2023
-      role: Undergraduate Researcher
-      place: Harbin Institute of Technology · Cross-Media Intelligence Lab
-      place_url: https://www.hitwh.edu.cn/
-      text: Research with Prof. Zhaobo Qi and Prof. Weigang Zhang in the Cross-Media Intelligence Lab.
-      logos:
-        - name: Harbin Institute of Technology
-          file: hit.svg
-          width: 256
-          height: 231
-          style: seal
     - date: 2023 — 2027
       role: B.E. in Software Engineering
-      place: Harbin Institute of Technology
+      place: Harbin Institute of Technology · Cross-Media Intelligence Lab
       place_url: https://www.hitwh.edu.cn/
-      text: Research foundations in embodied intelligence, generative AI, and temporal reasoning.
+      text: Undergraduate researcher since Nov 2023, studying embodied intelligence, generative AI, and temporal reasoning.
+      mentorship:
+        label: Advisor
+        people:
+          - name: Zhaobo Qi
+            url: https://homepage.hit.edu.cn/qizhaobo
       logos:
         - name: Harbin Institute of Technology
           file: hit.svg
