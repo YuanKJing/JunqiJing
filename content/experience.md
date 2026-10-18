@@ -18,16 +18,17 @@ sections:
       css_class: portfolio-shell
       spacing:
         padding: [0, 0, 0, 0]
-  - block: resume-skills
-    content:
-      title: Skills & Hobbies
-      username: admin
-    design:
-      show_skill_percentage: false
-  - block: resume-awards
-    content:
-      title: Awards
-      username: admin
+  # Hidden for now. Uncomment either block below to restore it.
+  # - block: resume-skills
+  #   content:
+  #     title: Skills & Hobbies
+  #     username: admin
+  #   design:
+  #     show_skill_percentage: false
+  # - block: resume-awards
+  #   content:
+  #     title: Awards
+  #     username: admin
   - block: resume-languages
     content:
       title: Languages
