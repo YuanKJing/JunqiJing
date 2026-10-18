@@ -293,19 +293,19 @@
             <p class="publication-venue">{{ $publication.venue }}</p>
             {{ with $publication.status }}<span class="publication-status">{{ . }}</span>{{ end }}
           </div>
-          <h3>{{ $publication.title }}</h3>
+          <h3><a href="{{ $paperPage.RelPermalink }}">{{ $publication.title }}</a></h3>
           {{ with $paperPage.Params.authors }}
             <p class="publication-authors">
               {{ range $index, $author := . }}{{ if $index }} · {{ end }}{{ if eq $author "admin" }}<strong>Junqi Jing</strong>{{ else }}{{ $author }}{{ end }}{{ end }}
             </p>
           {{ end }}
           <p class="publication-summary">{{ $publication.summary }}</p>
-          <p class="publication-contribution">{{ $publication.contribution }}</p>
           <nav class="publication-actions" aria-label="Links for {{ $publication.title }}">
             <a href="{{ $publication.paper_url }}" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
             {{ with $publication.project_url }}<a href="{{ . }}" target="_blank" rel="noopener">Project page <span aria-hidden="true">↗</span></a>{{ end }}
             <a href="{{ $publication.openreview_url }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>
             {{ with $publication.code_url }}<a href="{{ . }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>{{ end }}
+            <a href="{{ $paperPage.RelPermalink }}">Details <span aria-hidden="true">→</span></a>
           </nav>
         </div>
       </article>
