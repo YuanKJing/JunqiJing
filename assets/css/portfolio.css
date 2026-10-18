@@ -758,57 +758,69 @@ video:focus-visible,
   transform: translateY(-2px);
 }
 
-/* Biography uses a soft sage field that connects the photography, black rail, and white content. */
+/* Warm paper, neutral body text, and one restrained accent for the biography. */
 .about-chapter {
+  --bio-bg: #faf8f5;
+  --bio-ink: #242a2d;
+  --bio-body: #393b3e;
+  --bio-accent: #2b616c;
+  --bio-accent-hover: #193f48;
+  --bio-tint: #edf2f1;
+  --bio-line: #cbd8d7;
   padding-top: clamp(3.25rem, 6vw, 5.5rem);
   border-top: 0;
-  color: #172019;
-  background: #f0f3ee;
+  color: var(--bio-ink);
+  background: var(--bio-bg);
 }
 
-.about-chapter .chapter-label,
 .about-chapter .chapter-heading h2,
-.about-chapter .about-copy h2,
-.about-chapter .about-copy,
-.about-chapter .about-copy strong,
-.about-chapter .about-copy a {
-  color: #172019;
+.about-chapter .about-copy h2 {
+  color: var(--bio-ink);
 }
 
 .about-chapter .chapter-label {
-  color: #4b6e65;
+  color: var(--bio-accent);
 }
 
 .about-chapter .chapter-heading > p,
 .about-chapter .chapter-heading--compact > p,
 .about-chapter .about-copy {
-  color: #4c5b52;
+  color: var(--bio-body);
+}
+
+.about-chapter .about-copy strong {
+  color: var(--bio-accent);
 }
 
 .about-chapter .about-layout {
-  border-color: #dce2dc;
+  border-color: var(--bio-line);
 }
 
 .about-chapter .photo-frame {
-  border-color: #dce2dc;
-  background: #ffffff;
-  box-shadow: 0 12px 30px rgba(36, 55, 44, 0.1);
+  border-color: var(--bio-line);
+  background: var(--panel);
+  box-shadow: 0 12px 30px rgba(36, 42, 45, 0.08);
 }
 
 .about-chapter .interest-list span {
-  border-color: #7a8a80;
-  color: #3c4d43;
+  border-color: var(--bio-line);
+  color: var(--bio-accent);
+  background: var(--panel);
 }
 
 .about-chapter .availability-note {
-  border-left-color: #2e7458;
-  color: #172019;
-  background: #e2ede5;
-  box-shadow: 0 12px 30px rgba(36, 55, 44, 0.08);
+  border-left-color: var(--bio-accent);
+  color: var(--bio-ink);
+  background: var(--bio-tint);
+  box-shadow: none;
+}
+
+.about-chapter .availability-note strong {
+  color: inherit;
 }
 
 .about-chapter .availability-dot {
-  background: #2e7458;
+  background: var(--bio-accent);
 }
 
 .about-layout {
@@ -888,16 +900,21 @@ video:focus-visible,
 }
 
 .about-chapter .about-copy a {
-  color: #176b4c;
+  color: var(--bio-accent);
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: rgba(23, 107, 76, 0.55);
+  text-decoration-color: rgba(43, 97, 108, 0.38);
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.17em;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.about-chapter .about-copy a strong {
+  color: inherit;
 }
 
 .about-chapter .about-copy a:hover {
-  color: #134f3a;
+  color: var(--bio-accent-hover);
   text-decoration-color: currentColor;
 }
 
