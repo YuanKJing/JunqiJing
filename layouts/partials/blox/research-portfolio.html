@@ -120,6 +120,33 @@
       </div>
     </section>
 
+    <section class="portfolio-chapter about-research" id="research" aria-labelledby="research-heading">
+      <div class="portfolio-container">
+        <div class="chapter-heading" data-reveal>
+          <div>
+            <p class="chapter-label">Research directions</p>
+            <h2 id="research-heading">{{ $data.research.title }}</h2>
+          </div>
+          <div class="chapter-heading__body">
+            <p>{{ $data.research.intro }}</p>
+            <a href="{{ "publication/" | relURL }}">View all publications <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="research-areas">
+          {{ range $index, $area := $data.research.areas }}
+            <article class="research-area" data-reveal>
+              <span>{{ printf "%02d" (add $index 1) }}</span>
+              <h3>{{ $area.title }}</h3>
+              <p>{{ $area.text }}</p>
+              <div class="research-area__tags">
+                {{ range $area.tags }}<span>{{ . }}</span>{{ end }}
+              </div>
+            </article>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+
     <section class="portfolio-chapter news-chapter" id="news" aria-labelledby="news-heading">
       <div class="portfolio-container">
         <div class="about-news">
@@ -154,8 +181,8 @@
   </div>
   {{ end }}
 
-  {{ if eq $view "research" }}
-  <section id="research" class="portfolio-chapter research-chapter" aria-labelledby="research-heading">
+  {{ if eq $view "experiences" }}
+  <section id="experiences" class="portfolio-chapter experiences-chapter" aria-labelledby="experiences-heading">
     <div class="portfolio-container">
       <figure class="chapter-visual" data-reveal="image" data-scroll-parallax>
         <img
@@ -166,51 +193,25 @@
           loading="eager"
           fetchpriority="high"
           decoding="async">
-        <h1 class="page-banner-title">Research</h1>
+        <h1 class="page-banner-title" id="experiences-heading">Experiences</h1>
         <figcaption class="photo-watermark">Photographed by JJ</figcaption>
       </figure>
 
-      <div class="chapter-heading chapter-heading--after-photo" data-reveal>
+      <div class="chapter-heading chapter-heading--after-photo chapter-heading--single" data-reveal>
         <div>
-          <p class="chapter-label">Research directions</p>
-          <h2 id="research-heading">World Model, RSL, and Video Generation</h2>
-        </div>
-        <div class="chapter-heading__body">
-          <p>{{ $data.research.intro }}</p>
-          <a href="{{ "publication/" | relURL }}">View all publications <span aria-hidden="true">↗</span></a>
+          <p class="chapter-label">{{ $data.journey.eyebrow }}</p>
+          <h2 id="journey-heading">{{ $data.journey.title }}</h2>
         </div>
       </div>
 
-      <div class="research-areas">
-        {{ range $index, $area := $data.research.areas }}
-          <article class="research-area" data-reveal>
-            <span>{{ printf "%02d" (add $index 1) }}</span>
-            <h3>{{ $area.title }}</h3>
-            <p>{{ $area.text }}</p>
-            <div class="research-area__tags">
-              {{ range $area.tags }}<span>{{ . }}</span>{{ end }}
-            </div>
-          </article>
-        {{ end }}
-      </div>
-
-      <div class="research-journey" id="journey" aria-labelledby="journey-heading">
-        <div class="subsection-heading" data-reveal>
-          <div>
-            <p class="chapter-label">Experience</p>
-            <h2 id="journey-heading">Research Experiences</h2>
-          </div>
-          <a href="{{ "experience/" | relURL }}">Full experience <span aria-hidden="true">↗</span></a>
-        </div>
-
-        <div class="journey-list">
+        <div class="journey-list" id="journey">
           {{ range $data.journey.items }}
             <article class="journey-item{{ if .current }} journey-item--current{{ end }}" data-reveal>
               <div class="journey-date">
                 {{ if .current }}<span class="current-pulse" aria-hidden="true"></span>{{ end }}
                 {{ .date }}
               </div>
-              <div>
+              <div class="journey-copy">
                 <h3>{{ .role }}</h3>
                 <p class="journey-place">
                   {{ if .place_url }}
@@ -219,12 +220,20 @@
                     {{ .place }}
                   {{ end }}
                 </p>
+                <p class="journey-description">{{ .text }}</p>
               </div>
-              <p class="journey-description">{{ .text }}</p>
+              <div class="journey-logos">
+                {{ range .logos }}
+                  {{ $logo := resources.Get (printf "media/institutions/%s" .file) }}
+                  <img class="journey-logo journey-logo--{{ .style }}"
+                    src="{{ $logo.RelPermalink }}" alt="{{ .name }} logo"
+                    width="{{ .width }}" height="{{ .height }}"
+                    loading="lazy" decoding="async">
+                {{ end }}
+              </div>
             </article>
           {{ end }}
         </div>
-      </div>
     </div>
   </section>
   {{ end }}

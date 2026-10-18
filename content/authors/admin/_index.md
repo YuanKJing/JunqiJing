@@ -46,9 +46,9 @@ profiles:
 
 
 interests:
-  - Embodied AI
-  - Generative AI
-  - Physical AI
+  - World Model
+  - Embodied Agent
+  - RSI
 
 education:
   - area: BE in Software Engineering
@@ -67,8 +67,8 @@ work:
     company_name: Nanjing University
     company_url: 'https://cszn.github.io/'
     company_logo: ''
-    date_start: 2024-07-25
-    date_end: 2024-08-25
+    date_start: 2025-07-25
+    date_end: 2025-08-25
     summary: |
       - I have been exploring the integration of embodied intelligence and generative AI, and I have proposed an interesting idea that is currently in preparation for further development.
   - position: Exchange Student Researcher

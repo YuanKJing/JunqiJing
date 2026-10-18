@@ -4,7 +4,7 @@ hero:
   affiliation: Harbin Institute of Technology
   current: AI Research Intern at KNOWIN AI
   current_url: https://knowinai.com/
-  headline: World Model, RSL, and Video Generation.
+  headline: World Model, Embodied Agent, and RSI.
   bio:
     - >-
       I’m **Junqi Jing**, a B.E. candidate in Software Engineering at
@@ -28,16 +28,16 @@ hero:
     url: /robot-demos/
   interests:
     - World Model
-    - RSL
-    - Video Generation
+    - Embodied Agent
+    - RSI
 
 research:
   eyebrow: Research agenda
   title: From prediction to physical action.
   intro: >-
-    My work connects world modeling, robot learning, and video generation. I am
-    especially interested in representations that capture how environments
-    evolve and support reliable physical interaction.
+    My work connects world models, embodied agents, and RSI. I am interested in
+    how predictive representations and learning from interaction can help
+    intelligent systems understand the physical world and improve their behavior.
   areas:
     - number: "01"
       title: World Model
@@ -48,7 +48,7 @@ research:
         - Predictive modeling
         - Planning
     - number: "02"
-      title: RSL
+      title: Embodied Agent
       text: >-
         Developing learning systems that turn interaction and feedback into
         robust, transferable robot skills.
@@ -56,13 +56,13 @@ research:
         - Policy learning
         - Robot control
     - number: "03"
-      title: Video Generation
+      title: RSI
       text: >-
-        Building controllable video models that capture temporal dynamics and
-        generate coherent future visual states.
+        Exploring how intelligent systems can use feedback and experience to
+        iteratively improve their reasoning and behavior.
       tags:
-        - Generative video
-        - Temporal modeling
+        - Iterative improvement
+        - Learning from feedback
 
 robot_demos:
   eyebrow: Real-robot work
@@ -206,7 +206,7 @@ hobbies:
         portfolio**.
 
 journey:
-  eyebrow: Research Experiences
+  eyebrow: Education, research & internships
   title: Learning across models, labs, and machines.
   items:
     - date: Apr 2026 — Present
@@ -215,20 +215,83 @@ journey:
       place_url: https://knowinai.com/
       text: Dexterous-hand manipulation with VLA models and exploratory work on World Action Models.
       current: true
+      logos:
+        - name: KNOWIN AI
+          file: knowin.svg
+          width: 320
+          height: 42
+          style: wordmark
     - date: Dec 2025 — Mar 2026
       role: Research Internship
       place: Tsinghua University · LEAP Lab
       place_url: https://www.leaplab.ai/
       text: Research on real-hardware interaction, robot learning, and world modeling at LEAP Lab.
+      logos:
+        - name: LEAP Lab
+          file: leap.png
+          width: 1763
+          height: 1249
+          style: leap
+        - name: Tsinghua University
+          file: tsinghua.svg
+          width: 284
+          height: 284
+          style: seal
     - date: Sep 2025 — Dec 2025
       role: Exchange Student Researcher
       place: POSTECH · MLV Lab
       place_url: https://sites.google.com/view/mlvlab/home?authuser=0
       text: Embodied AI and generative-model research with Prof. Kwang In Kim.
+      logos:
+        - name: POSTECH
+          file: postech.svg
+          width: 1980
+          height: 168
+          style: wordmark
+    - date: Jul 2025 — Aug 2025
+      role: Research Assistant
+      place: Nanjing University · Suzhou Campus
+      place_url: https://cszn.github.io/
+      text: Research on embodied intelligence and generative AI with Prof. Kai Zhang.
+      logos:
+        - name: Nanjing University
+          file: nju.png
+          width: 439
+          height: 135
+          style: wordmark
+    - date: Research visit
+      role: Visiting Student
+      place: Westlake University · MiLab
+      place_url: https://milab.westlake.edu.cn/
+      text: Visiting research at the Machine Intelligence Lab.
+      logos:
+        - name: Westlake University
+          file: westlake.png
+          width: 522
+          height: 162
+          style: wordmark
+    - date: Since Nov 2023
+      role: Undergraduate Researcher
+      place: Harbin Institute of Technology · Cross-Media Intelligence Lab
+      place_url: https://www.hitwh.edu.cn/
+      text: Research with Prof. Zhaobo Qi and Prof. Weigang Zhang in the Cross-Media Intelligence Lab.
+      logos:
+        - name: Harbin Institute of Technology
+          file: hit.svg
+          width: 256
+          height: 231
+          style: seal
     - date: 2023 — 2027
       role: B.E. in Software Engineering
       place: Harbin Institute of Technology
+      place_url: https://www.hitwh.edu.cn/
       text: Research foundations in embodied intelligence, generative AI, and temporal reasoning.
+      logos:
+        - name: Harbin Institute of Technology
+          file: hit.svg
+          width: 256
+          height: 231
+          style: seal
 
 projects:
   eyebrow: Beyond the lab
@@ -262,5 +325,5 @@ contact:
   text: >-
     I am actively seeking **research-oriented internship opportunities at
     leading technology companies** and welcome **research collaborations** with
-    industry teams working on World Model, RSL, and Video Generation.
+    industry teams working on World Model, Embodied Agent, and RSI.
   email: xingkong8527@gmail.com
