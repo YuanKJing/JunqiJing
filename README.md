@@ -37,9 +37,9 @@ all rows, including entries with two logos. Assets are served locally from
 | Nanjing University | [Official university identity page](https://www.nju.edu.cn/ndgk/ndbs/ndxb.htm) |
 | Westlake University | [Official English website logo](https://en.westlake.edu.cn/images/header_icon_color.png) |
 
-Nanjing University's visit is dated July–August 2025. Westlake's visit has no
-date in the supplied biography, so it is labeled “Research visit” without
-an inferred year.
+The Experiences page shows KNOWIN AI, Tsinghua University, POSTECH, and a single
+HIT entry combining the degree and undergraduate research. Add advisor or leader
+links through each item's `mentorship.label` and `mentorship.people` fields.
 
 ## Add another robot demo
 

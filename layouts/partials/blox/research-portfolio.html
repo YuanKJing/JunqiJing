@@ -197,13 +197,6 @@
         <figcaption class="photo-watermark">Photographed by JJ</figcaption>
       </figure>
 
-      <div class="chapter-heading chapter-heading--after-photo chapter-heading--single" data-reveal>
-        <div>
-          <p class="chapter-label">{{ $data.journey.eyebrow }}</p>
-          <h2 id="journey-heading">{{ $data.journey.title }}</h2>
-        </div>
-      </div>
-
         <div class="journey-list" id="journey">
           {{ range $data.journey.items }}
             <article class="journey-item{{ if .current }} journey-item--current{{ end }}" data-reveal>
@@ -212,7 +205,7 @@
                 {{ .date }}
               </div>
               <div class="journey-copy">
-                <h3>{{ .role }}</h3>
+                <h2>{{ .role }}</h2>
                 <p class="journey-place">
                   {{ if .place_url }}
                     <a href="{{ .place_url }}" target="_blank" rel="noopener">{{ .place }}</a>
@@ -221,6 +214,15 @@
                   {{ end }}
                 </p>
                 <p class="journey-description">{{ .text }}</p>
+                {{ with .mentorship }}
+                  <p class="journey-mentorship">
+                    <span>{{ .label }}:</span>
+                    {{ range $index, $person := .people }}
+                      {{ if $index }}<span class="journey-mentorship__separator">and</span>{{ end }}
+                      <a href="{{ $person.url }}" target="_blank" rel="noopener">{{ $person.name }}</a>
+                    {{ end }}
+                  </p>
+                {{ end }}
               </div>
               <div class="journey-logos">
                 {{ range .logos }}

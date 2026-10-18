@@ -1224,11 +1224,8 @@ video:focus-visible,
   padding-top: 1.35rem;
 }
 
-.experiences-chapter .chapter-heading h2 {
-  max-width: 26ch;
-}
-
 .journey-list {
+  margin-top: clamp(1.75rem, 4vw, 3rem);
   border-top: 1px solid var(--line-strong);
   scroll-margin-top: 5rem;
 }
@@ -1269,7 +1266,7 @@ video:focus-visible,
   flex: 0 0 auto;
 }
 
-.journey-item h3 {
+.journey-item h2 {
   color: var(--ink);
   font-size: 1.08rem;
   line-height: 1.3;
@@ -1281,7 +1278,8 @@ video:focus-visible,
   font-size: 0.94rem;
 }
 
-.journey-place a {
+.journey-place a,
+.journey-mentorship a {
   color: var(--accent-deep);
   font-weight: 700;
   text-decoration: underline;
@@ -1290,7 +1288,8 @@ video:focus-visible,
   text-underline-offset: 0.22em;
 }
 
-.journey-place a:hover {
+.journey-place a:hover,
+.journey-mentorship a:hover {
   color: var(--ink);
   text-decoration-color: currentColor;
 }
@@ -1305,6 +1304,17 @@ video:focus-visible,
 
 .journey-copy {
   min-width: 0;
+}
+
+.journey-copy .journey-mentorship {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.4rem;
+  margin-top: 0.65rem;
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.6;
 }
 
 .journey-logos {
@@ -1544,7 +1554,6 @@ video:focus-visible,
   padding-inline: 0;
 }
 
-.experiences-chapter .chapter-heading--after-photo,
 .experiences-chapter .journey-list,
 .publication-chapter .chapter-heading--after-photo,
 .publication-chapter .publication-card,
