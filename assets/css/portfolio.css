@@ -1585,6 +1585,10 @@ video:focus-visible,
   margin-top: clamp(1.8rem, 4vw, 3rem);
 }
 
+.chapter-visual--demos + .demo-grid {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
 .demo-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

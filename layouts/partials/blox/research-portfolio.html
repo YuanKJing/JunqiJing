@@ -329,7 +329,7 @@
   {{ end }}
 
   {{ if eq $view "demos" }}
-  <section id="robot-demos" class="portfolio-chapter demos-chapter" aria-labelledby="demos-heading">
+  <section id="robot-demos" class="portfolio-chapter demos-chapter" aria-labelledby="demos-page-title">
     <div class="portfolio-container">
       <figure class="chapter-visual chapter-visual--demos" data-reveal="image" data-scroll-parallax>
         <img
@@ -340,10 +340,11 @@
           loading="eager"
           fetchpriority="high"
           decoding="async">
-        <h1 class="page-banner-title">Robot Demos</h1>
+        <h1 class="page-banner-title" id="demos-page-title">Robot Demos</h1>
         <figcaption class="photo-watermark">Photographed by JJ</figcaption>
       </figure>
 
+      {{/* Temporarily hidden. Remove this opening comment line and its closing marker to restore the demo introduction.
       <div class="chapter-heading chapter-heading--after-photo" data-reveal>
         <div>
           <p class="chapter-label">{{ $data.robot_demos.eyebrow }}</p>
@@ -351,6 +352,7 @@
         </div>
         <div class="chapter-heading__body"><p>{{ $data.robot_demos.intro }}</p></div>
       </div>
+      */}}
 
       <div class="demo-grid">
         {{ range $index, $demo := $data.robot_demos.items }}
