@@ -1067,8 +1067,8 @@ video:focus-visible,
   font-weight: 800;
 }
 
-/* Research chapter and its integrated journey. */
-.research-chapter {
+/* Experiences chapter and shared research direction cards. */
+.experiences-chapter {
   background: #fafaf8;
 }
 
@@ -1145,6 +1145,21 @@ video:focus-visible,
   box-shadow: var(--shadow-soft);
 }
 
+.about-research {
+  padding-block: clamp(3rem, 5vw, 5rem);
+  background: #fafaf8;
+}
+
+.about-research .chapter-heading {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.about-research .chapter-heading__body > p {
+  max-width: 65ch;
+}
+
 .research-area {
   position: relative;
   display: flex;
@@ -1191,8 +1206,7 @@ video:focus-visible,
 }
 
 .research-area h3 {
-  margin-top: auto;
-  padding-top: 3rem;
+  margin-top: 2.5rem;
   color: var(--ink);
   font-size: clamp(1.45rem, 2.4vw, 1.9rem);
   line-height: 1.08;
@@ -1206,27 +1220,27 @@ video:focus-visible,
 }
 
 .research-area__tags {
-  margin-top: 1.35rem;
+  margin-top: auto;
+  padding-top: 1.35rem;
 }
 
-.research-journey {
-  margin-top: clamp(5rem, 9vw, 8rem);
-  scroll-margin-top: 5rem;
+.experiences-chapter .chapter-heading h2 {
+  max-width: 26ch;
 }
 
 .journey-list {
   border-top: 1px solid var(--line-strong);
+  scroll-margin-top: 5rem;
 }
 
 .journey-item {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(9.5rem, 0.7fr) minmax(13rem, 1fr) minmax(15rem, 1.35fr);
-  gap: clamp(1.4rem, 4vw, 4rem);
-  align-items: start;
-  padding: 1.55rem 0;
+  grid-template-columns: 9.5rem minmax(0, 1fr) 12rem;
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  align-items: center;
+  padding: 2rem 0;
   border-bottom: 1px solid var(--line);
-  transition: background-color 180ms ease, transform 200ms var(--ease), padding 200ms var(--ease);
 }
 
 .journey-item--current::before {
@@ -1248,6 +1262,7 @@ video:focus-visible,
   font-size: 0.72rem;
   font-weight: 600;
   line-height: 1.45;
+  align-self: start;
 }
 
 .current-pulse {
@@ -1280,10 +1295,48 @@ video:focus-visible,
   text-decoration-color: currentColor;
 }
 
-.journey-description {
+.journey-copy .journey-description {
+  margin-top: 0.7rem;
+  max-width: 65ch;
   color: var(--muted);
   font-size: 0.97rem;
   line-height: 1.6;
+}
+
+.journey-copy {
+  min-width: 0;
+}
+
+.journey-logos {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.journey-logo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 5rem;
+  object-fit: contain;
+  object-position: right center;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.journey-logo--wordmark {
+  width: 12rem;
+}
+
+.journey-logo--seal {
+  width: 5rem;
+}
+
+.journey-logo--leap {
+  width: 6rem;
 }
 
 /* Publication: photography establishes the chapter; paper content stays dominant. */
@@ -1475,14 +1528,14 @@ video:focus-visible,
   background: var(--panel);
 }
 
-.research-chapter,
+.experiences-chapter,
 .publication-chapter,
 .demos-chapter,
 .hobbies-chapter {
   padding-top: 0;
 }
 
-.research-chapter > .portfolio-container,
+.experiences-chapter > .portfolio-container,
 .publication-chapter > .portfolio-container,
 .demos-chapter > .portfolio-container,
 .hobbies-chapter > .portfolio-container {
@@ -1491,9 +1544,8 @@ video:focus-visible,
   padding-inline: 0;
 }
 
-.research-chapter .chapter-heading--after-photo,
-.research-chapter .research-areas,
-.research-chapter .research-journey,
+.experiences-chapter .chapter-heading--after-photo,
+.experiences-chapter .journey-list,
 .publication-chapter .chapter-heading--after-photo,
 .publication-chapter .publication-card,
 .publication-chapter .publication-upcoming,
@@ -1922,9 +1974,7 @@ video:focus-visible,
   }
 
   .journey-item:hover {
-    padding-inline: 0.7rem;
     background: rgba(224, 239, 246, 0.38);
-    transform: translateX(0.2rem);
   }
 
   .publication-card:hover,
@@ -2126,7 +2176,7 @@ video:focus-visible,
   .portfolio-about,
   .contact-strip,
   .about-news,
-  .research-journey {
+  .journey-list {
     scroll-margin-top: 1rem;
   }
 }
@@ -2151,11 +2201,7 @@ video:focus-visible,
   }
 
   .journey-item {
-    grid-template-columns: minmax(9.5rem, 0.7fr) minmax(0, 1.5fr);
-  }
-
-  .journey-description {
-    grid-column: 2;
+    grid-template-columns: 8rem minmax(0, 1fr) 11rem;
   }
 
   .publication-card {
@@ -2186,6 +2232,7 @@ video:focus-visible,
 }
 
 @media (max-width: 900px) {
+  .about-research .chapter-heading,
   .chapter-heading,
   .chapter-heading--compact {
     grid-template-columns: 1fr;
@@ -2196,6 +2243,15 @@ video:focus-visible,
   .chapter-heading h2,
   .chapter-heading--compact h2 {
     max-width: 18ch;
+  }
+
+  .journey-item {
+    grid-template-columns: minmax(0, 1fr) 11rem;
+    row-gap: 0.75rem;
+  }
+
+  .journey-date {
+    grid-column: 1 / -1;
   }
 
   .about-layout {
@@ -2254,6 +2310,21 @@ video:focus-visible,
 
   .demo-card--featured .robot-video {
     object-position: center;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .research-areas {
+    grid-template-columns: 1fr;
+  }
+
+  .research-area {
+    min-height: 0;
+  }
+
+  .research-area + .research-area {
+    border-top: 1px solid var(--line-strong);
+    border-left: 0;
   }
 }
 
@@ -2374,12 +2445,27 @@ video:focus-visible,
   }
 
   .journey-item {
-    grid-template-columns: 1fr;
-    gap: 0.7rem;
+    grid-template-columns: minmax(0, 1fr) clamp(5.5rem, 20vw, 8.5rem);
+    column-gap: 1rem;
   }
 
-  .journey-description {
-    grid-column: auto;
+  .journey-logos {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+
+  .journey-logo {
+    max-height: 4rem;
+    flex: none;
+  }
+
+  .journey-logo--seal {
+    width: 4rem;
+  }
+
+  .journey-logo--leap {
+    width: 5.5rem;
   }
 
   .paper-visual {
@@ -2417,7 +2503,7 @@ video:focus-visible,
     padding-block: 4.5rem;
   }
 
-  .research-chapter,
+  .experiences-chapter,
   .publication-chapter,
   .demos-chapter,
   .hobbies-chapter {

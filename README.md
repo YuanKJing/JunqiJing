@@ -15,6 +15,32 @@ The site is built with Hugo Blox and deployed to GitHub Pages.
 - Profile photo and author information: `content/authors/admin/`
 - Robot demo media: `static/videos/`
 
+Research directions live on About me, between Biography and News. The
+Experiences navigation item opens `/experience/`; the former `/research/`
+address redirects to the research directions on About me.
+
+## Experience logos
+
+Edit `journey.items` in `data/portfolio.yaml` to update experiences and their
+right-aligned logos. Keep each asset's intrinsic dimensions in `width` and
+`height`; use `wordmark` for wide logos, `seal` for emblems, and `leap` for the
+LEAP mark. The layout preserves proportions and shares a right edge across
+all rows, including entries with two logos. Assets are served locally from
+`assets/media/institutions/`.
+
+| Asset | Source |
+| --- | --- |
+| HIT, POSTECH | SVG files supplied by Junqi; POSTECH has an explicit viewBox for responsive scaling. |
+| LEAP Lab | [Official logo](https://www.leaplab.ai/images/logo.png) |
+| KNOWIN AI | [Official product page logo](https://knowinai.com/assets/images/figma/shared/logo.svg); intrinsic dimensions normalized and its monochrome fill set to dark ink for the light background. |
+| Tsinghua University | [Purple university seal, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tsinghua_University_Logo.svg), attributed there to Tsinghua University. |
+| Nanjing University | [Official university identity page](https://www.nju.edu.cn/ndgk/ndbs/ndxb.htm) |
+| Westlake University | [Official English website logo](https://en.westlake.edu.cn/images/header_icon_color.png) |
+
+Nanjing University's visit is dated July–August 2025. Westlake's visit has no
+date in the supplied biography, so it is labeled “Research visit” without
+an inferred year.
+
 ## Add another robot demo
 
 1. Put a web-ready MP4 in `static/videos/`, for example:

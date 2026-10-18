@@ -1,5 +1,5 @@
 ---
-title: 'Experience'
+title: 'Experiences'
 date: 2023-10-24
 type: landing
 
@@ -10,14 +10,14 @@ design:
 
 # Page sections
 sections:
-  - block: resume-experience
+  - block: research-portfolio
+    id: experiences-page
     content:
-      username: admin
+      view: experiences
     design:
-      # Hugo date format
-      date_format: 'January 2006'
-      # Education or Experience section first?
-      is_education_first: false
+      css_class: portfolio-shell
+      spacing:
+        padding: [0, 0, 0, 0]
   - block: resume-skills
     content:
       title: Skills & Hobbies

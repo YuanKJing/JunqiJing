@@ -1,0 +1,14 @@
+<!doctype html>
+{{ $destination := strings.TrimPrefix "/" .Params.redirect_to }}
+<html lang="{{ site.Language.LanguageCode | default "en" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ .Title }} · {{ site.Title }}</title>
+    <link rel="canonical" href="{{ $destination | relURL | absURL }}">
+    <meta http-equiv="refresh" content="0; url={{ $destination | relURL }}">
+  </head>
+  <body>
+    <p>Research directions are now in <a href="{{ $destination | relURL }}">About me</a>.</p>
+  </body>
+</html>
