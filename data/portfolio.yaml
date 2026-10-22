@@ -94,6 +94,18 @@ robot_demos:
         - Teleoperation data
         - Real-world manipulation
     - number: "02"
+      title: "Astra + pai0.5: Gesture-Guided Real-World Interaction"
+      orientation: landscape
+      description: >-
+        Astra + pai0.5 实时结合手势与现场情况理解并执行交互任务。通过人类一次正确的演示，我们以 agent + foundation model 的方式充分发挥不同系统的优势，实时根据人类的演示和引导完成偏好的任务。
+      poster: images/demos/new-demo.jpg
+      video: videos/new-demo.mp4
+      status: Real robot video
+      tags:
+        - Astra + pai0.5
+        - Gesture understanding
+        - Foundation model
+    - number: "03"
       title: "Astra + Jev Real-World Demo: Grasping a Yellow Object"
       orientation: landscape
       description: >-
@@ -106,18 +118,6 @@ robot_demos:
         - Astra + Jev
         - RGB-only
         - No depth
-    - number: "03"
-      title: Dual-arm teleoperation
-      orientation: portrait
-      description: >-
-        A real-robot workspace for studying coordinated manipulation,
-        demonstration collection, and human-in-the-loop control.
-      poster: images/demos/teleoperation.jpg
-      video: videos/teleoperation.mp4
-      status: Real robot video
-      tags:
-        - Real robot
-        - Teleoperation
     - number: "04"
       title: Dual-arm ball catching
       orientation: landscape
@@ -130,6 +130,18 @@ robot_demos:
       tags:
         - Real robot
         - Dual-arm coordination
+    - number: "05"
+      title: Dual-arm teleoperation
+      orientation: portrait
+      description: >-
+        A real-robot workspace for studying coordinated manipulation,
+        demonstration collection, and human-in-the-loop control.
+      poster: images/demos/teleoperation.jpg
+      video: videos/teleoperation.mp4
+      status: Real robot video
+      tags:
+        - Real robot
+        - Teleoperation
 
 publication:
   eyebrow: Selected publications
