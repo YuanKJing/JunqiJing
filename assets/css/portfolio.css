@@ -1598,7 +1598,7 @@ video:focus-visible,
 }
 
 .demos-chapter .demo-grid {
-  max-width: 66rem;
+  max-width: 64rem;
 }
 
 .demos-chapter .chapter-heading {
@@ -1665,6 +1665,10 @@ video:focus-visible,
 
 .demo-card:not(.demo-card--featured).demo-card--portrait .robot-video {
   object-fit: contain;
+}
+
+.demo-card:not(.demo-card--featured).demo-card--portrait .demo-media {
+  aspect-ratio: 4 / 5;
 }
 
 .demo-card:not(.demo-card--featured) .demo-copy {
