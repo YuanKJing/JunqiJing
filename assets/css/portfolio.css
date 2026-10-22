@@ -1598,7 +1598,7 @@ video:focus-visible,
 }
 
 .demos-chapter .demo-grid {
-  max-width: 64rem;
+  max-width: 60rem;
 }
 
 .demos-chapter .chapter-heading {
@@ -1615,6 +1615,20 @@ video:focus-visible,
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.25rem, 3vw, 2.2rem);
   align-items: start;
+}
+
+.demo-card--featured[data-demo-number="04"] {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+}
+
+.demo-card--featured[data-demo-number="04"] .demo-media {
+  width: 100%;
+}
+
+.demo-card--featured[data-demo-number="04"] .demo-copy {
+  align-self: stretch;
 }
 
 .demo-card {

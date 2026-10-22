@@ -361,7 +361,7 @@
           {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
           {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
           {{ if $hasVideo }}
-            <article class="demo-card{{ if $demo.featured }} demo-card--featured{{ end }} demo-card--{{ $demo.orientation | default "landscape" }}" data-reveal="panel">
+            <article class="demo-card{{ if $demo.featured }} demo-card--featured{{ end }} demo-card--{{ $demo.orientation | default "landscape" }}" data-demo-number="{{ $demo.number }}" data-reveal="panel">
               <div class="demo-media">
                 <video
                   class="robot-video"
