@@ -283,11 +283,20 @@
               loading="lazy"
               decoding="async">
           {{ end }}
+          {{ if $publication.logo }}
+            {{ with resources.Get $publication.logo }}
+              {{ $brandLogo := .Resize "640x webp" }}
+              <div class="paper-conference-mark paper-conference-mark--brand" role="img" aria-label="{{ $publication.logo_alt }} logo">
+                <img src="{{ $brandLogo.RelPermalink }}" width="{{ $brandLogo.Width }}" height="{{ $brandLogo.Height }}" alt="" aria-hidden="true" decoding="async">
+              </div>
+            {{ end }}
+          {{ else }}
           {{ with $iclrLogo }}
             <div class="paper-conference-mark" role="img" aria-label="{{ $publication.venue }} conference logo">
               <img src="{{ .RelPermalink }}" width="282" height="84" alt="" aria-hidden="true" decoding="async">
               <span aria-hidden="true">{{ $publication.year }}</span>
             </div>
+          {{ end }}
           {{ end }}
         </div>
 
@@ -304,9 +313,11 @@
           {{ end }}
           <p class="publication-summary">{{ $publication.summary }}</p>
           <nav class="publication-actions" aria-label="Links for {{ $publication.title }}">
-            <a href="{{ $publication.paper_url }}" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+            {{ with $publication.paper_url }}<a href="{{ . }}" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>{{ end }}
+            {{ with $publication.blog_url }}<a href="{{ . }}" target="_blank" rel="noopener">Tech Blog <span aria-hidden="true">↗</span></a>{{ end }}
+            {{ with $publication.wechat_url }}<a href="{{ . }}" target="_blank" rel="noopener">WeChat (中文) <span aria-hidden="true">↗</span></a>{{ end }}
             {{ with $publication.project_url }}<a href="{{ . }}" target="_blank" rel="noopener">Project page <span aria-hidden="true">↗</span></a>{{ end }}
-            <a href="{{ $publication.openreview_url }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>
+            {{ with $publication.openreview_url }}<a href="{{ . }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>{{ end }}
             {{ with $publication.code_url }}<a href="{{ . }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>{{ end }}
             <a href="{{ $paperPage.RelPermalink }}">Details <span aria-hidden="true">→</span></a>
           </nav>

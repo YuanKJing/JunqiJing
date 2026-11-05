@@ -1431,6 +1431,10 @@ video:focus-visible,
   height: auto;
 }
 
+.paper-conference-mark--brand {
+  width: min(11rem, calc(100% - 2rem));
+}
+
 .paper-conference-mark > span {
   color: var(--ink-soft);
   font-family: "IBM Plex Mono", monospace;

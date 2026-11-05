@@ -149,6 +149,19 @@ robot_demos:
 publication:
   eyebrow: Selected publications
   items:
+  - page: /publication/co01
+    venue: Tech Blog
+    year: '2026'
+    title: 'Experience is the Prompt: Introducing CO01'
+    logo: media/coco-matrix-logo.png
+    logo_alt: COCO Matrix
+    image_alt: 'CO01 official cover: Experience is the prompt'
+    summary: CO01 learns new tasks in context from demonstrations, its own attempts,
+      and human guidance, without task-specific retraining. I led the work on human
+      guidance and preferences in Section 2.3, enabling mid-task corrections and
+      retaining user preferences.
+    blog_url: https://www.ccmtrx.com/research/co01/
+    wechat_url: https://mp.weixin.qq.com/s/7sa98ZEFRklpNy6oIkU1aw
   - page: /publication/q-physjepa
     venue: ICLR 2027
     year: '2027'
