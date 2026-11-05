@@ -29,7 +29,7 @@ links:
   - name: WeChat (中文)
     url: https://mp.weixin.qq.com/s/7sa98ZEFRklpNy6oIkU1aw
 image:
-  caption: 'Official CO01 cover. Image credit: COCO Matrix.'
+  caption: 'Many forms of experience — frame from the CO01 film at 2:15. Image credit: COCO Matrix.'
   focal_point: center
   preview_only: false
 ---

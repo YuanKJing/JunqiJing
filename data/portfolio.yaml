@@ -155,7 +155,7 @@ publication:
     title: 'Experience is the Prompt: Introducing CO01'
     logo: media/coco-matrix-logo.png
     logo_alt: COCO Matrix
-    image_alt: 'CO01 official cover: Experience is the prompt'
+    image_alt: 'Many forms of experience: a nine-panel montage of robot runs and human demonstrations from the CO01 film'
     summary: CO01 learns new tasks in context from demonstrations, its own attempts,
       and human guidance, without task-specific retraining. I led the work on human
       guidance and preferences in Section 2.3, enabling mid-task corrections and
