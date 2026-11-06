@@ -15,7 +15,7 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'Junqi Jing is an Embodied AI researcher working on World Model, Embodied Agent, and RSI.'
+    description: 'Junqi Jing (荆浚淇), incoming Ph.D. student at CUHK SEEM (Fall 2027), advised by Prof. Liming Wang. Research in embodied AI, world models, and robot learning.'
     twitter: ''
   analytics:
     google_analytics: ''
@@ -24,7 +24,7 @@ marketing:
     fathom: ''
     pirsch: ''
   verification:
-    google: ''
+    google: 'ca2QcLh_EruZffcujI4VtCnAoiz79iVbp54FjoG-kk0'
     baidu: ''
 
 # Site header

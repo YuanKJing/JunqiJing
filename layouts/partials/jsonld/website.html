@@ -1,0 +1,41 @@
+{{/* Describe the homepage and its owner with the same public identity as the biography. */}}
+{{ $home := site.Home }}
+{{ $author := site.GetPage "/authors/admin" }}
+{{ $personID := printf "%s#person" $home.Permalink }}
+{{ $websiteID := printf "%s#website" $home.Permalink }}
+{{ $sameAs := slice }}
+{{ range $author.Params.profiles }}
+  {{ if hasPrefix .url "https://" }}{{ $sameAs = $sameAs | append .url }}{{ end }}
+{{ end }}
+{{ $person := dict
+  "@type" "Person"
+  "@id" $personID
+  "name" "Junqi Jing"
+  "alternateName" (slice "荆浚淇" "Junqi(Junairi) Jing" "YuanKJing")
+  "url" $home.Permalink
+  "description" $home.Params.summary
+  "jobTitle" "Embodied AI Researcher · B.E. Candidate"
+  "sameAs" $sameAs
+  "knowsAbout" (slice "Embodied AI" "World Models" "Robot Learning")
+}}
+{{ with ($author.Resources.ByType "image").GetMatch "avatar.jpg" }}
+  {{ $person = merge $person (dict "image" .Permalink) }}
+{{ end }}
+{{ $website := dict
+  "@type" "WebSite"
+  "@id" $websiteID
+  "name" site.Title
+  "url" $home.Permalink
+  "publisher" (dict "@id" $personID)
+}}
+{{ $profile := dict
+  "@type" "ProfilePage"
+  "@id" (printf "%s#profile" $home.Permalink)
+  "url" $home.Permalink
+  "name" $home.Title
+  "description" $home.Params.summary
+  "dateModified" ($home.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+  "isPartOf" (dict "@id" $websiteID)
+  "mainEntity" (dict "@id" $personID)
+}}
+<script type="application/ld+json">{{ (dict "@context" "https://schema.org" "@graph" (slice $website $profile $person)) | jsonify | safeJS }}</script>
