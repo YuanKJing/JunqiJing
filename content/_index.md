@@ -2,9 +2,9 @@
 title: Junqi Jing · 荆浚淇——CUHK
 seo:
   title: Junqi Jing · 荆浚淇——CUHK
-summary: 'Junqi Jing (荆浚淇), incoming Ph.D. student at CUHK SEEM (Fall 2027), advised by Prof. Liming Wang. Research in embodied AI, world models, and robot learning.'
+summary: 'Junqi Jing (荆浚淇), incoming Ph.D. student at CUHK SEEM (Fall 2027), advised by Prof. Liming Wang. AI Algorithm Intern at CoCoMatrix since September 2026. Research in embodied AI, world models, and robot learning.'
 date: 2026-07-31
-lastmod: 2026-11-06
+lastmod: 2026-11-10
 type: landing
 
 design:

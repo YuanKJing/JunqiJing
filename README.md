@@ -31,10 +31,12 @@ right-aligned logos. Keep each asset's intrinsic dimensions in `width` and
 `height`; use `wordmark` for wide logos, `seal` for emblems, and `leap` for the
 LEAP mark. The layout preserves proportions and shares a right edge across
 all rows, including entries with two logos. Assets are served locally from
-`assets/media/institutions/`.
+`assets/media/institutions/`. Set `resource` to reuse an existing asset elsewhere
+under `assets/`, such as the CoCoMatrix logo shared with the Publications page.
 
 | Asset | Source |
 | --- | --- |
+| CoCoMatrix | Existing `assets/media/coco-matrix-logo.png`, shared with the CO01 publication. |
 | HIT, POSTECH | SVG files supplied by Junqi; POSTECH has an explicit viewBox for responsive scaling. |
 | LEAP Lab | [Official logo](https://www.leaplab.ai/images/logo.png) |
 | KNOWIN AI | [Official product page logo](https://knowinai.com/assets/images/figma/shared/logo.svg); intrinsic dimensions normalized and its monochrome fill set to dark ink for the light background. |
@@ -42,7 +44,8 @@ all rows, including entries with two logos. Assets are served locally from
 | Nanjing University | [Official university identity page](https://www.nju.edu.cn/ndgk/ndbs/ndxb.htm) |
 | Westlake University | [Official English website logo](https://en.westlake.edu.cn/images/header_icon_color.png) |
 
-The Experiences page shows KNOWIN AI, Tsinghua University, POSTECH, and a single
+The Experiences page shows CoCoMatrix (Sep 2026–present), KNOWIN AI (Apr–Sep 2026),
+Tsinghua University, POSTECH, and a single
 HIT entry combining the degree and undergraduate research. Add advisor or leader
 links through each item's `mentorship.label` and `mentorship.people` fields.
 

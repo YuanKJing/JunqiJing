@@ -229,7 +229,8 @@
               </div>
               <div class="journey-logos">
                 {{ range .logos }}
-                  {{ $logo := resources.Get (printf "media/institutions/%s" .file) }}
+                  {{ $logoPath := .resource | default (printf "media/institutions/%s" .file) }}
+                  {{ $logo := resources.Get $logoPath }}
                   <img class="journey-logo journey-logo--{{ .style }}"
                     src="{{ $logo.RelPermalink }}" alt="{{ .name }} logo"
                     width="{{ .width }}" height="{{ .height }}"

@@ -2,8 +2,8 @@ hero:
   name: Junqi Jing
   role: Embodied AI Researcher · B.E. Candidate
   affiliation: Harbin Institute of Technology
-  current: AI Research Intern at KNOWIN AI
-  current_url: https://knowinai.com/
+  current: AI Algorithm Intern at CoCoMatrix
+  current_url: https://www.ccmtrx.com/
   headline: World Model, Embodied Agent, and RSI.
   bio:
     - >-
@@ -16,14 +16,20 @@ hero:
       My research focuses on Embodied
       AI, world models, and generative methods for physical interaction.
     - >-
-      I am currently an [**AI Research Intern at KNOWIN
-      AI**](https://knowinai.com/), working on VLA-based dexterous manipulation
-      and World Action Models. Previously, I conducted Embodied AI research at
-      **POSTECH** in the [MLV
+      I am currently an [**AI Algorithm Intern at CoCoMatrix**](https://www.ccmtrx.com/)
+      (Sep 2026–present), leading the Robot Interaction project under the guidance
+      of Weikang Wan. My work focuses on foundation-model post-training for guided
+      interaction, long-context processing, and long-term memory for embodied
+      agents, including agent-driven in-context learning for self-improvement.
+    - >-
+      Previously, I worked at [**KNOWIN AI**](https://knowinai.com/)
+      (Apr–Sep 2026) on VLA-based dexterous manipulation, teleoperation, and
+      World Action Models. I was a Research Assistant at [**Tsinghua
+      University’s LEAP Lab**](https://www.leaplab.ai/) (Dec 2025–Mar 2026)
+      with Prof. [Gao Huang](https://gaohuang-net.github.io/), and conducted
+      Embodied AI research at **POSTECH** in the [MLV
       Lab](https://sites.google.com/view/mlvlab/home?authuser=0) with Prof.
-      [Kwang In Kim](https://sites.google.com/view/kimki), and at [**Tsinghua
-      University’s LEAP Lab**](https://www.leaplab.ai/) with Prof. [Gao
-      Huang](https://gaohuang-net.github.io/).
+      [Kwang In Kim](https://sites.google.com/view/kimki).
     - >-
       I am seeking **research-oriented internships and collaborations** with
       leading technology companies in embodied intelligence and robotics.
@@ -240,12 +246,31 @@ hobbies:
 
 journey:
   items:
-    - date: Apr 2026 — Present
+    - date: Sep 2026 — Present
+      role: AI Algorithm Intern
+      place: CoCoMatrix
+      place_url: https://www.ccmtrx.com/
+      text: >-
+        Lead the Robot Interaction project under the guidance of Weikang Wan,
+        focusing on foundation-model post-training for guided interaction.
+        Develop embodied-agent systems for long-context processing, long-term
+        memory, and self-improvement through in-context learning.
+      current: true
+      logos:
+        - name: CoCoMatrix
+          resource: media/coco-matrix-logo.png
+          width: 2490
+          height: 470
+          style: wordmark
+    - date: Apr 2026 — Sep 2026
       role: AI Research Intern
       place: KNOWIN AI
       place_url: https://knowinai.com/
-      text: Dexterous-hand manipulation with VLA models and exploratory work on World Action Models.
-      current: true
+      text: >-
+        Worked on VLA-based dexterous manipulation and World Action Models.
+        Built a PICO-based VR teleoperation system for a dexterous hand and
+        robotic arm, supporting data collection, policy training, and demos
+        including KNOWIN AI’s WAIC clothes-folding demonstration.
       mentorship:
         label: Leader
         people:
@@ -260,10 +285,13 @@ journey:
           height: 42
           style: wordmark
     - date: Dec 2025 — Mar 2026
-      role: Research Internship
+      role: Research Assistant
       place: Tsinghua University · LEAP Lab
       place_url: https://www.leaplab.ai/
-      text: Research on real-hardware interaction, robot learning, and world modeling at LEAP Lab.
+      text: >-
+        Built a base-station-tracked teleoperation system for Piper and ALOHA
+        dual-arm platforms, collected demonstration data, and trained and
+        deployed robotic policies. Explored World Action Models at LEAP Lab.
       mentorship:
         label: Advisor
         people:
