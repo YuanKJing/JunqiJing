@@ -251,11 +251,16 @@ journey:
       place: CoCoMatrix
       place_url: https://www.ccmtrx.com/
       text: >-
-        Lead the Robot Interaction project under the guidance of Weikang Wan,
-        focusing on foundation-model post-training for guided interaction.
+        Lead the Robot Interaction project, focusing on foundation-model
+        post-training for guided interaction.
         Develop embodied-agent systems for long-context processing, long-term
         memory, and self-improvement through in-context learning.
       current: true
+      mentorship:
+        label: Leader
+        people:
+          - name: Weikang Wan
+            url: https://wkwan7.github.io/
       logos:
         - name: CoCoMatrix
           resource: media/coco-matrix-logo.png
