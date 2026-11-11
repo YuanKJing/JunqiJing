@@ -1498,6 +1498,7 @@ video:focus-visible,
 }
 
 .publication-authors .publication-contributor-credit {
+  margin-left: 0.75rem;
   color: #000;
   font-weight: 700;
 }
