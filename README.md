@@ -116,3 +116,10 @@ hugo --gc --minify
 
 Pushing to `main` runs the GitHub Pages workflow in
 `.github/workflows/publish.yaml`.
+
+### LFF-Bench publication assets
+
+- Cover: Figure 1(b), rendered from the author-provided LFF-Bench manuscript; shows failure categories and a long-horizon task.
+- CVPR mark: official conference navigation logo, https://cvpr.thecvf.com/static/core/img/cvpr-navbar-logo.svg.
+- `conference_logo` overrides the default ICLR mark for a publication card.
+- LFF-Bench intentionally has an empty author list and is labeled CVPR 2027 (under review). Its OpenReview link is retained; no PDF link is advertised before one is available on the submission page.

@@ -292,9 +292,11 @@
               </div>
             {{ end }}
           {{ else }}
-          {{ with $iclrLogo }}
-            <div class="paper-conference-mark" role="img" aria-label="{{ $publication.venue }} conference logo">
-              <img src="{{ .RelPermalink }}" width="282" height="84" alt="" aria-hidden="true" decoding="async">
+          {{ $conferenceLogo := $iclrLogo }}
+          {{ with $publication.conference_logo }}{{ $conferenceLogo = resources.Get . }}{{ end }}
+          {{ with $conferenceLogo }}
+            <div class="paper-conference-mark{{ with $publication.conference_logo_class }} paper-conference-mark--{{ . }}{{ end }}" role="img" aria-label="{{ $publication.venue }} conference logo">
+              <img src="{{ .RelPermalink }}" width="{{ $publication.conference_logo_width | default 282 }}" height="{{ $publication.conference_logo_height | default 84 }}" alt="" aria-hidden="true" decoding="async">
               <span aria-hidden="true">{{ $publication.year }}</span>
             </div>
           {{ end }}

@@ -1431,6 +1431,11 @@ video:focus-visible,
   height: auto;
 }
 
+.paper-conference-mark--cvpr {
+  width: min(7rem, calc(100% - 2rem));
+  top: 0.75rem;
+}
+
 .paper-conference-mark--brand {
   width: min(11rem, calc(100% - 2rem));
 }
