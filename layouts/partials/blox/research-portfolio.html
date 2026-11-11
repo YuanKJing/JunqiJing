@@ -312,6 +312,7 @@
           {{ with $paperPage.Params.authors }}
             <p class="publication-authors">
               {{ range $index, $author := . }}{{ if $index }} · {{ end }}{{ if eq $author "admin" }}<strong>Junqi Jing</strong>{{ else }}{{ $author }}{{ end }}{{ end }}
+              {{ with $publication.contributor_credit }}<br><strong class="publication-contributor-credit">{{ . }}</strong>{{ end }}
             </p>
           {{ end }}
           <p class="publication-summary">{{ $publication.summary }}</p>

@@ -1497,6 +1497,11 @@ video:focus-visible,
   color: var(--ink);
 }
 
+.publication-authors .publication-contributor-credit {
+  color: #000;
+  font-weight: 700;
+}
+
 .publication-summary {
   color: var(--ink-soft);
   font-size: 1rem;

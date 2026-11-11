@@ -171,6 +171,7 @@ publication:
       across retries, testing whether interaction history helps agents learn from failure.
     openreview_url: https://openreview.net/forum?id=0PrR8J9RSM
   - page: /publication/co01
+    contributor_credit: Junqi Jing—Major Contributors/ Project Leader
     venue: Tech Blog
     year: '2026'
     title: 'Experience is the Prompt: Introducing CO01'
