@@ -208,14 +208,16 @@
                 {{ .date }}
               </div>
               <div class="journey-copy">
-                <h2>{{ .role }}</h2>
-                <p class="journey-place">
-                  {{ if .place_url }}
-                    <a href="{{ .place_url }}" target="_blank" rel="noopener">{{ .place }}</a>
-                  {{ else }}
-                    {{ .place }}
-                  {{ end }}
-                </p>
+                <div class="journey-heading">
+                  <h2>{{ .role }}</h2>
+                  <p class="journey-place">
+                    {{ if .place_url }}
+                      <a href="{{ .place_url }}" target="_blank" rel="noopener">{{ .place }}</a>
+                    {{ else }}
+                      {{ .place }}
+                    {{ end }}
+                  </p>
+                </div>
                 <p class="journey-description">{{ .text }}</p>
                 {{ with .mentorship }}
                   <p class="journey-mentorship">
@@ -397,6 +399,7 @@
                 <span class="demo-status">{{ $demo.status }}</span>
                 <h3>{{ $demo.title }}</h3>
                 <p>{{ $demo.description }}</p>
+                {{ with $demo.blog_url }}<p class="demo-source"><a href="{{ . }}" target="_blank" rel="noopener">Read the CO01 technical blog <span aria-hidden="true">↗</span></a></p>{{ end }}
                 {{ with $demo.announcement }}<p class="demo-announcement">{{ . }}</p>{{ end }}
                 <div class="demo-tags">
                   {{ range $demo.tags }}<span>{{ . }}</span>{{ end }}

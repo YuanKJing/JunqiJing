@@ -79,18 +79,25 @@ robot_demos:
         - Teleoperation data
         - Real-world manipulation
     - number: "02"
-      title: "Astra + pai0.5: Gesture-Guided Real-World Interaction"
+      title: "CO01 with Agent"
       featured: true
       orientation: landscape
       description: >-
-        Astra + pai0.5 combines gesture understanding with real-time situational awareness to interpret and execute interactive tasks. With a single correct human demonstration, our agent + foundation model approach makes full use of the strengths of different systems and completes preference-driven tasks in real time from human demonstrations and guidance.
+        CO01 pairs a vision-language agent with a video-action policy for interactive
+        robot tasks. The agent plans subtasks, selects experience prompts, and maintains
+        long-term memory; the policy turns demonstrations, live observations, and feedback
+        into actions. Spoken guidance, gestures, and scene changes can redirect behavior
+        mid-task. Interaction history retains corrections within an episode, while the
+        agent stores user preferences across sessions—all without task-specific retraining.
+      blog_url: https://www.ccmtrx.com/research/co01/
       poster: images/demos/new-demo.jpg
       video: videos/new-demo.mp4
       status: Real robot video
       tags:
-        - Astra + pai0.5
-        - Gesture understanding
-        - Foundation model
+        - CO01
+        - In-context learning
+        - Human guidance
+        - Agent memory
     - number: "03"
       title: "Astra + Jev Real-World Demo: Grasping a Yellow Object"
       featured: true
