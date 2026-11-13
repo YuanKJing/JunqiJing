@@ -225,16 +225,8 @@ awards:
 
 ## About Me
 
-I’m Junqi Jing (荆浚淇), a 3rd/4th-year undergraduate in Software Engineering at Harbin Institute of Technology. My primary research areas are **Embodied AI** and **World Models**. I am dedicated to exploring the integration of generative AI and embodied intelligence. Recently, I have been deeply interested in **World Action Models (WAMs)**. If you have any ideas or insights related to this topic, feel free to reach out via email.
+I’m **Junqi Jing (荆浚淇)**, a B.E. candidate at **Harbin Institute of Technology** (Class of 2027) and an incoming Ph.D. student in SEEM at **The Chinese University of Hong Kong** (Fall 2027), advised by [**Prof. Liming Wang**](https://www.se.cuhk.edu.hk/people/academic-staff/prof-wang-liming/). I currently lead the Robot Interaction project as an AI Algorithm Intern at [**CoCoMatrix**](https://www.ccmtrx.com/), working with [Weikang Wan](https://wkwan7.github.io/). Previously, I worked at [KNOWIN AI](https://knowinai.com/), [Tsinghua’s LEAP Lab](https://www.leaplab.ai/), and [POSTECH’s MLV Lab](https://sites.google.com/view/mlvlab/home?authuser=0).
 
-I am currently an **AI Algorithm Intern at [CoCoMatrix](https://www.ccmtrx.com/)** (September 2026–present), leading the Robot Interaction project under the guidance of Weikang Wan. My work focuses on foundation-model post-training for guided interaction, long-context processing, and long-term memory for embodied agents, including self-improvement through in-context learning.
+My research focuses on **world models, embodied agents, and self-improvement through interaction**. I’m interested in how robots learn from experience and human guidance to act more effectively in the physical world.
 
-From **April to September 2026**, I worked as an AI Research Intern at [KNOWIN AI](https://www.knowinai.com/) on VLA-based dexterous manipulation and **World Action Models (WAMs)**. I built a PICO-based VR teleoperation system for a dexterous hand and robotic arm, supporting data collection, policy training, and real-time demonstrations.
-
-Previously, I spent one semester as an exchange student at **POSTECH**, conducting research in the [MLV Lab](https://sites.google.com/view/mlvlab/home?authuser=0) under the supervision of [Prof. Kwang In Kim](https://sites.google.com/view/kimki). It was an unforgettable and highly inspiring research experience.
-
-From **December 2025 to March 2026**, I worked at **Tsinghua University** as a Research Assistant in the [LEAP Lab](https://www.leaplab.ai/), where I was fortunate to work under the guidance of [Prof. Gao Huang](https://gaohuang-net.github.io/).
-
-I am currently seeking a **research-oriented internship** and look forward to connecting with research teams at leading technology companies working on embodied intelligence and robotics.
-
-If you have any ideas or potential collaborations, feel free to contact me at [xingkong8527@gmail.com](mailto:xingkong8527@gmail.com).
+Feel free to [get in touch](mailto:xingkong8527@gmail.com) about research internships or collaborations!

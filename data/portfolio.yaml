@@ -7,32 +7,11 @@ hero:
   headline: World Model, Embodied Agent, and RSI.
   bio:
     - >-
-      I’m **Junqi Jing (荆浚淇)**, a B.E. candidate in Software Engineering at
-      **Harbin Institute of Technology** (2023–2027). I am an incoming Ph.D.
-      student in the Department of Systems Engineering and Engineering
-      Management (SEEM) at **The Chinese University of Hong Kong**, starting in
-      Fall 2027 under the supervision of [**Prof. Liming
-      Wang**](https://www.se.cuhk.edu.hk/people/academic-staff/prof-wang-liming/).
-      My research focuses on Embodied
-      AI, world models, and generative methods for physical interaction.
+      I’m **Junqi Jing (荆浚淇)**, a B.E. candidate at **Harbin Institute of Technology** (Class of 2027) and an incoming Ph.D. student in SEEM at **The Chinese University of Hong Kong** (Fall 2027), advised by [**Prof. Liming Wang**](https://www.se.cuhk.edu.hk/people/academic-staff/prof-wang-liming/). I currently lead the Robot Interaction project as an AI Algorithm Intern at [**CoCoMatrix**](https://www.ccmtrx.com/), working with [Weikang Wan](https://wkwan7.github.io/). Previously, I worked at [KNOWIN AI](https://knowinai.com/), [Tsinghua’s LEAP Lab](https://www.leaplab.ai/), and [POSTECH’s MLV Lab](https://sites.google.com/view/mlvlab/home?authuser=0).
     - >-
-      I am currently an [**AI Algorithm Intern at CoCoMatrix**](https://www.ccmtrx.com/)
-      (Sep 2026–present), leading the Robot Interaction project under the guidance
-      of Weikang Wan. My work focuses on foundation-model post-training for guided
-      interaction, long-context processing, and long-term memory for embodied
-      agents, including agent-driven in-context learning for self-improvement.
+      My research focuses on **world models, embodied agents, and self-improvement through interaction**. I’m interested in how robots learn from experience and human guidance to act more effectively in the physical world.
     - >-
-      Previously, I worked at [**KNOWIN AI**](https://knowinai.com/)
-      (Apr–Sep 2026) on VLA-based dexterous manipulation, teleoperation, and
-      World Action Models. I was a Research Assistant at [**Tsinghua
-      University’s LEAP Lab**](https://www.leaplab.ai/) (Dec 2025–Mar 2026)
-      with Prof. [Gao Huang](https://gaohuang-net.github.io/), and conducted
-      Embodied AI research at **POSTECH** in the [MLV
-      Lab](https://sites.google.com/view/mlvlab/home?authuser=0) with Prof.
-      [Kwang In Kim](https://sites.google.com/view/kimki).
-    - >-
-      I am seeking **research-oriented internships and collaborations** with
-      leading technology companies in embodied intelligence and robotics.
+      Feel free to [get in touch](mailto:xingkong8527@gmail.com) about research internships or collaborations!
   status: Open to research internship opportunities
   primary_cta:
     text: Watch robot demos
