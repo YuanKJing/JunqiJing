@@ -42,29 +42,20 @@
             alt="A motorcycle beside the sea at sunset"
             fetchpriority="high"
             decoding="async">
-          <p class="home-banner-title" aria-hidden="true">
-            <span class="home-banner-title__write" data-home-title-write data-text="Junqi Jing’s Homepage">Junqi Jing’s Homepage</span>
-          </p>
-          <p class="home-banner-tagline" aria-hidden="true">“Towards Physical Intelligence”</p>
           <figcaption class="photo-watermark">Photographed by JJ</figcaption>
         </figure>
       </div>
 
       <header class="identity-strip" aria-labelledby="portfolio-title" data-reveal="panel">
         <div class="identity-strip__person">
-          <div>
-            <h1 id="portfolio-title">{{ $data.hero.name }}</h1>
-            <strong>{{ $data.hero.role }}</strong>
-            <p>{{ $data.hero.affiliation }}</p>
-          </div>
+          <h1 id="portfolio-title">{{ $data.hero.name }}</h1>
+          <p class="identity-question">{{ $data.hero.headline }}</p>
+          <p class="identity-affiliation">{{ $data.hero.affiliation }} · <a href="{{ $data.hero.current_url }}">{{ $data.hero.current }}</a></p>
         </div>
-        <div class="identity-strip__current">
-          <span>Currently</span>
-          <a href="{{ $data.hero.current_url }}" target="_blank" rel="noopener">{{ $data.hero.current }}</a>
-        </div>
-        <div class="identity-strip__links">
-          <a class="identity-email" href="mailto:{{ $data.contact.email }}">{{ $data.contact.email }}</a>
-        </div>
+        <nav class="identity-actions" aria-label="Selected research">
+          <a href="{{ $data.hero.primary_cta.url | relURL }}">{{ $data.hero.primary_cta.text }}</a>
+          <a href="{{ "publication/" | relURL }}#publication-heading">Selected Publications</a>
+        </nav>
       </header>
     </div>
 
@@ -378,7 +369,7 @@
           {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
           {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
           {{ if $hasVideo }}
-            <article class="demo-card{{ if $demo.featured }} demo-card--featured{{ end }} demo-card--{{ $demo.orientation | default "landscape" }}" data-demo-number="{{ $demo.number }}" data-reveal="panel">
+            <article {{ with $demo.id }}id="{{ . }}" {{ end }}class="demo-card{{ if $demo.featured }} demo-card--featured{{ end }} demo-card--{{ $demo.orientation | default "landscape" }}" data-demo-number="{{ $demo.number }}" data-reveal="panel">
               <div class="demo-media">
                 <video
                   class="robot-video"
@@ -386,7 +377,7 @@
                   loop
                   playsinline
                   controls
-                  preload="metadata"
+                  preload="none"
                   {{ with $demo.poster }}poster="{{ . | relURL }}"{{ end }}
                   data-robot-video
                   aria-label="{{ $demo.title }} demonstration video">

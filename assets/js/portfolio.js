@@ -20,19 +20,6 @@
 
     root.classList.add("portfolio-ready");
 
-    const homeTitle = document.querySelector("[data-home-title-write]");
-    if (homeTitle && root.classList.contains("portfolio-motion") && !reduceMotion) {
-      const startHomeTitle = () => {
-        const fontsReady = document.fonts?.ready || Promise.resolve();
-        fontsReady.then(() => {
-          window.requestAnimationFrame(() => homeTitle.classList.add("is-writing"));
-        });
-      };
-
-      if (document.readyState === "complete") startHomeTitle();
-      else window.addEventListener("load", startHomeTitle, { once: true });
-    }
-
     if (root.classList.contains("portfolio-motion") && !reduceMotion) {
       const firstViewItems = allRevealItems.slice(0, 2);
       const laterItems = allRevealItems.filter((item) => !firstViewItems.includes(item));
@@ -64,63 +51,36 @@
     }
 
     const videos = [...document.querySelectorAll("[data-robot-video]")];
-    const visibleVideos = new Set();
-
-    const pauseVideo = (video) => {
-      if (!video) return;
-      if (!video.paused) video.pause();
-      video.closest(".demo-card")?.classList.remove("is-playing");
-    };
-
-    const playVideo = (video) => {
-      if (!video) return;
-      video.muted = true;
-      const playRequest = video.play();
-      if (playRequest) {
-        playRequest
-          .then(() => video.closest(".demo-card")?.classList.add("is-playing"))
-          .catch(() => video.closest(".demo-card")?.classList.remove("is-playing"));
+    // Offer a single muted preview on desktop. After it stops, the native
+    // controls own playback, including after scrolling or switching tabs.
+    const previewDevice = window.matchMedia("(min-width: 901px) and (hover: hover) and (pointer: fine)");
+    const previewed = new WeakSet();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const video = entry.target;
+        if (!entry.isIntersecting) {
+          video.pause();
+        } else if (entry.intersectionRatio >= 0.5 && !document.hidden && previewDevice.matches
+                   && !reduceMotion && !saveData && !previewed.has(video)) {
+          previewed.add(video);
+          video.play().catch(() => {});
+        }
       }
-    };
+    }, { threshold: [0, 0.5] });
 
-    videos.forEach((video) => {
+    for (const video of videos) {
       const card = video.closest(".demo-card");
-      video.addEventListener("play", () => card?.classList.add("is-playing"));
+      video.addEventListener("play", () => {
+        previewed.add(video);
+        card?.classList.add("is-playing");
+      });
       video.addEventListener("pause", () => card?.classList.remove("is-playing"));
       video.addEventListener("ended", () => card?.classList.remove("is-playing"));
-    });
-
-    if (videos.length && !reduceMotion && !saveData) {
-      videos.forEach((video) => {
-        video.autoplay = true;
-      });
-
-      const videoObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const video = entry.target;
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
-              visibleVideos.add(video);
-              playVideo(video);
-            } else {
-              visibleVideos.delete(video);
-              pauseVideo(video);
-            }
-          });
-        },
-        { threshold: [0, 0.25, 0.55, 0.8] },
-      );
-
-      videos.forEach((video) => videoObserver.observe(video));
+      observer.observe(video);
     }
 
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        videos.forEach(pauseVideo);
-        return;
-      }
-
-      if (!reduceMotion && !saveData) visibleVideos.forEach(playVideo);
+      if (document.hidden) videos.forEach(video => video.pause());
     });
 
     document.addEventListener(

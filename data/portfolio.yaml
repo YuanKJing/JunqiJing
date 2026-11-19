@@ -4,18 +4,18 @@ hero:
   affiliation: Harbin Institute of Technology
   current: AI Algorithm Intern at CoCoMatrix
   current_url: https://www.ccmtrx.com/
-  headline: World Model, Embodied Agent, and RSI.
+  headline: I study how robots learn from demonstrations, human guidance, and their own mistakes.
   bio:
     - >-
-      I’m **Junqi Jing (荆浚淇)**, a B.E. candidate at **Harbin Institute of Technology** (Class of 2027) and an incoming Ph.D. student in SEEM at **The Chinese University of Hong Kong** (Fall 2027), advised by [**Prof. Liming Wang**](https://www.se.cuhk.edu.hk/people/academic-staff/prof-wang-liming/). I currently lead the Robot Interaction project as an AI Algorithm Intern at [**CoCoMatrix**](https://www.ccmtrx.com/), working with [Weikang Wan](https://wkwan7.github.io/). Previously, I interned at [**KNOWIN AI**](https://knowinai.com/) and conducted research at [**Tsinghua’s LEAP Lab**](https://www.leaplab.ai/) with [**Prof. Gao Huang**](https://www.au.tsinghua.edu.cn/info/1075/3183.htm) and [**POSTECH’s MLV Lab**](https://sites.google.com/view/mlvlab/home?authuser=0) with [**Prof. Kwang In Kim**](https://sites.google.com/view/kimki?pli=1&authuser=0). I have also been fortunate to receive guidance from [**Prof. Zhaobo Qi**](https://homepage.hit.edu.cn/qizhaobo) during my undergraduate studies at HIT.
+      My research focuses on **world models and embodied agents**. I’m interested in how robots use feedback from one attempt to improve the next.
     - >-
-      My research focuses on **world models, embodied agents, and self-improvement through interaction**. I’m interested in how robots learn from experience and human guidance to act more effectively in the physical world.
+      I’m **Junqi Jing (荆浚淇)**, a B.E. candidate at **Harbin Institute of Technology** (Class of 2027) and an incoming Ph.D. student in SEEM at **The Chinese University of Hong Kong** (Fall 2027), advised by [**Prof. Liming Wang**](https://www.se.cuhk.edu.hk/people/academic-staff/prof-wang-liming/). I currently lead the Robot Interaction project as an AI Algorithm Intern at [**CoCoMatrix**](https://www.ccmtrx.com/), working with [Weikang Wan](https://wkwan7.github.io/).
     - >-
-      Feel free to [get in touch](mailto:xingkong8527@gmail.com) about research internships or collaborations!
-  status: Open to research internship opportunities
+      Previously, I interned at [**KNOWIN AI**](https://knowinai.com/) and conducted research at [**Tsinghua’s LEAP Lab**](https://www.leaplab.ai/) with [**Prof. Gao Huang**](https://www.au.tsinghua.edu.cn/info/1075/3183.htm) and [**POSTECH’s MLV Lab**](https://sites.google.com/view/mlvlab/home?authuser=0) with [**Prof. Kwang In Kim**](https://sites.google.com/view/kimki?pli=1&authuser=0). I have also been fortunate to receive guidance from [**Prof. Zhaobo Qi**](https://homepage.hit.edu.cn/qizhaobo) during my undergraduate studies at HIT.
+  status: Open to research internships and collaborations
   primary_cta:
-    text: Watch robot demos
-    url: /robot-demos/
+    text: Watch CO01 Demo
+    url: robot-demos/#co01-with-agent
   interests:
     - World Model
     - Embodied Agent
@@ -62,8 +62,25 @@ robot_demos:
     real-world robot interaction, data collection, and coordinated control.
   items:
     - number: "01"
-      title: Real-World Teleoperation Data for Robot Foundation Models
+      id: co01-with-agent
+      title: "CO01 with Agent"
       featured: true
+      orientation: landscape
+      description: >-
+        Watch how a human gesture changes the robot’s next action.
+        The agent chooses the next step and remembers the user’s preferences, while the
+        CO01 policy uses the live camera view and that guidance to move the robot.
+      blog_url: https://www.ccmtrx.com/research/co01/
+      poster: images/demos/new-demo.jpg
+      video: videos/new-demo.mp4
+      status: Real robot video
+      tags:
+        - CO01
+        - In-context learning
+        - Human guidance
+        - Agent memory
+    - number: "02"
+      title: Real-World Teleoperation Data for Robot Foundation Models
       orientation: landscape
       description: >-
         A first look at real-world manipulation with robot foundation models
@@ -78,29 +95,8 @@ robot_demos:
         - Foundation models
         - Teleoperation data
         - Real-world manipulation
-    - number: "02"
-      title: "CO01 with Agent"
-      featured: true
-      orientation: landscape
-      description: >-
-        CO01 pairs a vision-language agent with a video-action policy for interactive
-        robot tasks. The agent plans subtasks, selects experience prompts, and maintains
-        long-term memory; the policy turns demonstrations, live observations, and feedback
-        into actions. Spoken guidance, gestures, and scene changes can redirect behavior
-        mid-task. Interaction history retains corrections within an episode, while the
-        agent stores user preferences across sessions—all without task-specific retraining.
-      blog_url: https://www.ccmtrx.com/research/co01/
-      poster: images/demos/new-demo.jpg
-      video: videos/new-demo.mp4
-      status: Real robot video
-      tags:
-        - CO01
-        - In-context learning
-        - Human guidance
-        - Agent memory
     - number: "03"
       title: "Astra + Jev Real-World Demo: Grasping a Yellow Object"
-      featured: true
       orientation: landscape
       description: >-
         A PiPER pick-and-place demo controlled by Astra + Jev + a robot control
@@ -114,7 +110,6 @@ robot_demos:
         - No depth
     - number: "04"
       title: Dual-arm ball catching
-      featured: true
       orientation: landscape
       description: >-
         A real-robot demonstration of coordinated dual-arm interception and

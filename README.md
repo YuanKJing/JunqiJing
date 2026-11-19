@@ -69,9 +69,10 @@ links through each item's `mentorship.label` and `mentorship.people` fields.
 ```
 
 The page automatically switches the slot from its placeholder to the real
-player. Videos play muted when sufficiently visible, pause off-screen, and keep
-native controls for sound and full-screen viewing. Reduced-motion and data-saver
-preferences disable automatic playback.
+player. Phones show the poster and native play controls. On desktop, a video can
+start one muted preview when half visible. Leaving the viewport or hiding the
+tab pauses playback. A paused video resumes through its native controls.
+Reduced-motion and data-saver preferences disable automatic previews.
 
 Direct HTTPS MP4 URLs are also supported in the `video` field. Keep homepage
 videos short and compressed; use external object storage or a CDN for large
