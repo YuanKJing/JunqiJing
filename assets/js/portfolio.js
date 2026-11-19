@@ -20,6 +20,19 @@
 
     root.classList.add("portfolio-ready");
 
+    const homeTitle = document.querySelector("[data-home-title-write]");
+    if (homeTitle && root.classList.contains("portfolio-motion") && !reduceMotion) {
+      const startHomeTitle = () => {
+        const fontsReady = document.fonts?.ready || Promise.resolve();
+        fontsReady.then(() => {
+          window.requestAnimationFrame(() => homeTitle.classList.add("is-writing"));
+        });
+      };
+
+      if (document.readyState === "complete") startHomeTitle();
+      else window.addEventListener("load", startHomeTitle, { once: true });
+    }
+
     if (root.classList.contains("portfolio-motion") && !reduceMotion) {
       const firstViewItems = allRevealItems.slice(0, 2);
       const laterItems = allRevealItems.filter((item) => !firstViewItems.includes(item));

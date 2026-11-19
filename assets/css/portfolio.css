@@ -443,6 +443,7 @@ video:focus-visible,
   object-position: center 56%;
 }
 
+.home-banner-title,
 .page-banner-title {
   position: absolute;
   top: 50%;
@@ -454,6 +455,26 @@ video:focus-visible,
   text-align: center;
   text-shadow: 0 2px 16px rgba(4, 21, 29, 0.62);
   transform: translate(-50%, -50%);
+}
+
+.home-banner-title {
+  top: 48%;
+  font-family: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  font-size: clamp(1.45rem, 5.4vw, 4.25rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.98;
+  text-shadow: 0 2px 14px rgba(4, 21, 29, 0.58), 0 1px 2px rgba(4, 21, 29, 0.5);
+  text-wrap: balance;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.home-banner-title__write {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
 }
 
 .photo-watermark {
@@ -491,6 +512,84 @@ video:focus-visible,
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1;
+}
+
+@keyframes home-title-write {
+  0% {
+    clip-path: inset(-0.22em 100% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.18, 1);
+  }
+
+  27% {
+    clip-path: inset(-0.22em 74% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+
+  34% {
+    clip-path: inset(-0.22em 71% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.18, 1);
+  }
+
+  58% {
+    clip-path: inset(-0.22em 46% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  }
+
+  65% {
+    clip-path: inset(-0.22em 43% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.18, 1);
+  }
+
+  94% {
+    clip-path: inset(-0.22em 4% -0.28em -0.08em);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  }
+
+  100% {
+    clip-path: inset(-0.22em -0.08em -0.28em -0.08em);
+  }
+}
+
+@keyframes home-title-sweep {
+  0% {
+    clip-path: inset(-0.22em 100% -0.28em -0.08em);
+    opacity: 0;
+  }
+
+  16% {
+    opacity: 0.92;
+  }
+
+  78% {
+    clip-path: inset(-0.22em -0.08em -0.28em -0.08em);
+    opacity: 1;
+  }
+
+  100% {
+    clip-path: inset(-0.22em -0.08em -0.28em -0.08em);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-motion.portfolio-ready .home-banner-title__write {
+    clip-path: inset(-0.22em 100% -0.28em -0.08em);
+  }
+
+  .portfolio-motion.portfolio-ready .home-banner-title__write.is-writing {
+    will-change: clip-path;
+    animation: home-title-write 2.65s ease-in-out 0.25s both;
+  }
+
+  .portfolio-motion.portfolio-ready .home-banner-title__write.is-writing::after {
+    position: absolute;
+    inset: 0;
+    color: #ffffff;
+    content: attr(data-text);
+    text-shadow: 0 0 0.18em rgba(255, 255, 255, 0.72), 0 2px 14px rgba(4, 21, 29, 0.58);
+    pointer-events: none;
+    animation: home-title-sweep 0.4s cubic-bezier(0.2, 0.78, 0.25, 1) 3.02s both;
+  }
 }
 
 /*
