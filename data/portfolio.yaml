@@ -80,23 +80,20 @@ robot_demos:
         - Human guidance
         - Agent memory
     - number: "02"
-      title: Real-World Teleoperation Data for Robot Foundation Models
+      title: CO01 from Demonstration
       orientation: landscape
       description: >-
-        A first look at real-world manipulation with robot foundation models
-        and teleoperated demonstration data. This preview connects hands-on
-        data collection with the goal of learning useful physical skills
-        from human demonstrations.
-      announcement: Stay tuned for the upcoming preview on X (Twitter), with more footage and details.
+        An operator guides the robot through a tabletop task. CO01 can use a
+        recorded demonstration as context when performing the task in a new scene.
       poster: images/demos/teleop-foundation-model-demo.jpg
       video: videos/teleop-foundation-model-demo.mp4
-      status: Research preview
+      status: Real robot video
       tags:
-        - Foundation models
-        - Teleoperation data
-        - Real-world manipulation
+        - CO01
+        - Teleoperation
+        - Demonstrations
     - number: "03"
-      title: "Astra + Jev Real-World Demo: Grasping a Yellow Object"
+      title: "Astra + Jev: Grasping a Yellow Block"
       orientation: landscape
       description: >-
         A PiPER pick-and-place demo controlled by Astra + Jev + a robot control

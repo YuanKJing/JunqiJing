@@ -423,8 +423,6 @@ video:focus-visible,
 .home-hero__media {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  max-height: clamp(360px, 36vw, 420px);
   aspect-ratio: 16 / 9;
   border: 1px solid rgba(23, 39, 46, 0.13);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
@@ -1630,8 +1628,10 @@ video:focus-visible,
   object-fit: contain;
 }
 
-.demo-card:not(.demo-card--featured).demo-card--portrait .demo-media {
-  aspect-ratio: 4 / 5;
+@media (max-width: 760px) {
+  .demo-card:not(.demo-card--featured).demo-card--portrait .demo-media {
+    aspect-ratio: 4 / 5;
+  }
 }
 
 .demo-card:not(.demo-card--featured) .demo-copy {
@@ -1648,9 +1648,9 @@ video:focus-visible,
   text-underline-offset: 0.2em;
 }
 
-.demo-tags {
+.demo-card:not(.demo-card--featured) .demo-tags {
   margin-top: auto;
-  padding-top: 1.25rem;
+  padding-top: 0.75rem;
 }
 
 .demo-card:not(.demo-card--featured) .demo-copy h3 {
@@ -2617,5 +2617,28 @@ video:focus-visible,
 
   .portfolio-chapter {
     break-inside: avoid;
+  }
+}
+
+
+/* Align each pair of demos on shared media, title, description and tag rows. */
+@media (min-width: 761px) {
+  .demo-card:not(.demo-card--featured) {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 5;
+    row-gap: 0;
+  }
+
+  .demo-card:not(.demo-card--featured) .demo-copy {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    row-gap: 0;
+  }
+
+  .demo-card:not(.demo-card--featured) .demo-tags {
+    margin-top: 0;
+    align-content: start;
   }
 }
