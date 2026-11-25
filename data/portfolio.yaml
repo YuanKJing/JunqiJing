@@ -238,6 +238,22 @@ hobbies:
         the photography featured across this website is my own**, and I am now
         beginning to shape these images into a **personal photography
         portfolio**.
+  photos:
+    title: Photographs
+    note: A few frames from the road. Every photograph on this site is mine.
+    items:
+      - file: publication-coast.jpg
+        alt: Turquoise surf breaking beside a small beach town
+      - file: hobbies-temple.jpg
+        alt: Sunlit pine trees around a Korean temple
+      - file: research-harbor.jpg
+        alt: Fishing vessels moored together in a harbor
+      - file: about-shore.jpg
+        alt: A walker in red on a quiet beach, with a tugboat offshore
+      - file: about-promenade.jpg
+        alt: A tree-lined seaside promenade under a blue sky
+      - file: home-motorcycle.jpg
+        alt: A motorcycle parked beside the sea at sunset
 
 journey:
   groups:

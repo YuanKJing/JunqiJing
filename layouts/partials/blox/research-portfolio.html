@@ -491,6 +491,36 @@
           {{ end }}
         </div>
       </div>
+
+      {{/* Photographs: a mosaic of thumbnails that open full size in a dialog. */}}
+      {{ with $data.hobbies.photos }}
+        <section class="photo-wall" aria-labelledby="photo-wall-title">
+          <div class="photo-wall__heading">
+            <h2 id="photo-wall-title">{{ .title }}</h2>
+            <p>{{ .note }}</p>
+          </div>
+          <div class="photo-wall__grid">
+            {{ range $index, $photo := .items }}
+              {{ $source := resources.Get (printf "media/portfolio/%s" $photo.file) }}
+              {{ $thumb := $source.Fill "960x720 Center webp q84" }}
+              {{ $full := $source.Fit "2200x2200 webp q88" }}
+              <button type="button" class="photo-wall__item" data-photo-full="{{ $full.RelPermalink }}" data-photo-width="{{ $full.Width }}" data-photo-height="{{ $full.Height }}" aria-label="View larger: {{ $photo.alt }}">
+                <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $photo.alt }}" loading="lazy" decoding="async">
+              </button>
+            {{ end }}
+          </div>
+        </section>
+
+        <dialog class="photo-lightbox" aria-label="Photograph viewer">
+          <figure>
+            <img alt="">
+            <figcaption></figcaption>
+          </figure>
+          <button type="button" class="photo-lightbox__nav photo-lightbox__nav--prev" aria-label="Previous photograph">‹</button>
+          <button type="button" class="photo-lightbox__nav photo-lightbox__nav--next" aria-label="Next photograph">›</button>
+          <button type="button" class="photo-lightbox__close" aria-label="Close">×</button>
+        </dialog>
+      {{ end }}
     </div>
   </section>
   {{ end }}

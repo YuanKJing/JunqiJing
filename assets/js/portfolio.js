@@ -123,6 +123,43 @@
       }
     });
 
+    // Photographs open full size in a native dialog: Esc closes it, the
+    // arrow keys and buttons step through, and a click on the dark area closes.
+    const lightbox = document.querySelector(".photo-lightbox");
+    const photoButtons = [...document.querySelectorAll(".photo-wall__item")];
+    if (lightbox && photoButtons.length && typeof lightbox.showModal === "function") {
+      const image = lightbox.querySelector("img");
+      const caption = lightbox.querySelector("figcaption");
+      let current = 0;
+      const show = (index) => {
+        current = (index + photoButtons.length) % photoButtons.length;
+        const button = photoButtons[current];
+        const thumb = button.querySelector("img");
+        image.src = button.dataset.photoFull;
+        image.width = Number(button.dataset.photoWidth);
+        image.height = Number(button.dataset.photoHeight);
+        image.alt = thumb.alt;
+        caption.textContent = `${thumb.alt} · ${current + 1} / ${photoButtons.length}`;
+      };
+      photoButtons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+          show(index);
+          lightbox.showModal();
+        });
+      });
+      lightbox.querySelector(".photo-lightbox__nav--prev").addEventListener("click", () => show(current - 1));
+      lightbox.querySelector(".photo-lightbox__nav--next").addEventListener("click", () => show(current + 1));
+      lightbox.querySelector(".photo-lightbox__close").addEventListener("click", () => lightbox.close());
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) lightbox.close();
+      });
+      lightbox.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") show(current - 1);
+        if (event.key === "ArrowRight") show(current + 1);
+      });
+      lightbox.addEventListener("close", () => photoButtons[current].focus());
+    }
+
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) videos.forEach(video => video.pause());
     });
