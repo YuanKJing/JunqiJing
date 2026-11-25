@@ -47,6 +47,7 @@ under `assets/`, such as the CoCoMatrix logo shared with the Publications page.
 | --- | --- |
 | CoCoMatrix | Existing `assets/media/coco-matrix-logo.png`, shared with the CO01 publication. |
 | HIT, POSTECH | SVG files supplied by Junqi; POSTECH has an explicit viewBox for responsive scaling. |
+| CUHK | [Emblem of CU.png](https://commons.wikimedia.org/wiki/File:Emblem_of_CU.png) on Wikimedia Commons, marked public domain; resized to 256 px wide. |
 | LEAP Lab | [Official logo](https://www.leaplab.ai/images/logo.png) |
 | KNOWIN AI | [Official product page logo](https://knowinai.com/assets/images/figma/shared/logo.svg); intrinsic dimensions normalized and its monochrome fill set to dark ink for the light background. |
 | Tsinghua University | [Purple university seal, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tsinghua_University_Logo.svg), attributed there to Tsinghua University. |

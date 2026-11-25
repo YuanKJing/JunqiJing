@@ -1216,48 +1216,50 @@ video:focus-visible,
   list-style: none;
 }
 
+.honors-group-title {
+  margin-top: 1.8rem !important;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.honors-group-title + .honors-list {
+  margin-top: 0.6rem;
+}
+
 .honors-item {
   display: grid;
-  grid-template-columns: 9.5rem minmax(0, 1fr);
-  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+  gap: 0.25rem clamp(1.25rem, 2.5vw, 2.5rem);
   align-items: baseline;
-  padding: 1.05rem 0;
+  padding: 0.95rem 0;
   border-bottom: 1px solid var(--line);
 }
 
-.honors-year {
-  color: var(--accent-deep);
-  font-size: 0.8rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
-.honors-copy {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.15rem 0.9rem;
-  align-items: baseline;
-  color: var(--muted);
-  font-size: 0.97rem;
-  line-height: 1.5;
-}
-
-.honors-copy strong {
+.honors-title {
   color: var(--ink);
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 600;
+  line-height: 1.35;
 }
 
-.honors-copy a {
+.honors-detail {
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+.honors-title a {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: rgba(40, 95, 120, 0.35);
+  text-decoration-color: color-mix(in srgb, var(--accent-deep) 35%, transparent);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.22em;
 }
 
-.honors-copy a:hover {
+.honors-title a:hover {
   color: var(--accent-deep);
   text-decoration-color: currentColor;
 }
@@ -1766,6 +1768,7 @@ video:focus-visible,
 .experiences-chapter .journey-list,
 .experiences-chapter .journey-group-title,
 .experiences-chapter .honors-list,
+.experiences-chapter .honors-group-title,
 .publication-chapter .chapter-heading--after-photo,
 .publication-chapter .publication-card,
 .publication-chapter .publication-upcoming,
