@@ -145,14 +145,71 @@
         .sort((a, b) => Number(a.dataset.photoAngle) - Number(b.dataset.photoAngle));
       const order = new Map(originals.map((tile, index) => [tile, index]));
 
-      // Lazy loading cannot judge tiles on a rotating drum, so start all the
-      // thumbnails once the wall comes within a screen of the viewport.
-      const tileImages = [...wall.querySelectorAll(".photo-wall__tile img")];
+      // Loading. Every tile already shows an inlined preview; the real
+      // thumbnails then load a few at a time, starting with the photos
+      // facing the visitor and continuing in the order the drum will bring
+      // them round. Downloading all 67 at once would split a slow connection
+      // so thinly that even the visible ones would take tens of seconds.
+      const tileImages = [...wall.querySelectorAll(".photo-wall__tile img[data-src]")];
+
+      const frontAngle = () => {
+        const spin = wall.querySelector(".photo-wall__ring")?.getAnimations?.()[0];
+        if (!spin) return 0;
+        const duration = Number(spin.effect.getTiming().duration) || 1;
+        return ((Number(spin.currentTime) % duration) / duration) * 360;
+      };
+      const loadInOrder = () => {
+        const front = frontAngle();
+        // The drum turns right to left: a tile's screen angle is its own
+        // angle minus the front angle, new photos enter on the right and
+        // leave on the left. Load what is visible now (about ±50°) from left
+        // to right, then the photos about to come in, and those that have
+        // just left last.
+        const queue = tileImages
+          .map((img) => {
+            const angle = Number(img.closest(".photo-wall__tile").dataset.photoAngle);
+            return { img, key: (((angle - front + 50) % 360) + 360) % 360 };
+          })
+          .sort((a, b) => a.key - b.key)
+          .map((item) => item.img);
+        let active = 0;
+        let started = 0;
+        const next = () => {
+          while (active < 4 && queue.length) {
+            const img = queue.shift();
+            active += 1;
+            started += 1;
+            const done = () => {
+              img.classList.add("is-loaded");
+              active -= 1;
+              next();
+            };
+            img.addEventListener("load", done, { once: true });
+            img.addEventListener("error", done, { once: true });
+            if (started <= 8) img.fetchPriority = "high";
+            img.sizes = img.getAttribute("sizes") || "";
+            img.srcset = img.dataset.srcset;
+            img.src = img.dataset.src;
+          }
+        };
+        next();
+      };
+      // Start when the wall comes near, or shortly after the page has
+      // loaded, whichever is first, so slow connections get a head start.
+      let queueStarted = false;
+      const startQueue = () => {
+        if (queueStarted) return;
+        queueStarted = true;
+        loadInOrder();
+      };
       new IntersectionObserver((entries, observer) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        tileImages.forEach((img) => { img.loading = "eager"; });
         observer.disconnect();
-      }, { rootMargin: "100% 0px" }).observe(wall);
+        startQueue();
+      }, { rootMargin: "150% 0px" }).observe(wall);
+      const startAfterLoad = () => window.setTimeout(startQueue, 1500);
+      if (document.readyState === "complete") startAfterLoad();
+      else window.addEventListener("load", startAfterLoad, { once: true });
 
       // Scrolling the page spins the drum faster (backwards when scrolling
       // up); the extra speed eases off once scrolling stops. Only the
@@ -211,8 +268,19 @@
         const show = (index) => {
           current = (index + originals.length) % originals.length;
           const tile = originals[current];
-          const alt = tile.querySelector("img").alt;
-          image.src = tile.dataset.photoFull;
+          const thumb = tile.querySelector("img");
+          const alt = thumb.alt;
+          // Show the thumbnail straight away and swap in the full-size
+          // photo when it arrives, so the viewer never opens empty.
+          const fullSrc = tile.dataset.photoFull;
+          const thumbSrc = thumb.currentSrc || thumb.getAttribute("src");
+          if (thumbSrc) image.src = thumbSrc;
+          else image.removeAttribute("src");
+          const full = new Image();
+          full.onload = () => {
+            if (originals[current] === tile) image.src = fullSrc;
+          };
+          full.src = fullSrc;
           image.width = Number(tile.dataset.photoWidth);
           image.height = Number(tile.dataset.photoHeight);
           image.alt = alt || `Photograph ${current + 1}`;

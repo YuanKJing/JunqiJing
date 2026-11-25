@@ -2257,7 +2257,8 @@ video:focus-visible,
   overflow: hidden;
   border: 0;
   border-radius: 0.4rem;
-  background: var(--tile-color);
+  /* The inline preview is ~20 px tall, so scaling it up reads as a soft blur. */
+  background: var(--tile-preview) center / cover no-repeat, var(--tile-color);
   cursor: zoom-in;
 }
 
@@ -2265,6 +2266,16 @@ video:focus-visible,
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* With the script running, each photo fades in over its preview once loaded. */
+.portfolio-ready .photo-wall__tile img {
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+.portfolio-ready .photo-wall__tile img.is-loaded {
+  opacity: 1;
 }
 
 .photo-wall__tile:focus-visible {
@@ -2361,7 +2372,7 @@ video:focus-visible,
   }
 
   .photo-wall__tile img {
-    transition: filter 450ms ease;
+    transition: opacity 600ms ease, filter 450ms ease;
   }
 
   /* Hovering lifts a photo off the drum; the drum keeps turning. */
