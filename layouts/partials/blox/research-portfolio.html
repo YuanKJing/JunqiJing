@@ -421,27 +421,27 @@
         <figcaption class="photo-watermark">Photographed by JJ</figcaption>
       </figure>
 
-      <div class="chapter-heading chapter-heading--after-photo">
-        <div>
+      {{/* Two columns: the heading, intro and invitation stay pinned on the
+           left while the entries scroll on the right. */}}
+      <div class="hobbies-layout">
+        <div class="hobbies-aside">
           <h2 id="hobbies-heading">What keeps me curious and moving</h2>
+          <p class="hobbies-intro">{{ $data.hobbies.intro }}</p>
+          <div class="hobbies-invite">
+            <p>Up for a hike, a badminton match, or a Civilization VI session?</p>
+            <a href="mailto:{{ $data.contact.email }}">Let me know</a>
+          </div>
         </div>
-        <div class="chapter-heading__body">
-          <p>{{ $data.hobbies.intro }}</p>
+
+        <div class="hobbies-list">
+          {{ range $item := $data.hobbies.items }}
+            <article class="hobby-entry">
+              <span class="hobby-entry__icon" aria-hidden="true">{{ $item.emoji }}</span>
+              <h3>{{ $item.title }}</h3>
+              <p>{{ $item.text | markdownify }}</p>
+            </article>
+          {{ end }}
         </div>
-      </div>
-
-      <div class="hobbies-list">
-        {{ range $item := $data.hobbies.items }}
-          <article class="hobby-entry">
-            <h3><span aria-hidden="true">{{ $item.emoji }}</span>{{ $item.title }}</h3>
-            <p>{{ $item.text | markdownify }}</p>
-          </article>
-        {{ end }}
-      </div>
-
-      <div class="hobbies-invite">
-        <p>Up for a hike, a badminton match, or a Civilization VI session?</p>
-        <a href="mailto:{{ $data.contact.email }}">Let me know <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
