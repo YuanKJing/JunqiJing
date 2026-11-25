@@ -524,16 +524,24 @@
                       {{ $angle := mul (div (add $acc (div $ratio 2)) $total) 360 }}
                       {{ $acc = add $acc (add $ratio $gap) }}
                       {{ $source := resources.Get (printf "media/gallery/%s" .file) }}
-                      {{ $thumb := $source.Resize "x420 webp q78" }}
+                      {{/* A ~20 px preview is inlined so every tile shows a soft version of its photo at once. */}}
+                      {{ $preview := $source.Resize "x20 webp q50" }}
+                      {{ $small := $source.Resize "x240 webp q72" }}
+                      {{ $large := $source.Resize "x440 webp q74" }}
                       {{ $full := $source.Fit "1440x1440 webp q86" }}
+                      {{ $style := printf "--tile-ratio: %.4f; --tile-angle: %.3fdeg; --tile-color: %s; --tile-preview: url(data:image/webp;base64,%s)" $ratio $angle .color ($preview.Content | base64Encode) }}
                       <button type="button" class="photo-wall__tile"
-                        style="--tile-ratio: {{ printf "%.4f" $ratio }}; --tile-angle: {{ printf "%.3f" $angle }}deg; --tile-color: {{ .color }}"
+                        style="{{ $style | safeCSS }}"
                         data-photo-angle="{{ printf "%.3f" $angle }}"
                         data-photo-full="{{ $full.RelPermalink }}"
                         data-photo-width="{{ $full.Width }}"
                         data-photo-height="{{ $full.Height }}"
                         aria-label="Open photograph">
-                        <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ .alt | default "" }}" loading="lazy" decoding="async">
+                        {{/* No src yet: the script fills it in, front-facing photos first. Native lazy loading cannot tell which tiles on the drum are visible. */}}
+                        <img data-src="{{ $small.RelPermalink }}"
+                          data-srcset="{{ $small.RelPermalink }} {{ $small.Width }}w, {{ $large.RelPermalink }} {{ $large.Width }}w"
+                          sizes="(max-width: 700px) calc({{ printf "%.3f" $ratio }} * 7rem), calc({{ printf "%.3f" $ratio }} * 15vw)"
+                          width="{{ $small.Width }}" height="{{ $small.Height }}" alt="{{ .alt | default "" }}" decoding="async">
                       </button>
                     {{ end }}
                   </div>
