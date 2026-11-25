@@ -60,6 +60,69 @@
       observer.observe(video);
     }
 
+    // Paper cards: Abstract and BibTeX open in place, one at a time per card.
+    document.querySelectorAll(".publication-card").forEach((card) => {
+      const toggles = [...card.querySelectorAll(".paper-toggle")];
+      toggles.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const open = toggle.getAttribute("aria-expanded") === "true";
+          toggles.forEach((other) => {
+            const panel = document.getElementById(other.getAttribute("aria-controls"));
+            const show = other === toggle && !open;
+            other.setAttribute("aria-expanded", String(show));
+            if (panel) panel.hidden = !show;
+          });
+        });
+      });
+
+      const copy = card.querySelector(".paper-copy");
+      if (copy) {
+        const label = copy.textContent;
+        copy.addEventListener("click", async () => {
+          const text = copy.parentElement.querySelector("code").textContent;
+          try {
+            await navigator.clipboard.writeText(text);
+            copy.textContent = "Copied";
+          } catch (error) {
+            // Clipboard access can be refused; select the text so Cmd/Ctrl+C works.
+            const range = document.createRange();
+            range.selectNodeContents(copy.parentElement.querySelector("code"));
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            copy.textContent = "Selected — press Ctrl/Cmd+C";
+          }
+          window.setTimeout(() => { copy.textContent = label; }, 1800);
+        });
+      }
+    });
+
+    // Paper teasers play while the pointer is over the figure. The button
+    // does the same for touch and keyboard, and is the only trigger when
+    // the visitor prefers reduced motion or is saving data.
+    const hoverPointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    document.querySelectorAll("[data-paper-teaser]").forEach((media) => {
+      const teaser = media.querySelector("video");
+      const button = media.querySelector(".paper-teaser__button");
+      if (!teaser || !button) return;
+      let pinned = false;
+      const setPlaying = (playing) => {
+        media.classList.toggle("is-playing", playing);
+        button.setAttribute("aria-pressed", String(playing));
+        button.textContent = playing ? "Pause preview" : "Play preview";
+      };
+      const start = () => teaser.play().then(() => setPlaying(true)).catch(() => {});
+      const stop = () => { teaser.pause(); setPlaying(false); };
+      button.addEventListener("click", () => {
+        pinned = teaser.paused;
+        if (teaser.paused) start(); else stop();
+      });
+      if (!reduceMotion && !saveData) {
+        media.addEventListener("mouseenter", () => { if (hoverPointer.matches && !pinned) start(); });
+        media.addEventListener("mouseleave", () => { if (hoverPointer.matches && !pinned) stop(); });
+      }
+    });
+
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) videos.forEach(video => video.pause());
     });

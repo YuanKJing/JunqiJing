@@ -288,9 +288,13 @@
         {{ $paperImage := ($paperPage.Resources.ByType "image").GetMatch "*featured*" }}
         {{ $paperVisual := "" }}
         {{ with $paperImage }}{{ $paperVisual = .Fit "1500x1000 webp q88" }}{{ end }}
+        {{ $slug := $paperPage.File.ContentBaseName | anchorize }}
+        {{ $abstract := $paperPage.Params.abstract }}
+        {{ $bib := $paperPage.Resources.GetMatch "cite.bib" }}
       <article class="publication-card">
         <div class="paper-visual{{ if $publication.status }} paper-visual--plain{{ end }}">
           {{ with $paperVisual }}
+          <div class="paper-media"{{ if $publication.teaser_video }} data-paper-teaser{{ end }}>
             <img
               class="paper-figure"
               src="{{ .RelPermalink }}"
@@ -299,6 +303,14 @@
               alt="{{ $publication.image_alt }}"
               loading="lazy"
               decoding="async">
+            {{/* A short muted clip plays over the figure on hover; the button does the same for touch and keyboard. */}}
+            {{ with $publication.teaser_video }}
+              <video class="paper-teaser" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true">
+                <source src="{{ . | relURL }}" type="video/mp4">
+              </video>
+              <button type="button" class="paper-teaser__button" aria-pressed="false">Play preview</button>
+            {{ end }}
+          </div>
           {{ end }}
           {{ if $publication.status }}{{/* A paper under review carries no venue logo; its status shows beside the venue name. */}}
           {{ else if $publication.logo }}
@@ -340,8 +352,21 @@
             {{ with $publication.project_url }}<a href="{{ . }}" target="_blank" rel="noopener">Project page <span aria-hidden="true">↗</span></a>{{ end }}
             {{ with $publication.openreview_url }}<a href="{{ . }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>{{ end }}
             {{ with $publication.code_url }}<a href="{{ . }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>{{ end }}
+            {{ with $abstract }}<button type="button" class="paper-toggle" aria-expanded="false" aria-controls="abstract-{{ $slug }}">Abstract</button>{{ end }}
+            {{ with $bib }}<button type="button" class="paper-toggle" aria-expanded="false" aria-controls="bibtex-{{ $slug }}">BibTeX</button>{{ end }}
             <a href="{{ $paperPage.RelPermalink }}">Details</a>
           </nav>
+          {{ with $abstract }}
+            <div class="paper-panel" id="abstract-{{ $slug }}" hidden>
+              <p>{{ . | markdownify }}</p>
+            </div>
+          {{ end }}
+          {{ with $bib }}
+            <div class="paper-panel paper-panel--bibtex" id="bibtex-{{ $slug }}" hidden>
+              <pre><code>{{ .Content | strings.TrimSpace }}</code></pre>
+              <button type="button" class="paper-copy">Copy BibTeX</button>
+            </div>
+          {{ end }}
         </div>
       </article>
 
