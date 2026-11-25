@@ -243,19 +243,19 @@
 
         {{ with $data.honors }}
           <h2 class="journey-group-title" id="honors">{{ .title }}</h2>
-          <ul class="honors-list">
-            {{ range .items }}
-              {{ $link := "" }}
-              {{ with .page }}{{ with site.GetPage . }}{{ $link = .RelPermalink }}{{ end }}{{ end }}
-              <li class="honors-item">
-                <span class="honors-year">{{ .year }}</span>
-                <span class="honors-copy">
-                  <strong>{{ if $link }}<a href="{{ $link }}">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</strong>
-                  <span>{{ .detail }}</span>
-                </span>
-              </li>
-            {{ end }}
-          </ul>
+          {{ range .groups }}
+            <h3 class="honors-group-title">{{ .title }}</h3>
+            <ul class="honors-list">
+              {{ range .items }}
+                {{ $link := "" }}
+                {{ with .page }}{{ with site.GetPage . }}{{ $link = .RelPermalink }}{{ end }}{{ end }}
+                <li class="honors-item">
+                  <strong class="honors-title">{{ if $link }}<a href="{{ $link }}">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</strong>
+                  <span class="honors-detail">{{ .detail }}</span>
+                </li>
+              {{ end }}
+            </ul>
+          {{ end }}
         {{ end }}
     </div>
   </section>

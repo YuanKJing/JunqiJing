@@ -359,6 +359,12 @@ journey:
         people:
           - name: Liming Wang
             url: https://www.se.cuhk.edu.hk/people/academic-staff/prof-wang-liming/
+      logos:
+        - name: The Chinese University of Hong Kong
+          file: cuhk.png
+          width: 256
+          height: 202
+          style: seal
     - date: 2023 — 2027
       group: education
       role: B.E. in Software Engineering
@@ -379,19 +385,31 @@ journey:
 
 honors:
   title: Honors & Service
-  items:
-    - year: "2025"
-      title: PC Member and Reviewer
-      detail: NeurIPS 2025 Workshop on Embodied World Models for Decision Making
-      page: /post/PCmember_In_NIPS
-    - year: "2022"
-      title: Second Prize
-      detail: China National Olympiad in Mathematics
-      page: /post/olympiad-math
-    - year: "2021"
-      title: First Prize
-      detail: Shandong Provincial High School Mathematics Competition
-      page: /post/olympiad-math
+  groups:
+    - title: Awards
+      items:
+        - title: Top 30 of 1,800+ teams
+          detail: Robbyant Embodied AI Foundation Model Challenge
+        - title: Second Prize
+          detail: National College Student Mathematical Modeling Contest
+        - title: Second Prize
+          detail: China National Olympiad in Mathematics, 2022
+          page: /post/olympiad-math
+        - title: Third Prize
+          detail: Qwen LLM Campus Tour, top six teams
+        - title: Best Project of the Year
+          detail: FleetEncounter, Excellence Award at Harbin Institute of Technology
+        - title: Scholarships
+          detail: Student Work Excellence Scholarship, Second-Class Scholarship, Third-Class Scholarship
+        - title: Star of Computing
+          detail: Outstanding Student Leader; Individual All-Round Excellence Award
+    - title: Service
+      items:
+        - title: Program Committee Member
+          detail: NeurIPS 2025 Workshop on Embodied World Models for Decision Making
+          page: /post/PCmember_In_NIPS
+        - title: Teaching Assistant
+          detail: Teaching assistant and assistant to the head teacher since 2024; class academic representative since 2023
 
 projects:
   eyebrow: Beyond the lab
