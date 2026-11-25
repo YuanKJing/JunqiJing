@@ -148,12 +148,17 @@ video:focus-visible,
   z-index: 60;
   height: 4.25rem;
   border-bottom: 1px solid var(--line);
-  background: rgba(250, 250, 248, 0.98);
+  background: var(--page-bg);
 }
 
 #site-header,
 #site-header .navbar {
   height: 100%;
+}
+
+/* The theme paints the header white; let it take the page colour instead. */
+#site-header.header {
+  background: transparent;
 }
 
 #site-header .navbar {
@@ -665,6 +670,10 @@ video:focus-visible,
 
 .about-chapter .about-copy strong {
   color: var(--bio-ink);
+  font-weight: 700;
+}
+
+.about-chapter .about-copy > p:first-of-type strong {
   font-weight: 600;
 }
 
@@ -742,16 +751,30 @@ video:focus-visible,
 }
 
 .about-copy {
-  max-width: 41rem;
+  max-width: 38rem;
   color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: clamp(1.02rem, 1.2vw, 1.1rem);
+  line-height: 1.8;
+}
+
+/* The first paragraph says who I am: set it as a larger serif lede. The
+   paragraphs after it are body text in the sans, like the rest of the site. */
+.about-copy > p:first-of-type {
+  color: var(--ink);
   font-family: var(--font-serif);
-  font-size: clamp(1.08rem, 1.45vw, 1.2rem);
-  line-height: 1.7;
+  font-size: clamp(1.22rem, 1.65vw, 1.42rem);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.about-copy > p:first-of-type + p {
+  margin-top: 1.6rem;
 }
 
 .about-copy h2 {
-  margin: -0.1rem 0 1.65rem;
-  font-family: inherit;
+  margin: -0.1rem 0 1.5rem;
+  font-family: var(--font-serif);
   font-size: clamp(2rem, 3vw, 2.65rem);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -759,7 +782,7 @@ video:focus-visible,
 }
 
 .about-copy > p + p {
-  margin-top: 1.15rem;
+  margin-top: 1.3rem;
 }
 
 .about-copy strong {
@@ -777,11 +800,11 @@ video:focus-visible,
 
 .about-chapter .about-copy a {
   color: var(--bio-accent);
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: underline;
-  text-decoration-color: rgba(40, 95, 120, 0.38);
-  text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.17em;
+  text-decoration-color: rgba(40, 95, 120, 0.3);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.24em;
   transition: color 180ms ease, text-decoration-color 180ms ease;
 }
 
@@ -847,7 +870,7 @@ video:focus-visible,
 }
 
 .interest-list {
-  margin-top: 1.8rem;
+  margin-top: 2.2rem;
 }
 
 .interest-list span,
@@ -985,7 +1008,7 @@ video:focus-visible,
   aspect-ratio: 5 / 2;
   border: 1px solid var(--line-strong);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  background: #bacbd0;
+  background: var(--photo-placeholder, #bacbd0);
   isolation: isolate;
 }
 
@@ -1742,6 +1765,26 @@ video:focus-visible,
   line-height: 1.3;
 }
 
+/*
+ * Hobbies takes its colours from the temple photograph that opens the page:
+ * sunlit path for the paper, pine bark for text, pine needles for links and
+ * the temple's painted wood for the rule. Set on :root so the footer, mobile
+ * header and page background change with it.
+ */
+:root:has(.hobbies-chapter) {
+  --page-bg: #f7f0e3;
+  --panel-soft: #efe5d2;
+  --ink: #33271d;
+  --ink-soft: #55463a;
+  --muted: #7a6753;
+  --line: #e4d6bf;
+  --line-strong: #d3c1a3;
+  --accent: #4f7a3e;
+  --accent-deep: #3b5f2e;
+  --photo-placeholder: #d8cbb2;
+  --temple: #c4722a;
+}
+
 /* Hobbies: the heading, intro and invitation stay pinned on the left while
    the entries scroll on the right, so the page uses its full width. */
 .hobbies-chapter {
@@ -1787,7 +1830,7 @@ video:focus-visible,
   max-width: 32ch;
   margin-top: 2.2rem;
   padding-top: 1.1rem;
-  border-top: 2px solid var(--sun);
+  border-top: 2px solid var(--temple, var(--sun));
 }
 
 .hobbies-invite p {
@@ -1801,10 +1844,10 @@ video:focus-visible,
 .hobbies-invite a {
   display: inline-block;
   margin-top: 0.7rem;
-  color: var(--sun-deep);
+  color: var(--accent-deep);
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: rgba(143, 83, 18, 0.4);
+  text-decoration-color: color-mix(in srgb, var(--accent-deep) 40%, transparent);
   text-underline-offset: 0.22em;
 }
 
