@@ -493,10 +493,8 @@
       </div>
 
       {{/*
-        Photographs: three rows that drift slowly to the left, ordered round
-        the colour wheel by scripts/build_gallery.py so the wall reads as one
-        gradient. Each row holds its photos twice so the loop is seamless;
-        the second copy is hidden from assistive technology.
+        Photographs: three rings of photos ordered round the colour wheel by
+        scripts/build_gallery.py, turning slowly like a drum.
       */}}
       {{ with site.Data.gallery }}
         <section class="photo-wall" aria-labelledby="photo-wall-title">
@@ -507,31 +505,41 @@
             </div>
             <button type="button" class="photo-wall__pause" aria-pressed="false">Pause motion</button>
           </div>
-          <div class="photo-wall__rows">
-            {{ range $row := .rows }}
-              <div class="photo-wall__row" style="--row-units: {{ $row.units }}">
-                <div class="photo-wall__track">
-                  {{ range $copy := slice 0 1 }}
-                    <div class="photo-wall__set"{{ if $copy }} aria-hidden="true"{{ end }}>
-                      {{ range $row.photos }}
-                        {{ $source := resources.Get (printf "media/gallery/%s" .file) }}
-                        {{ $thumb := $source.Resize "x420 webp q78" }}
-                        {{ $full := $source.Fit "1440x1440 webp q86" }}
-                        <button type="button" class="photo-wall__tile"
-                          style="--tile-ratio: {{ div (float .width) .height }}; --tile-color: {{ .color }}"
-                          data-photo-file="{{ .file }}"
-                          data-photo-full="{{ $full.RelPermalink }}"
-                          data-photo-width="{{ $full.Width }}"
-                          data-photo-height="{{ $full.Height }}"
-                          aria-label="Open photograph"{{ if $copy }} tabindex="-1"{{ end }}>
-                          <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ .alt | default "" }}" loading="lazy" decoding="async">
-                        </button>
-                      {{ end }}
-                    </div>
-                  {{ end }}
+          {{/*
+            Each row is a ring: a photo's angle is the middle of its share of
+            the row's length (plus a small gap), so a full turn of the ring
+            walks the whole colour wheel. Without motion the rings fall back
+            to flat rows that scroll by hand.
+          */}}
+          {{ $gap := 0.06 }}
+          <div class="photo-wall__stage">
+            <div class="photo-wall__drum">
+              {{ range $row := .rows }}
+                {{ $total := add (float $row.units) (mul $gap (len $row.photos)) }}
+                <div class="photo-wall__row" style="--ring-units: {{ printf "%.3f" $total }}">
+                  <div class="photo-wall__ring">
+                    {{ $acc := 0.0 }}
+                    {{ range $row.photos }}
+                      {{ $ratio := div (float .width) .height }}
+                      {{ $angle := mul (div (add $acc (div $ratio 2)) $total) 360 }}
+                      {{ $acc = add $acc (add $ratio $gap) }}
+                      {{ $source := resources.Get (printf "media/gallery/%s" .file) }}
+                      {{ $thumb := $source.Resize "x420 webp q78" }}
+                      {{ $full := $source.Fit "1440x1440 webp q86" }}
+                      <button type="button" class="photo-wall__tile"
+                        style="--tile-ratio: {{ printf "%.4f" $ratio }}; --tile-angle: {{ printf "%.3f" $angle }}deg; --tile-color: {{ .color }}"
+                        data-photo-angle="{{ printf "%.3f" $angle }}"
+                        data-photo-full="{{ $full.RelPermalink }}"
+                        data-photo-width="{{ $full.Width }}"
+                        data-photo-height="{{ $full.Height }}"
+                        aria-label="Open photograph">
+                        <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ .alt | default "" }}" loading="lazy" decoding="async">
+                      </button>
+                    {{ end }}
+                  </div>
                 </div>
-              </div>
-            {{ end }}
+              {{ end }}
+            </div>
           </div>
         </section>
 
