@@ -140,12 +140,67 @@
       };
       pause?.addEventListener("click", () => setPaused(!wall.classList.contains("is-paused")));
 
-      const originals = [...wall.querySelectorAll(".photo-wall__set:not([aria-hidden]) .photo-wall__tile")]
-        .sort((a, b) => a.offsetLeft - b.offsetLeft);
-      const order = new Map(originals.map((tile, index) => [tile.dataset.photoFile, index]));
-      originals.forEach((tile, index) => {
-        tile.setAttribute("aria-label", `Open photograph ${index + 1} of ${originals.length}`);
-      });
+      // Colour order is the order round the ring, across all three rows.
+      const originals = [...wall.querySelectorAll(".photo-wall__tile")]
+        .sort((a, b) => Number(a.dataset.photoAngle) - Number(b.dataset.photoAngle));
+      const order = new Map(originals.map((tile, index) => [tile, index]));
+
+      // Lazy loading cannot judge tiles on a rotating drum, so start all the
+      // thumbnails once the wall comes within a screen of the viewport.
+      const tileImages = [...wall.querySelectorAll(".photo-wall__tile img")];
+      new IntersectionObserver((entries, observer) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        tileImages.forEach((img) => { img.loading = "eager"; });
+        observer.disconnect();
+      }, { rootMargin: "100% 0px" }).observe(wall);
+
+      // Scrolling the page spins the drum faster (backwards when scrolling
+      // up); the extra speed eases off once scrolling stops. Only the
+      // animations' playback rate changes, so the turning stays in CSS.
+      const rings = [...wall.querySelectorAll(".photo-wall__ring")];
+      const spins = rings.flatMap((ring) => ring.getAnimations?.() ?? []);
+      if (!reduceMotion && spins.length) {
+        // Start far into the (infinite) animation so spinning backwards can
+        // never run back past its start, where it would stop. Every ring
+        // gets the same offset, so the colours stay aligned.
+        spins.forEach((spin) => {
+          const duration = Number(spin.effect.getTiming().duration) || 200000;
+          spin.currentTime = duration * 1000;
+        });
+
+        let lastY = window.scrollY;
+        let boost = 0;
+        let frame = 0;
+        let lastTime = 0;
+        let visible = false;
+        const step = (now) => {
+          // Time-based decay, so the ease-off takes the same time at any
+          // frame rate (about a second to settle).
+          const dt = lastTime ? Math.min(now - lastTime, 1000) : 16;
+          lastTime = now;
+          boost *= Math.pow(0.94, dt / 16.7);
+          if (Math.abs(boost) < 0.02) boost = 0;
+          spins.forEach((spin) => { spin.playbackRate = 1 + boost; });
+          if (boost !== 0 && visible) {
+            frame = window.requestAnimationFrame(step);
+          } else {
+            frame = 0;
+            lastTime = 0;
+          }
+        };
+        window.addEventListener("scroll", () => {
+          const y = window.scrollY;
+          const delta = y - lastY;
+          lastY = y;
+          if (!visible) return;
+          boost = Math.max(-12, Math.min(12, boost + delta * 0.08));
+          spins.forEach((spin) => { spin.playbackRate = 1 + boost; });
+          if (!frame) frame = window.requestAnimationFrame(step);
+        }, { passive: true });
+        new IntersectionObserver((entries) => {
+          visible = entries.some((entry) => entry.isIntersecting);
+        }).observe(wall);
+      }
 
       if (lightbox && originals.length && typeof lightbox.showModal === "function") {
         const image = lightbox.querySelector("img");
@@ -168,7 +223,7 @@
             opener = tile;
             wasPaused = wall.classList.contains("is-paused");
             setPaused(true);
-            show(order.get(tile.dataset.photoFile) ?? 0);
+            show(order.get(tile) ?? 0);
             lightbox.showModal();
           });
         });

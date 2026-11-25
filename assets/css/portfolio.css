@@ -2220,38 +2220,39 @@ video:focus-visible,
   color: var(--ink);
 }
 
-.photo-wall__rows {
-  --row-height: clamp(8rem, 16vw, 15rem);
+/*
+ * Flat layout first: rows of photos that scroll sideways by hand. This is
+ * what visitors who prefer reduced motion get. The drum below replaces it
+ * for everyone else.
+ */
+.photo-wall__stage {
+  --row-height: clamp(8rem, 15vw, 14rem);
   --tile-gap: clamp(0.4rem, 0.6vw, 0.6rem);
+}
+
+.photo-wall__drum {
   display: grid;
   gap: var(--tile-gap);
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
 
 .photo-wall__row {
-  overflow: hidden;
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
-.photo-wall__track {
+.photo-wall__ring {
   display: flex;
-  width: max-content;
-}
-
-.photo-wall__set {
-  display: flex;
-  flex: none;
   gap: var(--tile-gap);
-  padding-right: var(--tile-gap);
+  width: max-content;
+  padding-inline: clamp(1rem, 4vw, 4rem);
 }
 
 .photo-wall__tile {
   position: relative;
   display: block;
   flex: none;
+  width: calc(var(--tile-ratio) * var(--row-height));
   height: var(--row-height);
-  aspect-ratio: var(--tile-ratio);
   padding: 0;
   overflow: hidden;
   border: 0;
@@ -2264,61 +2265,126 @@ video:focus-visible,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 600ms var(--ease), filter 300ms ease;
 }
 
 .photo-wall__tile:focus-visible {
   outline-offset: -3px;
 }
 
-@keyframes photo-wall-drift {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* About 7 s per row-height of photos: a slow, steady drift. */
-  .photo-wall__track {
-    animation: photo-wall-drift calc(var(--row-units) * 7s) linear infinite;
-  }
-
-  .photo-wall:hover .photo-wall__track,
-  .photo-wall:focus-within .photo-wall__track,
-  .photo-wall.is-paused .photo-wall__track {
-    animation-play-state: paused;
-  }
-}
-
-@media (hover: hover) {
-  .photo-wall__rows:hover .photo-wall__tile img {
-    filter: saturate(0.8) brightness(0.9);
-  }
-
-  .photo-wall__rows:hover .photo-wall__tile:hover img {
-    filter: none;
-    transform: scale(1.05);
-  }
-}
-
-/* Without motion the rows become plain horizontal scrollers. */
 @media (prefers-reduced-motion: reduce) {
-  .photo-wall__row {
-    overflow-x: auto;
-    scrollbar-width: thin;
-  }
-
-  .photo-wall__set[aria-hidden="true"],
   .photo-wall__pause {
     display: none;
   }
 }
 
-@media (max-width: 700px) {
-  .photo-wall__rows {
-    --row-height: 7.5rem;
-    -webkit-mask-image: none;
-    mask-image: none;
+/*
+ * The drum. Each row is a ring of radius R = circumference / 2π, built from
+ * the row's length in row-heights. A tile sits at its angle and is pushed
+ * out to the rim; the ring is pulled back by R so its front face sits at
+ * z = 0 at natural size. The far half faces away and is hidden. All rings
+ * share one angular speed, so the colours stay lined up from top to bottom.
+ * JavaScript only changes the playback rate (scroll speeds it up) and the
+ * pause state; the turning itself is a CSS animation.
+ */
+@property --tile-lift {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --tile-scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@keyframes photo-wall-spin {
+  from {
+    transform: translateZ(calc(var(--ring-radius) * -1)) rotateY(0deg);
+  }
+
+  to {
+    transform: translateZ(calc(var(--ring-radius) * -1)) rotateY(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .photo-wall__stage {
+    --row-height: clamp(8.5rem, 15vw, 15rem);
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(1.5rem, 4vw, 3.5rem);
+    perspective: 2600px;
+    perspective-origin: 50% 50%;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  /* A slight tilt so the rings read as a drum rather than flat bands. */
+  .photo-wall__drum {
+    transform: rotateX(4deg) rotateZ(-2.5deg);
+    transform-style: preserve-3d;
+  }
+
+  .photo-wall__row {
+    --ring-radius: calc(var(--ring-units) * var(--row-height) / 6.28318);
+    position: relative;
+    height: var(--row-height);
+    overflow: visible;
+    transform-style: preserve-3d;
+  }
+
+  .photo-wall__ring {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: auto;
+    padding: 0;
+    transform-style: preserve-3d;
+    will-change: transform;
+    animation: photo-wall-spin 200s linear infinite;
+  }
+
+  .photo-wall.is-paused .photo-wall__ring {
+    animation-play-state: paused;
+  }
+
+  .photo-wall__tile {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: calc(var(--tile-ratio) * var(--row-height) / -2);
+    backface-visibility: hidden;
+    transform: rotateY(var(--tile-angle)) translateZ(calc(var(--ring-radius) + var(--tile-lift))) scale(var(--tile-scale));
+    box-shadow: 0 10px 24px rgba(10, 20, 26, 0.18);
+    transition: --tile-lift 450ms var(--ease), --tile-scale 450ms var(--ease), box-shadow 450ms var(--ease);
+  }
+
+  .photo-wall__tile img {
+    transition: filter 450ms ease;
+  }
+
+  /* Hovering lifts a photo off the drum; the drum keeps turning. */
+  @media (hover: hover) {
+    .photo-wall__tile:hover {
+      --tile-lift: clamp(2rem, 4vw, 4rem);
+      --tile-scale: 1.1;
+      z-index: 1;
+      box-shadow: 0 26px 50px rgba(10, 20, 26, 0.35);
+    }
+
+    .photo-wall__tile:hover img {
+      filter: saturate(1.12) brightness(1.05);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (max-width: 700px) {
+  .photo-wall__stage {
+    --row-height: 7rem;
+    perspective: 1400px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   }
 }
 
