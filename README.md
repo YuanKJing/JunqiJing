@@ -10,8 +10,9 @@ The site is built with Hugo Blox and deployed to GitHub Pages.
 - Homepage content and ordering: `data/portfolio.yaml`
 - Homepage layout: `layouts/partials/blox/research-portfolio.html`
 - Visual system and responsive behavior: `assets/css/portfolio.css`
-- Scroll reveals, navigation state, and viewport video playback:
-  `assets/js/portfolio.js`
+  (type and colour tokens sit at the top in `:root`)
+- Banner handwriting, page-to-page photo transitions, navigation state, and
+  viewport video playback: `assets/js/portfolio.js`
 - Profile photo and author information: `content/authors/admin/`
 - Robot demo media: `static/videos/`
 

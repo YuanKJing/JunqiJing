@@ -32,7 +32,7 @@
   <div class="portfolio-about" data-nav-section="home">
     <div class="portfolio-container portfolio-container--hero">
       <div class="home-hero">
-        <figure class="home-hero__media" data-reveal="image" data-scroll-parallax>
+        <figure class="home-hero__media" data-scroll-parallax>
           <img
             src="{{ $heroLarge.RelPermalink }}"
             srcset="{{ $heroSmall.RelPermalink }} 720w, {{ $heroMedium.RelPermalink }} 1200w, {{ $heroLarge.RelPermalink }} 1920w"
@@ -49,7 +49,7 @@
         </figure>
       </div>
 
-      <header class="identity-strip" aria-labelledby="portfolio-title" data-reveal="panel">
+      <header class="identity-strip" aria-labelledby="portfolio-title">
         <div class="identity-strip__person">
           <h1 id="portfolio-title">{{ $data.hero.name }}</h1>
           <p class="identity-question">{{ $data.hero.headline }}</p>
@@ -65,7 +65,7 @@
     <section class="portfolio-chapter about-chapter" aria-labelledby="about-heading">
       <div class="portfolio-container">
         <div class="about-layout">
-          <div class="about-gallery" data-reveal="image">
+          <div class="about-gallery">
             <figure class="photo-frame biography-portrait">
               {{ with $portrait }}
               <img
@@ -94,7 +94,7 @@
             </nav>
           </div>
 
-          <div class="about-copy" data-reveal>
+          <div class="about-copy">
             <h2 id="about-heading">Biography</h2>
             {{ range $data.hero.bio }}
               <p>{{ . | markdownify }}</p>
@@ -117,7 +117,7 @@
     {{/* Temporarily hidden. Remove this opening comment line and its closing marker to restore Research Directions.
     <section class="portfolio-chapter about-research" id="research" aria-labelledby="research-heading">
       <div class="portfolio-container">
-        <div class="chapter-heading" data-reveal>
+        <div class="chapter-heading">
           <div>
             <p class="chapter-label">Research directions</p>
             <h2 id="research-heading">{{ $data.research.title }}</h2>
@@ -129,7 +129,7 @@
         </div>
         <div class="research-areas">
           {{ range $index, $area := $data.research.areas }}
-            <article class="research-area" data-reveal>
+            <article class="research-area">
               <span>{{ printf "%02d" (add $index 1) }}</span>
               <h3>{{ $area.title }}</h3>
               <p>{{ $area.text }}</p>
@@ -147,12 +147,11 @@
     <section class="portfolio-chapter news-chapter" id="news" aria-labelledby="news-heading">
       <div class="portfolio-container">
         <div class="about-news">
-          <div class="subsection-heading" data-reveal>
+          <div class="subsection-heading">
             <div>
-              <p class="chapter-label">Updates</p>
               <h2 id="news-heading">News</h2>
             </div>
-            <a href="{{ "post/" | relURL }}">All news <span aria-hidden="true">↗</span></a>
+            <a href="{{ "post/" | relURL }}">All news</a>
           </div>
 
           <div class="news-list">
@@ -163,12 +162,11 @@
                 {{ $entityMarkup := printf `<mark class="news-entity">%s</mark>` ($entity | htmlEscape) }}
                 {{ $newsTitleMarkup = replace $newsTitleMarkup $entity $entityMarkup }}
               {{ end }}
-              <a class="news-item" href="{{ $post.RelPermalink }}" data-reveal>
+              <a class="news-item" href="{{ $post.RelPermalink }}">
                 <time datetime="{{ $post.Date.Format "2006-01-02" }}">
                   {{ $post.Params.display_date | default ($post.Date.Format "Jan 2006") }}
                 </time>
                 <span>{{ $newsTitleMarkup | safeHTML }}</span>
-                <i aria-hidden="true">↗</i>
               </a>
             {{ end }}
           </div>
@@ -181,7 +179,7 @@
   {{ if eq $view "experiences" }}
   <section id="experiences" class="portfolio-chapter experiences-chapter" aria-labelledby="experiences-heading">
     <div class="portfolio-container">
-      <figure class="chapter-visual" data-reveal="image" data-scroll-parallax>
+      <figure class="chapter-visual" data-scroll-parallax>
         <img
           src="{{ $researchPhoto.RelPermalink }}"
           width="{{ $researchPhoto.Width }}"
@@ -196,7 +194,7 @@
 
         <div class="journey-list" id="journey">
           {{ range $data.journey.items }}
-            <article class="journey-item{{ if .current }} journey-item--current{{ end }}" data-reveal>
+            <article class="journey-item{{ if .current }} journey-item--current{{ end }}">
               <div class="journey-date">
                 {{ if .current }}<span class="current-pulse" aria-hidden="true"></span>{{ end }}
                 {{ .date }}
@@ -243,7 +241,7 @@
   {{ if eq $view "publication" }}
   <section id="publication" class="portfolio-chapter publication-chapter" aria-labelledby="publication-heading">
     <div class="portfolio-container">
-      <figure class="chapter-visual chapter-visual--publication" data-reveal="image" data-scroll-parallax>
+      <figure class="chapter-visual chapter-visual--publication" data-scroll-parallax>
         <img
           src="{{ $publicationPhoto.RelPermalink }}"
           width="{{ $publicationPhoto.Width }}"
@@ -256,9 +254,8 @@
         <figcaption class="photo-watermark">Photographed by JJ</figcaption>
       </figure>
 
-      <div class="chapter-heading chapter-heading--after-photo chapter-heading--single" data-reveal>
+      <div class="chapter-heading chapter-heading--after-photo chapter-heading--single">
         <div>
-          <p class="chapter-label">Selected work</p>
           <h2 id="publication-heading">Selected publications</h2>
         </div>
       </div>
@@ -268,8 +265,8 @@
         {{ $paperImage := ($paperPage.Resources.ByType "image").GetMatch "*featured*" }}
         {{ $paperVisual := "" }}
         {{ with $paperImage }}{{ $paperVisual = .Fit "1500x1000 webp q88" }}{{ end }}
-      <article class="publication-card" data-reveal="panel">
-        <div class="paper-visual">
+      <article class="publication-card">
+        <div class="paper-visual{{ if $publication.status }} paper-visual--plain{{ end }}">
           {{ with $paperVisual }}
             <img
               class="paper-figure"
@@ -280,7 +277,8 @@
               loading="lazy"
               decoding="async">
           {{ end }}
-          {{ if $publication.logo }}
+          {{ if $publication.status }}{{/* A paper under review carries no venue logo; its status shows beside the venue name. */}}
+          {{ else if $publication.logo }}
             {{ with resources.Get $publication.logo }}
               {{ $brandLogo := .Resize "640x webp" }}
               <div class="paper-conference-mark paper-conference-mark--brand" role="img" aria-label="{{ $publication.logo_alt }} logo">
@@ -319,7 +317,7 @@
             {{ with $publication.project_url }}<a href="{{ . }}" target="_blank" rel="noopener">Project page <span aria-hidden="true">↗</span></a>{{ end }}
             {{ with $publication.openreview_url }}<a href="{{ . }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>{{ end }}
             {{ with $publication.code_url }}<a href="{{ . }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>{{ end }}
-            <a href="{{ $paperPage.RelPermalink }}">Details <span aria-hidden="true">→</span></a>
+            <a href="{{ $paperPage.RelPermalink }}">Details</a>
           </nav>
         </div>
       </article>
@@ -327,7 +325,7 @@
       {{ end }}
 
       {{ with $data.publication.upcoming }}
-        <aside class="publication-upcoming" aria-labelledby="upcoming-publication-title" data-reveal="panel">
+        <aside class="publication-upcoming" aria-labelledby="upcoming-publication-title">
           <span>{{ .status }}</span>
           <div>
             <h3 id="upcoming-publication-title">{{ .topic }}</h3>
@@ -342,7 +340,7 @@
   {{ if eq $view "demos" }}
   <section id="robot-demos" class="portfolio-chapter demos-chapter" aria-labelledby="demos-page-title">
     <div class="portfolio-container">
-      <figure class="chapter-visual chapter-visual--demos" data-reveal="image" data-scroll-parallax>
+      <figure class="chapter-visual chapter-visual--demos" data-scroll-parallax>
         <img
           src="{{ $demosPhoto.RelPermalink }}"
           width="{{ $demosPhoto.Width }}"
@@ -356,7 +354,7 @@
       </figure>
 
       {{/* Temporarily hidden. Remove this opening comment line and its closing marker to restore the demo introduction.
-      <div class="chapter-heading chapter-heading--after-photo" data-reveal>
+      <div class="chapter-heading chapter-heading--after-photo">
         <div>
           <p class="chapter-label">{{ $data.robot_demos.eyebrow }}</p>
           <h2 id="demos-heading">From demonstrations to robot skills.</h2>
@@ -372,7 +370,7 @@
           {{ $hasLocalVideo := and $video (fileExists (path.Join "static" $video)) }}
           {{ $hasVideo := or $isRemoteVideo $hasLocalVideo }}
           {{ if $hasVideo }}
-            <article {{ with $demo.id }}id="{{ . }}" {{ end }}class="demo-card{{ if $demo.featured }} demo-card--featured{{ end }} demo-card--{{ $demo.orientation | default "landscape" }}" data-demo-number="{{ $demo.number }}" data-reveal="panel">
+            <article {{ with $demo.id }}id="{{ . }}" {{ end }}class="demo-card{{ if $demo.featured }} demo-card--featured{{ end }} demo-card--{{ $demo.orientation | default "landscape" }}" data-demo-number="{{ $demo.number }}">
               <div class="demo-media">
                 <video
                   class="robot-video"
@@ -410,7 +408,7 @@
   {{ if eq $view "hobbies" }}
   <section id="hobbies" class="portfolio-chapter hobbies-chapter" aria-labelledby="hobbies-heading">
     <div class="portfolio-container">
-      <figure class="chapter-visual chapter-visual--hobbies" data-reveal="image" data-scroll-parallax>
+      <figure class="chapter-visual chapter-visual--hobbies" data-scroll-parallax>
         <img
           src="{{ $hobbiesPhoto.RelPermalink }}"
           width="{{ $hobbiesPhoto.Width }}"
@@ -423,9 +421,8 @@
         <figcaption class="photo-watermark">Photographed by JJ</figcaption>
       </figure>
 
-      <div class="chapter-heading chapter-heading--after-photo" data-reveal>
+      <div class="chapter-heading chapter-heading--after-photo">
         <div>
-          <p class="chapter-label">Beyond research</p>
           <h2 id="hobbies-heading">What keeps me curious and moving</h2>
         </div>
         <div class="chapter-heading__body">
@@ -435,14 +432,14 @@
 
       <div class="hobbies-list">
         {{ range $item := $data.hobbies.items }}
-          <article class="hobby-entry" data-reveal>
+          <article class="hobby-entry">
             <h3><span aria-hidden="true">{{ $item.emoji }}</span>{{ $item.title }}</h3>
             <p>{{ $item.text | markdownify }}</p>
           </article>
         {{ end }}
       </div>
 
-      <div class="hobbies-invite" data-reveal="panel">
+      <div class="hobbies-invite">
         <p>Up for a hike, a badminton match, or a Civilization VI session?</p>
         <a href="mailto:{{ $data.contact.email }}">Let me know <span aria-hidden="true">↗</span></a>
       </div>
@@ -452,7 +449,7 @@
 
   {{/* Temporarily hidden. Remove this opening comment line and its closing marker to restore Research and collaboration.
   {{ if eq $view "about" }}
-  <aside id="contact" class="contact-strip" aria-labelledby="contact-title" data-reveal="panel">
+  <aside id="contact" class="contact-strip" aria-labelledby="contact-title">
     <div class="portfolio-container contact-strip__inner">
       <div>
         <p class="chapter-label">Research and collaboration</p>

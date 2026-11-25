@@ -3,65 +3,33 @@
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const saveData = Boolean(navigator.connection && navigator.connection.saveData);
     const root = document.documentElement;
-    const allRevealItems = [...document.querySelectorAll("[data-reveal]")];
     const skipLink = document.querySelector(".skip-link");
 
     if (skipLink && document.body.firstElementChild !== skipLink) {
       document.body.prepend(skipLink);
     }
 
-    document.querySelectorAll(".research-areas, .demo-grid, .news-list, .journey-list").forEach((group) => {
-      [...group.children]
-        .filter((item) => item.matches("[data-reveal]"))
-        .forEach((item, index) => {
-          item.style.setProperty("--reveal-delay", `${Math.min(index, 3) * 55}ms`);
-        });
-    });
-
     root.classList.add("portfolio-ready");
 
     const homeTitle = document.querySelector("[data-home-title-write]");
     if (homeTitle && root.classList.contains("portfolio-motion") && !reduceMotion) {
-      const startHomeTitle = () => {
-        const fontsReady = document.fonts?.ready || Promise.resolve();
-        fontsReady.then(() => {
-          window.requestAnimationFrame(() => homeTitle.classList.add("is-writing"));
-        });
-      };
-
-      if (document.readyState === "complete") startHomeTitle();
-      else window.addEventListener("load", startHomeTitle, { once: true });
-    }
-
-    if (root.classList.contains("portfolio-motion") && !reduceMotion) {
-      const firstViewItems = allRevealItems.slice(0, 2);
-      const laterItems = allRevealItems.filter((item) => !firstViewItems.includes(item));
-
-      window.requestAnimationFrame(() => {
-        firstViewItems.forEach((item, index) => {
-          item.style.setProperty("--reveal-delay", `${Math.min(index, 3) * 55}ms`);
-          item.classList.add("is-visible");
-        });
+      // Write the banner line once its handwriting face is ready, so the ink
+      // wipe never reveals fallback glyphs.
+      const fontsReady = document.fonts?.ready || Promise.resolve();
+      fontsReady.then(() => {
+        window.requestAnimationFrame(() => homeTitle.classList.add("is-writing"));
       });
-
-      const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          });
-        },
-        {
-          rootMargin: "0px 0px -8% 0px",
-          threshold: 0.1,
-        },
-      );
-
-      laterItems.forEach((item) => revealObserver.observe(item));
-    } else {
-      allRevealItems.forEach((item) => item.classList.add("is-visible"));
     }
+
+    // Only morph the chapter photograph between pages when it is on screen;
+    // otherwise it would fly in from above the viewport.
+    window.addEventListener("pageswap", (event) => {
+      if (!event.viewTransition) return;
+      const photo = document.querySelector(".home-hero__media, .chapter-visual");
+      if (photo && photo.getBoundingClientRect().bottom <= 0) {
+        photo.style.viewTransitionName = "none";
+      }
+    });
 
     const videos = [...document.querySelectorAll("[data-robot-video]")];
     // Offer a single muted preview on desktop. After it stops, the native
