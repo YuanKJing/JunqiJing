@@ -123,41 +123,71 @@
       }
     });
 
-    // Photographs open full size in a native dialog: Esc closes it, the
-    // arrow keys and buttons step through, and a click on the dark area closes.
+    // Photo wall: a pause control for the drift, and a native dialog that
+    // shows each photograph full size. Esc closes it, arrow keys and the
+    // buttons step through in colour order (left to right across the rows),
+    // and a click on the dark area closes it.
+    const wall = document.querySelector(".photo-wall");
     const lightbox = document.querySelector(".photo-lightbox");
-    const photoButtons = [...document.querySelectorAll(".photo-wall__item")];
-    if (lightbox && photoButtons.length && typeof lightbox.showModal === "function") {
-      const image = lightbox.querySelector("img");
-      const caption = lightbox.querySelector("figcaption");
-      let current = 0;
-      const show = (index) => {
-        current = (index + photoButtons.length) % photoButtons.length;
-        const button = photoButtons[current];
-        const thumb = button.querySelector("img");
-        image.src = button.dataset.photoFull;
-        image.width = Number(button.dataset.photoWidth);
-        image.height = Number(button.dataset.photoHeight);
-        image.alt = thumb.alt;
-        caption.textContent = `${thumb.alt} · ${current + 1} / ${photoButtons.length}`;
+    if (wall) {
+      const pause = wall.querySelector(".photo-wall__pause");
+      const setPaused = (paused) => {
+        wall.classList.toggle("is-paused", paused);
+        if (pause) {
+          pause.setAttribute("aria-pressed", String(paused));
+          pause.textContent = paused ? "Play motion" : "Pause motion";
+        }
       };
-      photoButtons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-          show(index);
-          lightbox.showModal();
+      pause?.addEventListener("click", () => setPaused(!wall.classList.contains("is-paused")));
+
+      const originals = [...wall.querySelectorAll(".photo-wall__set:not([aria-hidden]) .photo-wall__tile")]
+        .sort((a, b) => a.offsetLeft - b.offsetLeft);
+      const order = new Map(originals.map((tile, index) => [tile.dataset.photoFile, index]));
+      originals.forEach((tile, index) => {
+        tile.setAttribute("aria-label", `Open photograph ${index + 1} of ${originals.length}`);
+      });
+
+      if (lightbox && originals.length && typeof lightbox.showModal === "function") {
+        const image = lightbox.querySelector("img");
+        const caption = lightbox.querySelector("figcaption");
+        let current = 0;
+        let opener = null;
+        let wasPaused = false;
+        const show = (index) => {
+          current = (index + originals.length) % originals.length;
+          const tile = originals[current];
+          const alt = tile.querySelector("img").alt;
+          image.src = tile.dataset.photoFull;
+          image.width = Number(tile.dataset.photoWidth);
+          image.height = Number(tile.dataset.photoHeight);
+          image.alt = alt || `Photograph ${current + 1}`;
+          caption.textContent = `${alt ? `${alt} · ` : ""}${current + 1} / ${originals.length}`;
+        };
+        wall.querySelectorAll(".photo-wall__tile").forEach((tile) => {
+          tile.addEventListener("click", () => {
+            opener = tile;
+            wasPaused = wall.classList.contains("is-paused");
+            setPaused(true);
+            show(order.get(tile.dataset.photoFile) ?? 0);
+            lightbox.showModal();
+          });
         });
-      });
-      lightbox.querySelector(".photo-lightbox__nav--prev").addEventListener("click", () => show(current - 1));
-      lightbox.querySelector(".photo-lightbox__nav--next").addEventListener("click", () => show(current + 1));
-      lightbox.querySelector(".photo-lightbox__close").addEventListener("click", () => lightbox.close());
-      lightbox.addEventListener("click", (event) => {
-        if (event.target === lightbox) lightbox.close();
-      });
-      lightbox.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") show(current - 1);
-        if (event.key === "ArrowRight") show(current + 1);
-      });
-      lightbox.addEventListener("close", () => photoButtons[current].focus());
+        lightbox.querySelector(".photo-lightbox__nav--prev").addEventListener("click", () => show(current - 1));
+        lightbox.querySelector(".photo-lightbox__nav--next").addEventListener("click", () => show(current + 1));
+        lightbox.querySelector(".photo-lightbox__close").addEventListener("click", () => lightbox.close());
+        lightbox.addEventListener("click", (event) => {
+          if (event.target === lightbox) lightbox.close();
+        });
+        lightbox.addEventListener("keydown", (event) => {
+          if (event.key === "ArrowLeft") show(current - 1);
+          if (event.key === "ArrowRight") show(current + 1);
+        });
+        lightbox.addEventListener("close", () => {
+          setPaused(wasPaused);
+          // preventScroll: focusing inside the clipped rows must not shift them.
+          opener?.focus({ preventScroll: true });
+        });
+      }
     }
 
     document.addEventListener("visibilitychange", () => {
