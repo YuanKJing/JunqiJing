@@ -13,6 +13,14 @@ The site is built with Hugo Blox and deployed to GitHub Pages.
   (type and colour tokens sit at the top in `:root`)
 - Banner handwriting, page-to-page photo transitions, navigation state, and
   viewport video playback: `assets/js/portfolio.js`
+- Light and dark themes: the colour tokens in `:root` and their `.dark`
+  overrides at the end of `portfolio.css`. The site follows the visitor's
+  system setting until they use the toggle (`appearance.mode` in
+  `config/_default/params.yaml`).
+- Paper cards: `teaser_video` in `data/portfolio.yaml` adds a hover clip;
+  a `cite.bib` beside a paper's `index.md` adds the BibTeX panel.
+- Hobbies photographs: `hobbies.photos` in `data/portfolio.yaml`, files in
+  `assets/media/portfolio/`.
 - Profile photo and author information: `content/authors/admin/`
 - Robot demo media: `static/videos/`
 

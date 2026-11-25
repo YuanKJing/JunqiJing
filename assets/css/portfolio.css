@@ -72,6 +72,11 @@
   /* Sea slate from the photographs carries links and actions; the sunset
      amber marks what is current (page, position, status). */
   --rail-bg: #15232a;
+  --on-accent: #ffffff;
+  --focus-ring: #173b4c;
+  --focus-halo: rgba(255, 255, 255, 0.96);
+  --hover-wash: rgba(224, 239, 246, 0.32);
+  --logo-plate: transparent;
   --sun: #eaa95a;
   --sun-deep: #8f5312;
   --sun-soft: #fbf0df;
@@ -98,16 +103,16 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--on-accent);
 }
 
 a:focus-visible,
 button:focus-visible,
 video:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid #173b4c;
+  outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
-  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0 0 6px var(--focus-halo);
 }
 
 .page-wrapper {
@@ -131,7 +136,7 @@ video:focus-visible,
   z-index: 100;
   padding: 0.7rem 1rem;
   background: var(--ink);
-  color: #ffffff;
+  color: var(--page-bg);
   font-weight: 700;
   transform: translateY(-180%);
   transition: transform 180ms ease;
@@ -243,7 +248,7 @@ video:focus-visible,
 
 #nav-menu .nav-link:hover {
   color: var(--ink);
-  background: rgba(23, 44, 53, 0.05);
+  background: var(--hover-wash);
 }
 
 #nav-menu .nav-link.is-current,
@@ -254,8 +259,51 @@ video:focus-visible,
   background: var(--sun-soft);
 }
 
+/* The last navbar group holds the light/dark toggle and the theme's email
+   button. On small screens only the toggle shows, beside the menu button. */
 #site-header .navbar > div:last-child {
-  display: none;
+  display: flex;
+  align-items: center;
+  order: 2;
+  margin-left: auto;
+}
+
+#site-header .navbar > div:last-child > a {
+  display: none !important;
+}
+
+#site-header .navbar > div:last-child > div {
+  padding: 0;
+}
+
+#site-header label[for="nav-toggle"] {
+  order: 3;
+  margin-left: 0.15rem !important;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: 0;
+  border-radius: 50%;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.theme-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.theme-toggle #sun,
+.dark .theme-toggle #moon {
+  display: none !important;
+}
+
+.dark .theme-toggle #sun {
+  display: block !important;
 }
 
 /* Shared page structure. */
@@ -609,7 +657,7 @@ video:focus-visible,
   font-weight: 700;
 }
 
-.identity-actions a:first-child { background: var(--accent-deep); color: white; }
+.identity-actions a:first-child { background: var(--accent-deep); color: var(--on-accent); }
 .identity-actions a:hover { text-decoration: underline; }
 .demo-card[id], #publication-heading { scroll-margin-top: 5rem; }
 
@@ -929,7 +977,7 @@ video:focus-visible,
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  background: #ffffff;
+  background: var(--panel);
   box-shadow: var(--shadow-soft);
 }
 
@@ -1607,7 +1655,7 @@ video:focus-visible,
   padding: 0.4rem 0.8rem;
   border: 1px solid var(--accent-deep);
   border-radius: 999px;
-  color: #ffffff;
+  color: var(--on-accent);
   background: var(--accent-deep);
   font: inherit;
   font-size: 0.88rem;
@@ -2187,6 +2235,12 @@ video:focus-visible,
   .photo-wall__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  /* Five small frames leave one alone in a two-column grid: widen the last. */
+  .photo-wall__item:last-child {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .photo-lightbox {
@@ -2387,7 +2441,7 @@ video:focus-visible,
 /* Hover feedback is colour and outline only; nothing jumps or slides. */
 @media (hover: hover) {
   .journey-item:hover {
-    background: rgba(224, 239, 246, 0.32);
+    background: var(--hover-wash);
   }
 
   .publication-card:hover,
@@ -2564,10 +2618,21 @@ video:focus-visible,
   #site-header .navbar > div:last-child {
     order: 2;
     display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     margin: auto 0 0 !important;
     padding-top: 1rem;
     border-top: 0;
+  }
+
+  .theme-toggle {
+    color: #c4d3d9;
+  }
+
+  .theme-toggle:hover {
+    color: #ffffff;
   }
 
   #site-header .navbar > div:last-child > a {
@@ -3105,4 +3170,229 @@ video:focus-visible,
     grid-template-columns: 1fr;
     gap: 0.2rem;
   }
+}
+
+/*
+ * Pages rendered by the theme (news posts, the news list, paper pages, tags)
+ * take the same type and colour as the portfolio pages. They are the pages
+ * without a .portfolio-site wrapper.
+ */
+:root {
+  /* The theme's accent scale, moved from emerald to the site's sea blue. */
+  --color-primary-50: 238 245 248;
+  --color-primary-100: 224 239 246;
+  --color-primary-200: 190 220 233;
+  --color-primary-300: 140 190 212;
+  --color-primary-400: 93 158 186;
+  --color-primary-500: 59 130 160;
+  --color-primary-600: 46 110 138;
+  --color-primary-700: 40 95 120;
+  --color-primary-800: 31 75 95;
+  --color-primary-900: 24 58 73;
+  --color-primary-950: 15 37 47;
+}
+
+.page-body:not(:has(.portfolio-site)) {
+  color: var(--ink-soft);
+}
+
+.page-body:not(:has(.portfolio-site)) h1 {
+  max-width: 24ch;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.page-body:not(:has(.portfolio-site)) main {
+  padding-top: clamp(2rem, 5vw, 4rem);
+}
+
+/* "N min read" says nothing for a short news item or a paper. */
+.page-body:not(:has(.portfolio-site)) main > .mt-4 > .text-sm > span:nth-last-child(-n + 2) {
+  display: none;
+}
+
+.page-body:not(:has(.portfolio-site)) main > .mt-4 > .text-sm {
+  color: var(--muted);
+}
+
+.page-body:not(:has(.portfolio-site)) .prose {
+  --tw-prose-body: var(--ink-soft);
+  --tw-prose-headings: var(--ink);
+  --tw-prose-bold: var(--ink);
+  --tw-prose-links: var(--accent-deep);
+  --tw-prose-quotes: var(--ink);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-hr: var(--line);
+  --tw-prose-invert-body: var(--ink-soft);
+  --tw-prose-invert-headings: var(--ink);
+  --tw-prose-invert-bold: var(--ink);
+  --tw-prose-invert-links: var(--accent-deep);
+  --tw-prose-invert-hr: var(--line);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.page-body:not(:has(.portfolio-site)) .prose :is(h1, h2, h3, h4) {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.page-body:not(:has(.portfolio-site)) .prose h2 {
+  font-size: 1.6rem;
+}
+
+.page-body:not(:has(.portfolio-site)) .prose h3 {
+  font-size: 1.3rem;
+}
+
+.page-body:not(:has(.portfolio-site)) .prose a {
+  text-decoration-color: color-mix(in srgb, var(--accent-deep) 40%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.page-body:not(:has(.portfolio-site)) .prose img {
+  border-radius: var(--radius-sm);
+}
+
+/* Paper pages: link pills and the labelled facts under the figure. */
+.hb-attachment-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0.4rem 0.4rem 0;
+  padding: 0.42rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--accent-deep) 30%, transparent);
+  border-radius: 999px;
+  color: var(--accent-deep) !important;
+  background: var(--panel);
+  font-size: 0.92rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.hb-attachment-link:hover {
+  border-color: var(--ink);
+  color: var(--ink) !important;
+}
+
+.page-body:not(:has(.portfolio-site)) main .font-bold.text-2xl {
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* News list: sentence-case labels and serif titles. */
+.page-body:not(:has(.portfolio-site)) .uppercase {
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 700;
+}
+
+.page-body:not(:has(.portfolio-site)) .grid h2 {
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/*
+ * Dark theme. The theme sets .dark on <html> from the visitor's system
+ * setting, or from the toggle once they use it. Only tokens change here;
+ * components read them.
+ */
+.dark {
+  --page-bg: #0f181d;
+  --panel: #16232a;
+  --panel-soft: #1b2a32;
+  --panel-blue: #1b2a32;
+  --panel-tint: #1a2830;
+  --ink: #e8eff1;
+  --ink-soft: #c2cfd4;
+  --muted: #94a6ad;
+  --line: #24353d;
+  --line-strong: #34474f;
+  --accent: #6fb0cf;
+  --accent-deep: #8cc4de;
+  --accent-soft: #1b313b;
+  --sun-deep: #f0b976;
+  --sun-soft: #33260f;
+  --video-bg: #0b1216;
+  --rail-bg: #0a1115;
+  --on-accent: #0f181d;
+  --focus-ring: #8cc4de;
+  --focus-halo: rgba(15, 24, 29, 0.9);
+  --hover-wash: rgba(255, 255, 255, 0.04);
+  --logo-plate: #eef3f3;
+  --photo-placeholder: #22333b;
+  --shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+  --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.28);
+  --shadow-lift: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Hobbies at night keeps the photograph's warmth. */
+html.dark:has(.hobbies-chapter) {
+  --page-bg: #1b1611;
+  --panel: #251e17;
+  --panel-soft: #2a2219;
+  --ink: #f3e9da;
+  --ink-soft: #d6c7b3;
+  --muted: #a8967f;
+  --line: #33291e;
+  --line-strong: #47392a;
+  --accent: #9cc58a;
+  --accent-deep: #afd49d;
+  --photo-placeholder: #3a2f22;
+  --temple: #d98a3d;
+}
+
+/* The theme paints its own dark background and white text on <body>. */
+html.dark body.page-wrapper {
+  color: var(--ink);
+  background: var(--page-bg);
+}
+
+/* Logos and icons drawn for a light page sit on a small light plate. */
+.dark .journey-logo,
+.dark .paper-conference-mark,
+.dark .about-chapter .biography-socials img {
+  padding: 0.35rem;
+  border-radius: 0.5rem;
+  background: var(--logo-plate);
+}
+
+.dark .about-chapter .biography-socials img {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+}
+
+.dark .paper-visual {
+  background: #dfe7e8;
+}
+
+.dark .publication-status {
+  border-color: rgba(240, 185, 118, 0.35);
+}
+
+.dark .availability-note,
+.dark .about-chapter .availability-note {
+  background: var(--panel);
+}
+
+.dark .biography-portrait {
+  border-color: var(--line-strong);
+}
+
+.dark .home-hero__media,
+.dark .chapter-visual {
+  border-color: var(--line);
 }
