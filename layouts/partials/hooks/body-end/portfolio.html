@@ -1,3 +1,17 @@
+{{/* Give the current rail link a real marker element before first render, so
+     a cross-document view transition can slide it from the old page's link
+     to the new one. Pseudo-elements cannot carry a view-transition-name. */}}
+<script>
+  (() => {
+    const current = document.querySelector("#nav-menu .nav-link.active");
+    if (!current || current.querySelector(".nav-marker")) return;
+    const marker = document.createElement("span");
+    marker.className = "nav-marker";
+    marker.setAttribute("aria-hidden", "true");
+    current.append(marker);
+  })();
+</script>
+<span id="portfolio-body-end" hidden></span>
 {{ $script := resources.Get "js/portfolio.js" | minify | fingerprint "sha256" }}
 <script
   defer
