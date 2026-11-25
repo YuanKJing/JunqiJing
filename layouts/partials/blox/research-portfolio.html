@@ -192,8 +192,12 @@
         <figcaption class="photo-watermark">Photographed by JJ</figcaption>
       </figure>
 
-        <div class="journey-list" id="journey">
-          {{ range $data.journey.items }}
+        {{/* Two timelines, then a compact list of honours and service. */}}
+        <div id="journey">
+        {{ range $group := $data.journey.groups }}
+          <h2 class="journey-group-title">{{ $group.title }}</h2>
+          <div class="journey-list">
+          {{ range where $data.journey.items "group" $group.key }}
             <article class="journey-item{{ if .current }} journey-item--current{{ end }}">
               <div class="journey-date">
                 {{ if .current }}<span class="current-pulse" aria-hidden="true"></span>{{ end }}
@@ -201,7 +205,7 @@
               </div>
               <div class="journey-copy">
                 <div class="journey-heading">
-                  <h2>{{ .role }}</h2>
+                  <h3>{{ .role }}</h3>
                   <p class="journey-place">
                     {{ if .place_url }}
                       <a href="{{ .place_url }}" target="_blank" rel="noopener">{{ .place }}</a>
@@ -210,7 +214,7 @@
                     {{ end }}
                   </p>
                 </div>
-                <p class="journey-description">{{ .text }}</p>
+                {{ with .text }}<p class="journey-description">{{ . }}</p>{{ end }}
                 {{ with .mentorship }}
                   <p class="journey-mentorship">
                     <span>{{ .label }}:</span>
@@ -233,7 +237,26 @@
               </div>
             </article>
           {{ end }}
+          </div>
+        {{ end }}
         </div>
+
+        {{ with $data.honors }}
+          <h2 class="journey-group-title" id="honors">{{ .title }}</h2>
+          <ul class="honors-list">
+            {{ range .items }}
+              {{ $link := "" }}
+              {{ with .page }}{{ with site.GetPage . }}{{ $link = .RelPermalink }}{{ end }}{{ end }}
+              <li class="honors-item">
+                <span class="honors-year">{{ .year }}</span>
+                <span class="honors-copy">
+                  <strong>{{ if $link }}<a href="{{ $link }}">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</strong>
+                  <span>{{ .detail }}</span>
+                </span>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
     </div>
   </section>
   {{ end }}
