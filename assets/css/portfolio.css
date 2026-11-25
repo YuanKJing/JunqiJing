@@ -2057,6 +2057,25 @@ video:focus-visible,
     transform: translateY(-50%) scaleY(1);
   }
 
+  /* The current page's marker is a real element (added in hooks/body-end) so
+     it can slide between links when the page changes. */
+  #nav-menu .nav-link.active::before {
+    visibility: hidden;
+  }
+
+  #nav-menu .nav-marker {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 2px;
+    height: 1.25rem;
+    border-radius: 2px;
+    background: var(--sun);
+    transform: translateY(-50%);
+    view-transition-name: nav-marker;
+  }
+
   #nav-menu > li.mt-4 {
     display: none !important;
   }
@@ -2535,6 +2554,10 @@ video:focus-visible,
   view-transition-name: site-rail;
 }
 
+.nav-marker {
+  display: none;
+}
+
 .home-hero__media,
 .chapter-visual {
   view-transition-name: chapter-photo;
@@ -2558,6 +2581,11 @@ video:focus-visible,
 
 ::view-transition-new(chapter-photo) {
   animation: 420ms ease 60ms both vt-fade-in;
+}
+
+::view-transition-group(nav-marker) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 ::view-transition-old(root) {

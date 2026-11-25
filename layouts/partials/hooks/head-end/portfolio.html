@@ -1,4 +1,7 @@
 <meta name="theme-color" content="#f5f5f2">
+{{/* Hold first render until the rail marker exists (see hooks/body-end), so
+     page-to-page transitions capture it. Browsers without support ignore this. */}}
+<link rel="expect" href="#portfolio-body-end" blocking="render">
 {{/* Keep layout CSS with its HTML so cached pages cannot lose a retired bundle. */}}
 {{ $styles := resources.Get "css/portfolio.css" | minify }}
 <style id="portfolio-styles">{{ replace $styles.Content "../fonts/" ("fonts/" | relURL) | safeCSS }}</style>
