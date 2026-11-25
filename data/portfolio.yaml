@@ -155,6 +155,7 @@ publication:
     title: 'Experience is the Prompt: Introducing CO01'
     logo: media/coco-matrix-logo.png
     logo_alt: COCO Matrix
+    teaser_video: videos/teasers/co01.mp4
     image_alt: 'Many forms of experience: a nine-panel montage of robot runs and human demonstrations from the CO01 film'
     summary: CO01 learns new tasks in context from demonstrations, its own attempts,
       and human guidance, without task-specific retraining. I led the work on human
@@ -237,10 +238,32 @@ hobbies:
         the photography featured across this website is my own**, and I am now
         beginning to shape these images into a **personal photography
         portfolio**.
+  photos:
+    title: Photographs
+    note: A few frames from the road. Every photograph on this site is mine.
+    items:
+      - file: publication-coast.jpg
+        alt: Turquoise surf breaking beside a small beach town
+      - file: hobbies-temple.jpg
+        alt: Sunlit pine trees around a Korean temple
+      - file: research-harbor.jpg
+        alt: Fishing vessels moored together in a harbor
+      - file: about-shore.jpg
+        alt: A walker in red on a quiet beach, with a tugboat offshore
+      - file: about-promenade.jpg
+        alt: A tree-lined seaside promenade under a blue sky
+      - file: home-motorcycle.jpg
+        alt: A motorcycle parked beside the sea at sunset
 
 journey:
+  groups:
+    - key: work
+      title: Research & Industry
+    - key: education
+      title: Education
   items:
     - date: Sep 2026 — Present
+      group: work
       role: AI Algorithm Intern
       place: CoCoMatrix
       place_url: https://www.ccmtrx.com/
@@ -262,6 +285,7 @@ journey:
           height: 470
           style: wordmark
     - date: Apr 2026 — Sep 2026
+      group: work
       role: AI Research Intern
       place: KNOWIN AI
       place_url: https://knowinai.com/
@@ -284,6 +308,7 @@ journey:
           height: 42
           style: wordmark
     - date: Dec 2025 — Mar 2026
+      group: work
       role: Research Assistant
       place: Tsinghua University · LEAP Lab
       place_url: https://www.leaplab.ai/
@@ -308,6 +333,7 @@ journey:
           height: 284
           style: seal
     - date: Sep 2025 — Dec 2025
+      group: work
       role: Exchange Student Researcher
       place: POSTECH · MLV Lab
       place_url: https://sites.google.com/view/mlvlab/home?authuser=0
@@ -323,7 +349,18 @@ journey:
           width: 1980
           height: 168
           style: wordmark
+    - date: From Fall 2027
+      group: education
+      role: Incoming Ph.D. Student
+      place: The Chinese University of Hong Kong · SEEM
+      place_url: https://www.se.cuhk.edu.hk/
+      mentorship:
+        label: Advisor
+        people:
+          - name: Liming Wang
+            url: https://www.se.cuhk.edu.hk/people/academic-staff/prof-wang-liming/
     - date: 2023 — 2027
+      group: education
       role: B.E. in Software Engineering
       place: Harbin Institute of Technology · Cross-Media Intelligence Lab
       place_url: https://www.hitwh.edu.cn/
@@ -339,6 +376,22 @@ journey:
           width: 256
           height: 231
           style: seal
+
+honors:
+  title: Honors & Service
+  items:
+    - year: "2025"
+      title: PC Member and Reviewer
+      detail: NeurIPS 2025 Workshop on Embodied World Models for Decision Making
+      page: /post/PCmember_In_NIPS
+    - year: "2022"
+      title: Second Prize
+      detail: China National Olympiad in Mathematics
+      page: /post/olympiad-math
+    - year: "2021"
+      title: First Prize
+      detail: Shandong Provincial High School Mathematics Competition
+      page: /post/olympiad-math
 
 projects:
   eyebrow: Beyond the lab

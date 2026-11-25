@@ -5,8 +5,8 @@
 
 # Appearance
 appearance:
-  # mode: system  # Re-enable together with the theme chooser when dark mode returns.
-  mode: light
+  # Follows the visitor's system setting until they use the toggle in the rail.
+  mode: system
   color: emerald
 
 # SEO
@@ -34,8 +34,7 @@ header:
     blox: "navbar"
     fixed_to_top: true
     show_search: false
-    # show_theme_chooser: true  # Temporarily disabled; uncomment to restore.
-    show_theme_chooser: false
+    show_theme_chooser: true
     align: center
     logo:
       text: "Junqi"

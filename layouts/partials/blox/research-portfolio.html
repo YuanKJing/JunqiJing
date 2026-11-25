@@ -192,8 +192,12 @@
         <figcaption class="photo-watermark">Photographed by JJ</figcaption>
       </figure>
 
-        <div class="journey-list" id="journey">
-          {{ range $data.journey.items }}
+        {{/* Two timelines, then a compact list of honours and service. */}}
+        <div id="journey">
+        {{ range $group := $data.journey.groups }}
+          <h2 class="journey-group-title">{{ $group.title }}</h2>
+          <div class="journey-list">
+          {{ range where $data.journey.items "group" $group.key }}
             <article class="journey-item{{ if .current }} journey-item--current{{ end }}">
               <div class="journey-date">
                 {{ if .current }}<span class="current-pulse" aria-hidden="true"></span>{{ end }}
@@ -201,7 +205,7 @@
               </div>
               <div class="journey-copy">
                 <div class="journey-heading">
-                  <h2>{{ .role }}</h2>
+                  <h3>{{ .role }}</h3>
                   <p class="journey-place">
                     {{ if .place_url }}
                       <a href="{{ .place_url }}" target="_blank" rel="noopener">{{ .place }}</a>
@@ -210,7 +214,7 @@
                     {{ end }}
                   </p>
                 </div>
-                <p class="journey-description">{{ .text }}</p>
+                {{ with .text }}<p class="journey-description">{{ . }}</p>{{ end }}
                 {{ with .mentorship }}
                   <p class="journey-mentorship">
                     <span>{{ .label }}:</span>
@@ -233,7 +237,26 @@
               </div>
             </article>
           {{ end }}
+          </div>
+        {{ end }}
         </div>
+
+        {{ with $data.honors }}
+          <h2 class="journey-group-title" id="honors">{{ .title }}</h2>
+          <ul class="honors-list">
+            {{ range .items }}
+              {{ $link := "" }}
+              {{ with .page }}{{ with site.GetPage . }}{{ $link = .RelPermalink }}{{ end }}{{ end }}
+              <li class="honors-item">
+                <span class="honors-year">{{ .year }}</span>
+                <span class="honors-copy">
+                  <strong>{{ if $link }}<a href="{{ $link }}">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</strong>
+                  <span>{{ .detail }}</span>
+                </span>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
     </div>
   </section>
   {{ end }}
@@ -265,9 +288,13 @@
         {{ $paperImage := ($paperPage.Resources.ByType "image").GetMatch "*featured*" }}
         {{ $paperVisual := "" }}
         {{ with $paperImage }}{{ $paperVisual = .Fit "1500x1000 webp q88" }}{{ end }}
+        {{ $slug := $paperPage.File.ContentBaseName | anchorize }}
+        {{ $abstract := $paperPage.Params.abstract }}
+        {{ $bib := $paperPage.Resources.GetMatch "cite.bib" }}
       <article class="publication-card">
         <div class="paper-visual{{ if $publication.status }} paper-visual--plain{{ end }}">
           {{ with $paperVisual }}
+          <div class="paper-media"{{ if $publication.teaser_video }} data-paper-teaser{{ end }}>
             <img
               class="paper-figure"
               src="{{ .RelPermalink }}"
@@ -276,6 +303,14 @@
               alt="{{ $publication.image_alt }}"
               loading="lazy"
               decoding="async">
+            {{/* A short muted clip plays over the figure on hover; the button does the same for touch and keyboard. */}}
+            {{ with $publication.teaser_video }}
+              <video class="paper-teaser" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true">
+                <source src="{{ . | relURL }}" type="video/mp4">
+              </video>
+              <button type="button" class="paper-teaser__button" aria-pressed="false">Play preview</button>
+            {{ end }}
+          </div>
           {{ end }}
           {{ if $publication.status }}{{/* A paper under review carries no venue logo; its status shows beside the venue name. */}}
           {{ else if $publication.logo }}
@@ -317,8 +352,21 @@
             {{ with $publication.project_url }}<a href="{{ . }}" target="_blank" rel="noopener">Project page <span aria-hidden="true">↗</span></a>{{ end }}
             {{ with $publication.openreview_url }}<a href="{{ . }}" target="_blank" rel="noopener">OpenReview <span aria-hidden="true">↗</span></a>{{ end }}
             {{ with $publication.code_url }}<a href="{{ . }}" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>{{ end }}
+            {{ with $abstract }}<button type="button" class="paper-toggle" aria-expanded="false" aria-controls="abstract-{{ $slug }}">Abstract</button>{{ end }}
+            {{ with $bib }}<button type="button" class="paper-toggle" aria-expanded="false" aria-controls="bibtex-{{ $slug }}">BibTeX</button>{{ end }}
             <a href="{{ $paperPage.RelPermalink }}">Details</a>
           </nav>
+          {{ with $abstract }}
+            <div class="paper-panel" id="abstract-{{ $slug }}" hidden>
+              <p>{{ . | markdownify }}</p>
+            </div>
+          {{ end }}
+          {{ with $bib }}
+            <div class="paper-panel paper-panel--bibtex" id="bibtex-{{ $slug }}" hidden>
+              <pre><code>{{ .Content | strings.TrimSpace }}</code></pre>
+              <button type="button" class="paper-copy">Copy BibTeX</button>
+            </div>
+          {{ end }}
         </div>
       </article>
 
@@ -443,6 +491,36 @@
           {{ end }}
         </div>
       </div>
+
+      {{/* Photographs: a mosaic of thumbnails that open full size in a dialog. */}}
+      {{ with $data.hobbies.photos }}
+        <section class="photo-wall" aria-labelledby="photo-wall-title">
+          <div class="photo-wall__heading">
+            <h2 id="photo-wall-title">{{ .title }}</h2>
+            <p>{{ .note }}</p>
+          </div>
+          <div class="photo-wall__grid">
+            {{ range $index, $photo := .items }}
+              {{ $source := resources.Get (printf "media/portfolio/%s" $photo.file) }}
+              {{ $thumb := $source.Fill "960x720 Center webp q84" }}
+              {{ $full := $source.Fit "2200x2200 webp q88" }}
+              <button type="button" class="photo-wall__item" data-photo-full="{{ $full.RelPermalink }}" data-photo-width="{{ $full.Width }}" data-photo-height="{{ $full.Height }}" aria-label="View larger: {{ $photo.alt }}">
+                <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $photo.alt }}" loading="lazy" decoding="async">
+              </button>
+            {{ end }}
+          </div>
+        </section>
+
+        <dialog class="photo-lightbox" aria-label="Photograph viewer">
+          <figure>
+            <img alt="">
+            <figcaption></figcaption>
+          </figure>
+          <button type="button" class="photo-lightbox__nav photo-lightbox__nav--prev" aria-label="Previous photograph">‹</button>
+          <button type="button" class="photo-lightbox__nav photo-lightbox__nav--next" aria-label="Next photograph">›</button>
+          <button type="button" class="photo-lightbox__close" aria-label="Close">×</button>
+        </dialog>
+      {{ end }}
     </div>
   </section>
   {{ end }}
