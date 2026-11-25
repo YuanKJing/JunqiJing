@@ -78,7 +78,7 @@ robot_demos:
         - Human guidance
         - Agent memory
     - number: "02"
-      title: CO01，上下文交互学习
+      title: "CO01: In-Context Interactive Learning"
       orientation: landscape
       description: >-
         An operator guides the robot through a tabletop task. CO01 can use a

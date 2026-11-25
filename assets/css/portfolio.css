@@ -23,6 +23,14 @@
 }
 
 @font-face {
+  font-family: "Allura";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/allura-400.woff2") format("woff2");
+}
+
+@font-face {
   font-family: "Caveat";
   font-style: normal;
   font-weight: 400;
@@ -55,7 +63,7 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Type: one serif for reading and headings, one sans for interface text,
-     handwriting only for the home banner. */
+     Caveat for the home banner and Allura for the photo signature. */
   --font-serif: "Newsreader", Georgia, serif;
   --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
   --font-hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
@@ -437,21 +445,31 @@ video:focus-visible,
 
 .photo-watermark {
   position: absolute;
-  right: clamp(0.9rem, 2vw, 1.5rem);
-  bottom: clamp(0.7rem, 1.6vw, 1.1rem);
+  right: clamp(1rem, 2.4vw, 2rem);
+  bottom: clamp(0.8rem, 2vw, 1.55rem);
   z-index: 3;
   margin: 0;
-  color: rgba(255, 255, 255, 0.86);
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
+  padding: 0 0.08em 0.12em 0;
+  color: #75521f;
+  font-family: "Allura", "Segoe Script", "Snell Roundhand", cursive;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
   font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: 0.01em;
+  line-height: 1.18;
   white-space: nowrap;
-  text-shadow: 0 1px 3px rgba(4, 21, 29, 0.55);
+  text-shadow: 0 1px 1px rgba(255, 244, 214, 0.2), 0 1px 3px rgba(8, 13, 14, 0.18);
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .photo-watermark {
+    color: transparent;
+    background: linear-gradient(110deg, #4b3518 0%, #8a6427 34%, #d5ad58 61%, #6b4819 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .page-banner-title {
@@ -2310,9 +2328,11 @@ video:focus-visible,
   }
 
   .photo-watermark {
-    right: 0.7rem;
-    bottom: 0.55rem;
-    font-size: 0.7rem;
+    right: 0.62rem;
+    bottom: 0.5rem;
+    padding-bottom: 0.12em;
+    font-size: clamp(1.2rem, 5.7vw, 1.5rem);
+    line-height: 1.2;
   }
 
   .chapter-visual > img {
@@ -2494,8 +2514,10 @@ video:focus-visible,
   }
 
   .photo-watermark {
-    color: var(--ink-soft) !important;
+    color: #745019 !important;
+    background: none !important;
     text-shadow: none !important;
+    -webkit-text-fill-color: #745019 !important;
   }
 
   .page-header,
