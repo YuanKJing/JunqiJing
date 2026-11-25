@@ -2166,20 +2166,26 @@ video:focus-visible,
   }
 }
 
-/* Photographs: one large frame with five smaller ones around it. */
+/*
+ * Photographs: a full-width wall of three rows drifting slowly left. The
+ * rows share one speed and start together, so photos stacked above each
+ * other keep similar colours and the wall reads as a single gradient.
+ */
 .hobbies-chapter .photo-wall {
-  width: calc(100% - clamp(2rem, 8vw, 8rem));
-  max-width: 72rem;
-  margin: clamp(3.5rem, 7vw, 6rem) auto 0;
+  width: 100%;
+  max-width: none;
+  margin: clamp(4rem, 8vw, 7rem) 0 0;
 }
 
 .photo-wall__heading {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 1.5rem;
-  align-items: baseline;
+  gap: 0.75rem 1.5rem;
+  align-items: end;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
+  width: calc(100% - clamp(2rem, 8vw, 8rem));
+  max-width: 72rem;
+  margin: 0 auto clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .photo-wall__heading h2 {
@@ -2192,57 +2198,127 @@ video:focus-visible,
 }
 
 .photo-wall__heading p {
+  margin-top: 0.4rem !important;
   color: var(--muted);
   font-size: 0.97rem;
 }
 
-.photo-wall__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.5rem, 1vw, 0.85rem);
+.photo-wall__pause {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: transparent;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.photo-wall__item {
+.photo-wall__pause:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.photo-wall__rows {
+  --row-height: clamp(8rem, 16vw, 15rem);
+  --tile-gap: clamp(0.4rem, 0.6vw, 0.6rem);
+  display: grid;
+  gap: var(--tile-gap);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.photo-wall__row {
+  overflow: hidden;
+}
+
+.photo-wall__track {
+  display: flex;
+  width: max-content;
+}
+
+.photo-wall__set {
+  display: flex;
+  flex: none;
+  gap: var(--tile-gap);
+  padding-right: var(--tile-gap);
+}
+
+.photo-wall__tile {
   position: relative;
   display: block;
-  aspect-ratio: 4 / 3;
+  flex: none;
+  height: var(--row-height);
+  aspect-ratio: var(--tile-ratio);
   padding: 0;
   overflow: hidden;
   border: 0;
-  border-radius: var(--radius-sm);
-  background: var(--photo-placeholder, #bacbd0);
+  border-radius: 0.4rem;
+  background: var(--tile-color);
   cursor: zoom-in;
 }
 
-.photo-wall__item:first-child {
-  grid-column: span 2;
-  grid-row: span 2;
-  aspect-ratio: auto;
-}
-
-.photo-wall__item img {
+.photo-wall__tile img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 500ms var(--ease), filter 300ms ease;
+  transition: transform 600ms var(--ease), filter 300ms ease;
+}
+
+.photo-wall__tile:focus-visible {
+  outline-offset: -3px;
+}
+
+@keyframes photo-wall-drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* About 7 s per row-height of photos: a slow, steady drift. */
+  .photo-wall__track {
+    animation: photo-wall-drift calc(var(--row-units) * 7s) linear infinite;
+  }
+
+  .photo-wall:hover .photo-wall__track,
+  .photo-wall:focus-within .photo-wall__track,
+  .photo-wall.is-paused .photo-wall__track {
+    animation-play-state: paused;
+  }
 }
 
 @media (hover: hover) {
-  .photo-wall__item:hover img {
-    transform: scale(1.03);
-    filter: saturate(1.08);
+  .photo-wall__rows:hover .photo-wall__tile img {
+    filter: saturate(0.8) brightness(0.9);
+  }
+
+  .photo-wall__rows:hover .photo-wall__tile:hover img {
+    filter: none;
+    transform: scale(1.05);
+  }
+}
+
+/* Without motion the rows become plain horizontal scrollers. */
+@media (prefers-reduced-motion: reduce) {
+  .photo-wall__row {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .photo-wall__set[aria-hidden="true"],
+  .photo-wall__pause {
+    display: none;
   }
 }
 
 @media (max-width: 700px) {
-  .photo-wall__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  /* Five small frames leave one alone in a two-column grid: widen the last. */
-  .photo-wall__item:last-child {
-    grid-column: span 2;
-    aspect-ratio: 16 / 9;
+  .photo-wall__rows {
+    --row-height: 7.5rem;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }
 

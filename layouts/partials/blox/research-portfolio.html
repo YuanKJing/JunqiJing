@@ -492,21 +492,45 @@
         </div>
       </div>
 
-      {{/* Photographs: a mosaic of thumbnails that open full size in a dialog. */}}
-      {{ with $data.hobbies.photos }}
+      {{/*
+        Photographs: three rows that drift slowly to the left, ordered round
+        the colour wheel by scripts/build_gallery.py so the wall reads as one
+        gradient. Each row holds its photos twice so the loop is seamless;
+        the second copy is hidden from assistive technology.
+      */}}
+      {{ with site.Data.gallery }}
         <section class="photo-wall" aria-labelledby="photo-wall-title">
           <div class="photo-wall__heading">
-            <h2 id="photo-wall-title">{{ .title }}</h2>
-            <p>{{ .note }}</p>
+            <div>
+              <h2 id="photo-wall-title">{{ $data.hobbies.photos.title }}</h2>
+              <p>{{ $data.hobbies.photos.note }}</p>
+            </div>
+            <button type="button" class="photo-wall__pause" aria-pressed="false">Pause motion</button>
           </div>
-          <div class="photo-wall__grid">
-            {{ range $index, $photo := .items }}
-              {{ $source := resources.Get (printf "media/portfolio/%s" $photo.file) }}
-              {{ $thumb := $source.Fill "960x720 Center webp q84" }}
-              {{ $full := $source.Fit "2200x2200 webp q88" }}
-              <button type="button" class="photo-wall__item" data-photo-full="{{ $full.RelPermalink }}" data-photo-width="{{ $full.Width }}" data-photo-height="{{ $full.Height }}" aria-label="View larger: {{ $photo.alt }}">
-                <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $photo.alt }}" loading="lazy" decoding="async">
-              </button>
+          <div class="photo-wall__rows">
+            {{ range $row := .rows }}
+              <div class="photo-wall__row" style="--row-units: {{ $row.units }}">
+                <div class="photo-wall__track">
+                  {{ range $copy := slice 0 1 }}
+                    <div class="photo-wall__set"{{ if $copy }} aria-hidden="true"{{ end }}>
+                      {{ range $row.photos }}
+                        {{ $source := resources.Get (printf "media/gallery/%s" .file) }}
+                        {{ $thumb := $source.Resize "x420 webp q78" }}
+                        {{ $full := $source.Fit "1440x1440 webp q86" }}
+                        <button type="button" class="photo-wall__tile"
+                          style="--tile-ratio: {{ div (float .width) .height }}; --tile-color: {{ .color }}"
+                          data-photo-file="{{ .file }}"
+                          data-photo-full="{{ $full.RelPermalink }}"
+                          data-photo-width="{{ $full.Width }}"
+                          data-photo-height="{{ $full.Height }}"
+                          aria-label="Open photograph"{{ if $copy }} tabindex="-1"{{ end }}>
+                          <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ .alt | default "" }}" loading="lazy" decoding="async">
+                        </button>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              </div>
             {{ end }}
           </div>
         </section>

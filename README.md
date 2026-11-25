@@ -19,8 +19,11 @@ The site is built with Hugo Blox and deployed to GitHub Pages.
   `config/_default/params.yaml`).
 - Paper cards: `teaser_video` in `data/portfolio.yaml` adds a hover clip;
   a `cite.bib` beside a paper's `index.md` adds the BibTeX panel.
-- Hobbies photographs: `hobbies.photos` in `data/portfolio.yaml`, files in
-  `assets/media/portfolio/`.
+- Hobbies photo wall: put the photographs in one folder and run
+  `python3 scripts/build_gallery.py <folder>` (needs ffmpeg). It strips
+  metadata, resizes to 1440 px, orders the photos round the colour wheel and
+  writes `assets/media/gallery/` and `data/gallery.yaml`. Add an `alt:` line
+  to any photo in `data/gallery.yaml` to caption it in the viewer.
 - Profile photo and author information: `content/authors/admin/`
 - Robot demo media: `static/videos/`
 
